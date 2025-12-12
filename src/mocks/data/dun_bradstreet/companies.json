@@ -1,0 +1,33 @@
+{
+  "123456789": {
+    "organization": {
+      "duns": "123456789",
+      "primaryName": "ACME TECHNOLOGIES LTD",
+      "dunsControlStatus": {
+        "operatingStatus": {"description": "Active"}
+      },
+      "startDate": "2018-03-15",
+      "legalForm": {"description": "Private Limited Company"},
+      "registrationNumbers": [
+        {"registrationNumber": "12345678", "typeDnBCode": 1354, "typeDescription": "UK Company Registration Number"}
+      ],
+      "primaryAddress": {
+        "streetAddress": {"line1": "123 Tech Park"},
+        "addressLocality": {"name": "London"},
+        "postalCode": "EC1A 1BB",
+        "addressCountry": {"isoAlpha2Code": "GB"}
+      },
+      "numberOfEmployees": [
+        {"value": 85, "informationScopeDescription": "Individual", "reliabilityDescription": "Actual"}
+      ],
+      "financials": [
+        {
+          "yearlyRevenue": [
+            {"value": 15000000, "currency": "GBP", "reliabilityDescription": "Actual"}
+          ],
+          "financialStatementToDate": "2024-03-31"
+        }
+      ]
+    }
+  }
+}

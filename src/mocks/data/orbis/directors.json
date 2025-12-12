@@ -1,0 +1,75 @@
+{
+  "GB12345678": {
+    "bvd_id": "GB12345678",
+    "company_name": "ACME TECHNOLOGIES LTD",
+    "directors": [
+      {
+        "contact_id": "P123456",
+        "name": "John Smith",
+        "title": "Mr",
+        "role": "Director",
+        "appointment_date": "2018-03-15",
+        "resignation_date": null,
+        "is_current": true,
+        "nationality": "British",
+        "date_of_birth": "1975-06"
+      },
+      {
+        "contact_id": "P123457",
+        "name": "Jane Doe",
+        "title": "Ms",
+        "role": "Director",
+        "appointment_date": "2019-01-10",
+        "resignation_date": null,
+        "is_current": true,
+        "nationality": "British",
+        "date_of_birth": "1982-03"
+      }
+    ]
+  },
+  "GB87654321": {
+    "bvd_id": "GB87654321",
+    "company_name": "FINTECH INNOVATIONS LIMITED",
+    "directors": [
+      {
+        "contact_id": "P234567",
+        "name": "Sarah Johnson",
+        "title": "Ms",
+        "role": "Director",
+        "appointment_date": "2019-06-10",
+        "resignation_date": null,
+        "is_current": true,
+        "nationality": "British",
+        "date_of_birth": "1978-11"
+      }
+    ]
+  },
+  "GB11223344": {
+    "bvd_id": "GB11223344",
+    "company_name": "GREEN ENERGY SOLUTIONS LTD",
+    "directors": [
+      {
+        "contact_id": "P345678",
+        "name": "Michael Green",
+        "title": "Mr",
+        "role": "Director",
+        "appointment_date": "2020-01-20",
+        "resignation_date": null,
+        "is_current": true,
+        "nationality": "British",
+        "date_of_birth": "1980-05"
+      },
+      {
+        "contact_id": "P345679",
+        "name": "Emma Thompson",
+        "title": "Dr",
+        "role": "Director",
+        "appointment_date": "2020-01-20",
+        "resignation_date": null,
+        "is_current": true,
+        "nationality": "British",
+        "date_of_birth": "1985-09"
+      }
+    ]
+  }
+}

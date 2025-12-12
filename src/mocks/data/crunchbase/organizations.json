@@ -1,0 +1,86 @@
+{
+  "acme-technologies": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-12345",
+        "value": "ACME Technologies",
+        "permalink": "acme-technologies"
+      },
+      "short_description": "Enterprise AI platform for financial services",
+      "founded_on": "2018-03-15",
+      "num_employees_enum": "c_00051_00100",
+      "website": {"value": "https://acmetech.io"},
+      "linkedin": {"value": "https://linkedin.com/company/acmetech"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Artificial Intelligence"},
+        {"value": "Financial Services"},
+        {"value": "SaaS"}
+      ],
+      "funding_total": {
+        "value": 42000000,
+        "currency": "GBP",
+        "value_usd": 52920000
+      }
+    }
+  },
+  "fintech-innovations": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-67890",
+        "value": "FinTech Innovations",
+        "permalink": "fintech-innovations"
+      },
+      "short_description": "Digital banking platform for SMEs",
+      "founded_on": "2019-06-10",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://fintechinnovations.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/fintech-innovations"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "FinTech"},
+        {"value": "Banking"},
+        {"value": "SME"}
+      ],
+      "funding_total": {
+        "value": 12000000,
+        "currency": "GBP",
+        "value_usd": 15120000
+      }
+    }
+  },
+  "green-energy-solutions": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-11223",
+        "value": "Green Energy Solutions",
+        "permalink": "green-energy-solutions"
+      },
+      "short_description": "Renewable energy infrastructure and smart grid technology",
+      "founded_on": "2020-01-20",
+      "num_employees_enum": "c_00051_00100",
+      "website": {"value": "https://greenenergysolutions.com"},
+      "linkedin": {"value": "https://linkedin.com/company/green-energy-solutions"},
+      "location_identifiers": [
+        {"value": "Manchester", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Clean Energy"},
+        {"value": "Renewable Energy"},
+        {"value": "Infrastructure"}
+      ],
+      "funding_total": {
+        "value": 28000000,
+        "currency": "GBP",
+        "value_usd": 35280000
+      }
+    }
+  }
+}

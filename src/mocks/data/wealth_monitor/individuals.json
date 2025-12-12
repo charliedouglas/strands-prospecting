@@ -1,0 +1,47 @@
+{
+  "total_count": 1,
+  "individuals": [
+    {
+      "wm_id": "WM-UK-123456",
+      "name": "John David Smith",
+      "estimated_net_worth": 85000000,
+      "estimated_net_worth_gbp": 68000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 12000000,
+        "properties": [
+          {
+            "address": "Flat 10, Kensington Gardens",
+            "city": "London",
+            "postcode": "W8 4PX",
+            "estimated_value": 8500000,
+            "ownership_type": "Freehold",
+            "acquired_date": "2019-05-15"
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 45000000,
+        "holdings": [
+          {
+            "company_name": "ACME Technologies Ltd",
+            "company_number": "12345678",
+            "shares_held": 6000000,
+            "percentage": 60.0,
+            "estimated_value": 42000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "ACME Technologies Ltd",
+          "company_number": "12345678",
+          "role": "Director",
+          "appointed": "2018-03-15",
+          "status": "Active"
+        }
+      ]
+    }
+  ]
+}

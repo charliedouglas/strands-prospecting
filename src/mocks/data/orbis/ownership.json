@@ -1,0 +1,78 @@
+{
+  "GB12345678": {
+    "bvd_id": "GB12345678",
+    "company_name": "ACME TECHNOLOGIES LTD",
+    "shareholders": [
+      {
+        "name": "John Smith",
+        "type": "Individual",
+        "percentage": 60.0,
+        "is_direct": true
+      },
+      {
+        "name": "Tech Holdings Ltd",
+        "type": "Corporate",
+        "bvd_id": "GB87654321",
+        "percentage": 40.0,
+        "is_direct": true
+      }
+    ],
+    "ultimate_owner": {
+      "name": "John Smith",
+      "type": "Individual",
+      "percentage": 60.0
+    }
+  },
+  "GB87654321": {
+    "bvd_id": "GB87654321",
+    "company_name": "FINTECH INNOVATIONS LIMITED",
+    "shareholders": [
+      {
+        "name": "Sarah Johnson",
+        "type": "Individual",
+        "percentage": 75.0,
+        "is_direct": true
+      },
+      {
+        "name": "Venture Capital Partners",
+        "type": "Corporate",
+        "percentage": 25.0,
+        "is_direct": true
+      }
+    ],
+    "ultimate_owner": {
+      "name": "Sarah Johnson",
+      "type": "Individual",
+      "percentage": 75.0
+    }
+  },
+  "GB11223344": {
+    "bvd_id": "GB11223344",
+    "company_name": "GREEN ENERGY SOLUTIONS LTD",
+    "shareholders": [
+      {
+        "name": "Michael Green",
+        "type": "Individual",
+        "percentage": 45.0,
+        "is_direct": true
+      },
+      {
+        "name": "Emma Thompson",
+        "type": "Individual",
+        "percentage": 35.0,
+        "is_direct": true
+      },
+      {
+        "name": "Green Investment Fund",
+        "type": "Corporate",
+        "percentage": 20.0,
+        "is_direct": true
+      }
+    ],
+    "ultimate_owner": {
+      "name": "Michael Green",
+      "type": "Individual",
+      "percentage": 45.0
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "total_count": 2,
+  "profiles": [
+    {
+      "wealthx_id": "WX-123456",
+      "name": "John David Smith",
+      "title": "Mr",
+      "first_name": "John",
+      "middle_name": "David",
+      "last_name": "Smith",
+      "gender": "Male",
+      "age": 49,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 85000000,
+        "currency": "USD",
+        "confidence": "High",
+        "last_updated": "2024-03-15"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Technology",
+      "liquidity": {
+        "value": 25000000,
+        "currency": "USD"
+      },
+      "assets": {
+        "public_holdings": 5000000,
+        "private_holdings": 60000000,
+        "real_estate": 15000000,
+        "luxury_assets": 3000000,
+        "cash": 2000000
+      },
+      "current_positions": [
+        {"company": "ACME Technologies Ltd", "title": "Founder & CEO", "start_year": 2018}
+      ],
+      "interests": ["Technology", "Sustainable investing", "Classical music"],
+      "philanthropy": {
+        "causes": ["Education", "Climate change"],
+        "estimated_annual_giving": 500000
+      }
+    },
+    {
+      "wealthx_id": "WX-789012",
+      "name": "Sarah Johnson",
+      "title": "Ms",
+      "first_name": "Sarah",
+      "last_name": "Johnson",
+      "gender": "Female",
+      "age": 46,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 62000000,
+        "currency": "USD",
+        "confidence": "High",
+        "last_updated": "2024-02-20"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Financial Services",
+      "liquidity": {
+        "value": 18000000,
+        "currency": "USD"
+      },
+      "assets": {
+        "public_holdings": 2000000,
+        "private_holdings": 48000000,
+        "real_estate": 10000000,
+        "luxury_assets": 1500000,
+        "cash": 500000
+      },
+      "current_positions": [
+        {"company": "FinTech Innovations Limited", "title": "CEO & Founder", "start_year": 2019}
+      ],
+      "interests": ["FinTech", "Women in business", "Art collecting"],
+      "philanthropy": {
+        "causes": ["Women's empowerment", "Financial literacy"],
+        "estimated_annual_giving": 300000
+      }
+    }
+  ]
+}

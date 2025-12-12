@@ -1,0 +1,47 @@
+{
+  "12345678": {
+    "company_number": "12345678",
+    "company_name": "ACME TECHNOLOGIES LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "2018-03-15",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+      "address_line_1": "123 Tech Park",
+      "locality": "London",
+      "postal_code": "EC1A 1BB",
+      "country": "United Kingdom"
+    },
+    "sic_codes": ["62020"]
+  },
+  "87654321": {
+    "company_number": "87654321",
+    "company_name": "FINTECH INNOVATIONS LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "2019-06-10",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+      "address_line_1": "45 Financial District",
+      "locality": "London",
+      "postal_code": "EC2N 2DL",
+      "country": "United Kingdom"
+    },
+    "sic_codes": ["64190"]
+  },
+  "11223344": {
+    "company_number": "11223344",
+    "company_name": "GREEN ENERGY SOLUTIONS LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "2020-01-20",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+      "address_line_1": "10 Sustainability Way",
+      "locality": "Manchester",
+      "postal_code": "M1 1AE",
+      "country": "United Kingdom"
+    },
+    "sic_codes": ["35110"]
+  }
+}

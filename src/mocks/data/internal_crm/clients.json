@@ -1,0 +1,19 @@
+{
+  "individuals": {
+    "Jane Doe": {
+      "is_client": true,
+      "is_prospect": false,
+      "is_excluded": false,
+      "client_id": "CL-789012",
+      "relationship_manager": "Sarah Johnson",
+      "client_since": "2020-06-15",
+      "aum": 15000000,
+      "last_contact": "2024-11-20"
+    }
+  },
+  "companies": {},
+  "exclusions": {
+    "individuals": [],
+    "companies": []
+  }
+}

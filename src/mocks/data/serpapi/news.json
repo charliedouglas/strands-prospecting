@@ -1,0 +1,26 @@
+{
+  "ACME Technologies": {
+    "news_results": [
+      {
+        "position": 1,
+        "title": "ACME Technologies raises £25M Series B to expand AI platform",
+        "link": "https://techcrunch.com/2024/06/15/acme-technologies-series-b/",
+        "source": {"name": "TechCrunch"},
+        "date": "2 days ago",
+        "snippet": "London-based ACME Technologies has raised £25 million in Series B funding led by Sequoia Capital to expand its enterprise AI platform..."
+      }
+    ]
+  },
+  "Green Energy Solutions": {
+    "news_results": [
+      {
+        "position": 1,
+        "title": "Green Energy Solutions secures major renewable energy contract",
+        "link": "https://energynews.co.uk/2024/03/green-energy-contract/",
+        "source": {"name": "Energy News"},
+        "date": "1 week ago",
+        "snippet": "Manchester-based Green Energy Solutions has secured a £50 million contract to develop smart grid infrastructure across Northern England..."
+      }
+    ]
+  }
+}

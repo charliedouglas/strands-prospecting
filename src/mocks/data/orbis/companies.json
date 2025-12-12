@@ -1,0 +1,77 @@
+{
+  "total_count": 3,
+  "results": [
+    {
+      "bvd_id": "GB12345678",
+      "name": "ACME TECHNOLOGIES LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2018-03-15",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "123 Tech Park",
+        "city": "London",
+        "postcode": "EC1A 1BB",
+        "country": "GB"
+      },
+      "operating_revenue": 15000000,
+      "operating_revenue_currency": "GBP",
+      "employees": 85,
+      "industry": {
+        "primary_code": "62020",
+        "primary_description": "Information technology consultancy"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "12345678"}
+      ]
+    },
+    {
+      "bvd_id": "GB87654321",
+      "name": "FINTECH INNOVATIONS LIMITED",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2019-06-10",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "45 Financial District",
+        "city": "London",
+        "postcode": "EC2N 2DL",
+        "country": "GB"
+      },
+      "operating_revenue": 8500000,
+      "operating_revenue_currency": "GBP",
+      "employees": 42,
+      "industry": {
+        "primary_code": "64190",
+        "primary_description": "Other monetary intermediation"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "87654321"}
+      ]
+    },
+    {
+      "bvd_id": "GB11223344",
+      "name": "GREEN ENERGY SOLUTIONS LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2020-01-20",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "10 Sustainability Way",
+        "city": "Manchester",
+        "postcode": "M1 1AE",
+        "country": "GB"
+      },
+      "operating_revenue": 12000000,
+      "operating_revenue_currency": "GBP",
+      "employees": 67,
+      "industry": {
+        "primary_code": "35110",
+        "primary_description": "Production of electricity"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "11223344"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "PB-CO-789012": {
+    "company_id": "PB-CO-789012",
+    "name": "ACME Technologies",
+    "description": "Enterprise AI platform for financial services",
+    "primary_industry": "Application Software",
+    "primary_sector": "Information Technology",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://acmetech.io",
+    "founded_year": 2018,
+    "employee_count": 85,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 42000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-06-15",
+    "last_financing_size": 25000000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 100000000,
+    "executives": [
+      {"person_id": "PB-PER-001", "name": "John Smith", "title": "Chief Executive Officer", "start_date": "2018-03-15"}
+    ]
+  },
+  "PB-CO-112233": {
+    "company_id": "PB-CO-112233",
+    "name": "Green Energy Solutions",
+    "description": "Renewable energy infrastructure and smart grid technology",
+    "primary_industry": "Clean Energy",
+    "primary_sector": "Energy",
+    "hq_location": {"city": "Manchester", "country": "United Kingdom"},
+    "website": "https://greenenergysolutions.com",
+    "founded_year": 2020,
+    "employee_count": 67,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 28000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-03-10",
+    "last_financing_size": 18000000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 70000000,
+    "executives": [
+      {"person_id": "PB-PER-003", "name": "Michael Green", "title": "Chief Executive Officer", "start_date": "2020-01-20"}
+    ]
+  }
+}
