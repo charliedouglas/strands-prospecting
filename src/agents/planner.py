@@ -41,29 +41,81 @@ class QueryIntent(str, Enum):
 # Planner system prompt from CLAUDE.md
 PLANNER_SYSTEM_PROMPT = """You are a prospecting research planner for a private bank. Your job is to analyze prospecting queries and create structured execution plans.
 
-Available data sources:
-- ORBIS: Corporate structures, financials, ownership, directors (Bureau van Dijk)
-- WEALTHX: UHNW individual profiles, wealth composition, interests, connections
-- WEALTH_MONITOR: UK-specific wealth data, property, shareholdings
-- COMPANIES_HOUSE: UK company filings, PSCs, directorships (free, authoritative)
-- DUN_BRADSTREET: Credit risk, business signals, firmographics
-- CRUNCHBASE: Funding rounds, startup ecosystem, investors
-- PITCHBOOK: PE/VC deals, private valuations, investor networks
-- SERPAPI: News search, recent events
-- INTERNAL_CRM: Existing client check, exclusions
+Available data sources with their EXACT action names and parameters:
+
+- ORBIS (source: "orbis")
+  * search_companies
+    Parameters: name, country, city, bvd_id, national_id, status, min_revenue, max_revenue, min_employees, max_employees, limit
+  * get_directors
+    Parameters: bvd_id
+  * get_ownership
+    Parameters: bvd_id
+
+- CRUNCHBASE (source: "crunchbase")
+  * search_funding
+    Parameters: investment_type, location, announced_on_gte, announced_on_lte, min_amount_usd, limit
+  * get_organization
+    Parameters: permalink
+
+- PITCHBOOK (source: "pitchbook")
+  * search_deals
+    Parameters: deal_type, regions, countries, industries, deal_size_min, deal_size_max, deal_date_min, series, limit
+  * get_company
+    Parameters: company_id
+
+- COMPANIES_HOUSE (source: "companies_house")
+  * search
+    Parameters: query, limit
+  * get_company
+    Parameters: company_number
+  * get_officers
+    Parameters: company_number
+  * get_pscs
+    Parameters: company_number
+
+- WEALTHX (source: "wealthx")
+  * search_profiles
+    Parameters: net_worth_min, countries, industries, interests, keywords, limit
+  * get_profile
+    Parameters: wealthx_id
+
+- WEALTH_MONITOR (source: "wealth_monitor")
+  * search
+    Parameters: name, region, min_net_worth, include_property, include_shareholdings
+
+- DUN_BRADSTREET (source: "dun_bradstreet")
+  * match_company
+    Parameters: name, country, city
+  * get_company_data
+    Parameters: duns_number
+
+- SERPAPI (source: "serpapi")
+  * news_search
+    Parameters: query, gl
+  * web_search
+    Parameters: query
+
+- INTERNAL_CRM (source: "internal_crm")
+  * check_clients
+    Parameters: individuals, companies
+  * get_exclusions
+    Parameters: (none)
+
+CRITICAL: You MUST use the EXACT action names and parameter names listed above. Do not invent new action names or parameter names.
 
 When creating a plan:
 1. Parse the query to understand what information is needed
 2. Identify which data sources can provide that information
-3. Determine the optimal order (dependencies matter - e.g., find companies before looking up directors)
-4. Consider cross-referencing for accuracy (e.g., both Crunchbase AND PitchBook for funding)
-5. ALWAYS include INTERNAL_CRM as the final step to filter out existing clients
+3. Use ONLY the action names listed above for each source
+4. Determine the optimal order (dependencies matter - e.g., find companies before looking up directors)
+5. Consider cross-referencing for accuracy (e.g., both Crunchbase AND PitchBook for funding)
+6. ALWAYS include INTERNAL_CRM as the final step to filter out existing clients
 
 If the query is ambiguous or missing critical information, request clarification instead of guessing.
 
 Output a structured ExecutionPlan with:
 - reasoning: Your chain of thought
-- steps: Ordered list of data source queries with specific parameters
+- steps: Ordered list of data source queries with specific parameters and EXACT action names
 - clarification_needed: Only if the query is too ambiguous to proceed
 - confidence: Your confidence in this plan (0-1)
 
@@ -279,7 +331,7 @@ Respond with a JSON object matching this ExecutionPlan schema:
     {{
       "step_id": 1,
       "source": "data_source_name",
-      "action": "action_to_perform",
+      "action": "exact_action_name_from_system_prompt",
       "params": {{"param": "value"}},
       "reason": "Why this step is needed",
       "depends_on": []
@@ -294,13 +346,51 @@ Respond with a JSON object matching this ExecutionPlan schema:
   "confidence": 0.0-1.0
 }}
 
-Valid data sources: orbis, wealthx, wealth_monitor, companies_house, dun_bradstreet, crunchbase, pitchbook, serpapi, internal_crm
+Valid sources, actions, and parameters (use EXACT names):
+
+ORBIS:
+- search_companies: name, country, city, bvd_id, national_id, status, min_revenue, max_revenue, min_employees, max_employees, limit
+- get_directors: bvd_id
+- get_ownership: bvd_id
+
+CRUNCHBASE:
+- search_funding: investment_type, location, announced_on_gte, announced_on_lte, min_amount_usd, limit
+- get_organization: permalink
+
+PITCHBOOK:
+- search_deals: deal_type, regions, countries, industries, deal_size_min, deal_size_max, deal_date_min, series, limit
+- get_company: company_id
+
+COMPANIES_HOUSE:
+- search: query, limit
+- get_company: company_number
+- get_officers: company_number
+- get_pscs: company_number
+
+WEALTHX:
+- search_profiles: net_worth_min, countries, industries, interests, keywords, limit
+- get_profile: wealthx_id
+
+WEALTH_MONITOR:
+- search: name, region, min_net_worth, include_property, include_shareholdings
+
+DUN_BRADSTREET:
+- match_company: name, country, city
+- get_company_data: duns_number
+
+SERPAPI:
+- news_search: query, gl
+- web_search: query
+
+INTERNAL_CRM:
+- check_clients: individuals, companies
+- get_exclusions: (no parameters)
 
 Remember:
+- USE EXACT action and parameter names from the list above
 - Always include internal_crm as the final step
 - Order steps by dependencies
 - Request clarification if the query is too vague
-- Be specific with action names and parameters
 
 Respond ONLY with the JSON object, no additional text."""
 
@@ -325,8 +415,11 @@ Ensure:
 1. All fields are present (reasoning, steps, clarification_needed, estimated_sources, confidence)
 2. step_id values are sequential integers starting from 1
 3. source values use valid lowercase data source names
-4. confidence is a float between 0.0 and 1.0
-5. The JSON is properly formatted
+4. Use EXACT action names and parameter names from the system prompt
+5. Common action names: search_companies, get_directors, get_ownership, search_funding, get_organization, search_deals, get_company, search, get_officers, get_pscs, search_profiles, get_profile, match_company, get_company_data, news_search, web_search, check_clients, get_exclusions
+6. Common parameter names: query, limit, name, country, investment_type, location, announced_on_gte, deal_type, regions, countries, company_number, net_worth_min, etc.
+7. confidence is a float between 0.0 and 1.0
+8. The JSON is properly formatted
 
 Respond ONLY with valid JSON."""
 
@@ -519,17 +612,56 @@ Please create a REVISED execution plan that:
 1. Addresses the user's feedback
 2. Maintains the original query intent
 3. Keeps logical step ordering with proper dependencies
-4. ALWAYS includes internal_crm as the final step
-5. Preserves any steps that work well from the original plan
+4. Uses EXACT action names from the allowed list
+5. ALWAYS includes internal_crm as the final step
+6. Preserves any steps that work well from the original plan
 
 Return a complete ExecutionPlan in JSON format with all required fields:
 - reasoning (explain what changed and why)
-- steps (with sequential step_id starting from 1)
+- steps (with sequential step_id starting from 1 and EXACT action names)
 - clarification_needed (null unless you need more info)
 - estimated_sources
 - confidence
 
-Valid data sources: orbis, wealthx, wealth_monitor, companies_house, dun_bradstreet, crunchbase, pitchbook, serpapi, internal_crm
+Valid sources, actions, and parameters (use EXACT names):
+
+ORBIS:
+- search_companies: name, country, city, bvd_id, national_id, status, min_revenue, max_revenue, min_employees, max_employees, limit
+- get_directors: bvd_id
+- get_ownership: bvd_id
+
+CRUNCHBASE:
+- search_funding: investment_type, location, announced_on_gte, announced_on_lte, min_amount_usd, limit
+- get_organization: permalink
+
+PITCHBOOK:
+- search_deals: deal_type, regions, countries, industries, deal_size_min, deal_size_max, deal_date_min, series, limit
+- get_company: company_id
+
+COMPANIES_HOUSE:
+- search: query, limit
+- get_company: company_number
+- get_officers: company_number
+- get_pscs: company_number
+
+WEALTHX:
+- search_profiles: net_worth_min, countries, industries, interests, keywords, limit
+- get_profile: wealthx_id
+
+WEALTH_MONITOR:
+- search: name, region, min_net_worth, include_property, include_shareholdings
+
+DUN_BRADSTREET:
+- match_company: name, country, city
+- get_company_data: duns_number
+
+SERPAPI:
+- news_search: query, gl
+- web_search: query
+
+INTERNAL_CRM:
+- check_clients: individuals, companies
+- get_exclusions: (no parameters)
 
 Respond ONLY with the JSON object, no additional text."""
 
@@ -560,8 +692,11 @@ Ensure:
 1. All fields are present (reasoning, steps, clarification_needed, estimated_sources, confidence)
 2. step_id values are sequential integers starting from 1
 3. source values use valid lowercase data source names
-4. confidence is a float between 0.0 and 1.0
-5. The JSON is properly formatted
-6. internal_crm is the final step
+4. Use EXACT action names and parameter names from the system prompt
+5. Common action names: search_companies, get_directors, get_ownership, search_funding, get_organization, search_deals, get_company, search, get_officers, get_pscs, search_profiles, get_profile, match_company, get_company_data, news_search, web_search, check_clients, get_exclusions
+6. Common parameter names: query, limit, name, country, investment_type, location, announced_on_gte, deal_type, regions, countries, company_number, net_worth_min, etc.
+7. confidence is a float between 0.0 and 1.0
+8. The JSON is properly formatted
+9. internal_crm is the final step
 
 Respond ONLY with valid JSON."""

@@ -73,7 +73,29 @@ async def main() -> None:
             print(f"{'=' * 70}")
             print(f"\n✅ Status: {result['status'].title()}")
 
-            if result['status'] == 'approved':
+            if result['status'] == 'executed':
+                summary = result['summary']
+                print(f"\n📊 EXECUTION SUMMARY:")
+                print(f"   Steps Executed: {summary['steps_executed']}")
+                print(f"   ✓ Succeeded: {summary['steps_succeeded']}")
+                if summary['steps_failed'] > 0:
+                    print(f"   ✗ Failed: {summary['steps_failed']}")
+                print(f"   📝 Total Records: {summary['total_records']}")
+                print(f"   ⏱️  Execution Time: {summary['execution_time_ms']}ms")
+                print(f"   🔍 Sources: {', '.join(summary['sources_queried'])}")
+
+                # Show individual step results
+                print(f"\n📋 STEP RESULTS:")
+                for i, step_result in enumerate(result['execution_results']['results'], 1):
+                    status = "✓" if step_result['success'] else "✗"
+                    source = step_result['source']
+                    records = step_result['record_count']
+                    time = step_result['execution_time_ms']
+                    print(f"   {status} Step {i}: {source} ({records} records, {time}ms)")
+                    if step_result.get('error'):
+                        print(f"      Error: {step_result['error']}")
+
+            elif result['status'] == 'approved':
                 print(f"📋 Plan: {len(result['plan']['steps'])} steps ready for execution")
                 print(f"🔄 Revisions: {len(result['workflow_state']['revisions'])}")
                 print(f"\n💡 {result['message']}")

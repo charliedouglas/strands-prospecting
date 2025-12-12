@@ -18,6 +18,7 @@ from src.models import (
 )
 from src.agents.planner import PlannerAgent
 from src.agents.summarizer import SummarizerAgent
+from src.agents.executor import ExecutorAgent
 from src.approval_handler import ApprovalHandler
 from src.config import Settings
 
@@ -54,7 +55,8 @@ class ProspectingOrchestrator:
         # Initialize agents
         self.planner = PlannerAgent(settings)
         self.summarizer = SummarizerAgent(settings)
-        # TODO: Add executor, sufficiency checker, reporter when implemented
+        self.executor = ExecutorAgent(settings)
+        # TODO: Add sufficiency checker, reporter when implemented
 
         logger.info("Prospecting orchestrator initialized")
 
@@ -101,17 +103,35 @@ class ProspectingOrchestrator:
             )
 
             # Step 4: Execute approved plan
-            # TODO: Implement when executor is ready
-            logger.info("Plan approved - execution would start here")
-            logger.info(f"Approved plan has {len(approved_plan.steps)} steps")
+            logger.info("Plan approved - starting execution")
+            logger.info(f"Executing plan with {len(approved_plan.steps)} steps")
 
-            # For now, return a placeholder result
+            execution_results = await self.executor.execute_plan(
+                plan=approved_plan,
+                original_query=query
+            )
+
+            logger.info(
+                f"Execution complete: {len(execution_results.results)} steps, "
+                f"{execution_results.total_records} records, "
+                f"{execution_results.execution_time_ms}ms"
+            )
+
+            # Return complete workflow result
             return {
-                "status": "approved",
+                "status": "executed",
                 "query": query,
                 "plan": approved_plan.model_dump(),
                 "workflow_state": workflow_state.model_dump(),
-                "message": "Plan approved successfully. Execution will be implemented in the next phase."
+                "execution_results": execution_results.model_dump(),
+                "summary": {
+                    "steps_executed": len(execution_results.results),
+                    "steps_succeeded": sum(1 for r in execution_results.results if r.success),
+                    "steps_failed": sum(1 for r in execution_results.results if not r.success),
+                    "total_records": execution_results.total_records,
+                    "execution_time_ms": execution_results.execution_time_ms,
+                    "sources_queried": [s.value for s in execution_results.sources_queried]
+                }
             }
 
         except WorkflowRejectedError as e:
