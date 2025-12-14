@@ -85,9 +85,9 @@ Available data sources with their EXACT action names and parameters:
 
 - DUN_BRADSTREET (source: "dun_bradstreet")
   * match_company
-    Parameters: name, country, city
+    Parameters: name (required), country (required - ISO 2-letter code like "GB"), city (optional)
   * get_company_data
-    Parameters: duns_number
+    Parameters: duns_number (required)
 
 - SERPAPI (source: "serpapi")
   * news_search
@@ -97,11 +97,39 @@ Available data sources with their EXACT action names and parameters:
 
 - INTERNAL_CRM (source: "internal_crm")
   * check_clients
-    Parameters: individuals, companies
+    Parameters:
+      - individuals: list of dicts with structure [{"name": "John Smith", "company": "ACME Ltd"}]
+      - companies: list of dicts with structure [{"name": "ACME Technologies", "company_number": "12345678"}]
   * get_exclusions
     Parameters: (none)
 
 CRITICAL: You MUST use the EXACT action names and parameter names listed above. Do not invent new action names or parameter names.
+
+PARAMETER REFERENCES:
+When a step depends on results from a previous step, use this syntax to reference values:
+- $step_N.field_name - Extract a specific field from step N's top-level result
+- $step_N.items[0].field_name - Extract a field from the first item in an array
+- $step_N.matchCandidates[0].organization.duns - Navigate nested structures
+
+Common field patterns by data source response:
+- Orbis search_companies → $step_N.results[0].bvd_id
+- Companies House search → $step_N.items[0].company_number
+- D&B match_company → $step_N.matchCandidates[0].organization.duns
+- Crunchbase search_funding → $step_N.entities[0].properties.funded_organization_identifier.permalink
+- PitchBook search_deals → $step_N.deals[0].company.company_id
+- Wealth-X search_profiles → $step_N.profiles[0].wealthx_id
+
+Examples of proper parameter references:
+1. Search for a company, then get its directors:
+   Step 1: {"source": "orbis", "action": "search_companies", "params": {"name": "ACME"}}
+   Step 2: {"source": "orbis", "action": "get_directors", "params": {"bvd_id": "$step_1.results[0].bvd_id"}, "depends_on": [1]}
+
+2. Search Companies House, then get full profile:
+   Step 1: {"source": "companies_house", "action": "search", "params": {"query": "ACME"}}
+   Step 2: {"source": "companies_house", "action": "get_company", "params": {"company_number": "$step_1.items[0].company_number"}, "depends_on": [1]}
+
+3. Check CRM with proper data structure:
+   {"source": "internal_crm", "action": "check_clients", "params": {"companies": [{"name": "ACME Technologies"}], "individuals": []}}
 
 When creating a plan:
 1. Parse the query to understand what information is needed
