@@ -7,7 +7,7 @@ types of prospecting queries.
 
 import pytest
 import asyncio
-from src.agents import PlannerAgent, QueryIntent
+from src.agents import PlannerAgent
 from src.models import DataSource
 
 
@@ -25,7 +25,6 @@ class TestPlannerAgent:
         assert planner is not None
         assert planner.planner_model is not None
         assert planner.planner_agent is not None
-        assert planner.intent_agent is not None
         assert planner.settings is not None
 
     @pytest.mark.asyncio
@@ -163,24 +162,6 @@ class TestPlannerAgent:
                 # If no steps, it should be because clarification is needed
                 assert plan.clarification_needed is not None
                 print(f"⊘ '{query[:50]}...' needs clarification (no steps)")
-
-    @pytest.mark.asyncio
-    async def test_query_intent_analysis(self, planner):
-        """Test query intent classification."""
-        test_cases = [
-            ("Find companies that raised Series B funding", QueryIntent.FUNDING_INVESTMENT),
-            ("Who are the wealthy individuals in London", QueryIntent.UHNW_INDIVIDUAL),
-            ("Get directors of ACME Technologies", QueryIntent.DIRECTORS_FOUNDERS),
-            ("Show me company ownership structure", QueryIntent.UK_COMPANY_STRUCTURE),
-            ("What is the credit rating", QueryIntent.CREDIT_RISK),
-            ("Recent news about the company", QueryIntent.NEWS_SIGNALS),
-            ("Tell me about xyz", QueryIntent.AMBIGUOUS),
-        ]
-
-        for query, expected_intent in test_cases:
-            intent = await planner.analyze_query_intent(query)
-            assert intent == expected_intent
-            print(f"✓ '{query}' -> {intent.value}")
 
     @pytest.mark.asyncio
     async def test_plan_json_structure(self, planner):

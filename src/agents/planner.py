@@ -8,7 +8,6 @@ that specify which data sources to query and in what order.
 import json
 import logging
 from typing import Optional
-from enum import Enum
 
 from strands import Agent
 from strands.models import BedrockModel
@@ -25,17 +24,6 @@ from src.models import (
 from src.config import Settings
 
 logger = logging.getLogger(__name__)
-
-
-class QueryIntent(str, Enum):
-    """Types of prospecting queries."""
-    FUNDING_INVESTMENT = "funding_investment"
-    UHNW_INDIVIDUAL = "uhnw_individual"
-    UK_COMPANY_STRUCTURE = "uk_company_structure"
-    DIRECTORS_FOUNDERS = "directors_founders"
-    CREDIT_RISK = "credit_risk"
-    NEWS_SIGNALS = "news_signals"
-    AMBIGUOUS = "ambiguous"
 
 
 # Planner system prompt from CLAUDE.md
@@ -150,79 +138,6 @@ Output a structured ExecutionPlan with:
 You must respond with valid JSON matching the ExecutionPlan schema."""
 
 
-def get_primary_sources_for_intent(intent: QueryIntent) -> list[DataSource]:
-    """
-    Get primary data sources for a given query intent.
-
-    Based on the Data Source Selection Logic table from CLAUDE.md.
-
-    Args:
-        intent: The identified query intent
-
-    Returns:
-        List of primary data sources to query
-    """
-    intent_to_sources = {
-        QueryIntent.FUNDING_INVESTMENT: [
-            DataSource.CRUNCHBASE,
-            DataSource.PITCHBOOK,
-        ],
-        QueryIntent.UHNW_INDIVIDUAL: [
-            DataSource.WEALTHX,
-            DataSource.WEALTH_MONITOR,
-        ],
-        QueryIntent.UK_COMPANY_STRUCTURE: [
-            DataSource.ORBIS,
-            DataSource.COMPANIES_HOUSE,
-        ],
-        QueryIntent.DIRECTORS_FOUNDERS: [
-            DataSource.COMPANIES_HOUSE,
-            DataSource.ORBIS,
-        ],
-        QueryIntent.CREDIT_RISK: [
-            DataSource.DUN_BRADSTREET,
-        ],
-        QueryIntent.NEWS_SIGNALS: [
-            DataSource.SERPAPI,
-        ],
-    }
-
-    return intent_to_sources.get(intent, [])
-
-
-def get_secondary_sources_for_intent(intent: QueryIntent) -> list[DataSource]:
-    """
-    Get secondary/supporting data sources for a given query intent.
-
-    Args:
-        intent: The identified query intent
-
-    Returns:
-        List of secondary data sources that can supplement the primary sources
-    """
-    intent_to_sources = {
-        QueryIntent.FUNDING_INVESTMENT: [
-            DataSource.SERPAPI,  # news
-            DataSource.ORBIS,
-        ],
-        QueryIntent.UHNW_INDIVIDUAL: [
-            DataSource.COMPANIES_HOUSE,  # directorships
-        ],
-        QueryIntent.UK_COMPANY_STRUCTURE: [
-            DataSource.DUN_BRADSTREET,
-        ],
-        QueryIntent.DIRECTORS_FOUNDERS: [
-            DataSource.WEALTHX,
-            DataSource.PITCHBOOK,
-        ],
-        QueryIntent.CREDIT_RISK: [
-            DataSource.ORBIS,
-        ],
-    }
-
-    return intent_to_sources.get(intent, [])
-
-
 class PlannerAgent:
     """
     Planner agent that creates execution plans from user queries.
@@ -274,13 +189,6 @@ class PlannerAgent:
             model=self.planner_model,
             system_prompt=PLANNER_SYSTEM_PROMPT,
             name="planner",
-        )
-
-        # Create intent classifier agent once (reused for all intent classifications)
-        self.intent_agent = Agent(
-            model=self.settings.executor_model,
-            system_prompt="You are an intent classifier for prospecting queries. Respond only with the intent category name.",
-            name="intent_classifier",
         )
 
         logger.info(
@@ -491,57 +399,6 @@ Respond ONLY with valid JSON."""
             raise ValidationError(f"Plan validation failed: {e}")
 
         return plan
-
-    async def analyze_query_intent(self, query: str) -> QueryIntent:
-        """
-        Analyze a query to determine its primary intent using LLM.
-
-        This is a helper method for understanding what the user is asking for.
-        Uses Claude to classify the query intent based on semantic understanding.
-
-        Args:
-            query: User's query
-
-        Returns:
-            QueryIntent enum value
-        """
-        logger.debug(f"Analyzing intent for query: {query}")
-
-        # Create intent classification prompt
-        intent_prompt = f"""Analyze this prospecting query and classify its primary intent.
-
-Query: "{query}"
-
-Available intent categories:
-- funding_investment: Queries about funding rounds, investments, VC/PE deals
-- uhnw_individual: Queries about wealthy individuals, high net worth persons
-- uk_company_structure: Queries about company ownership, structure, subsidiaries
-- directors_founders: Queries about company directors, founders, executives, management
-- credit_risk: Queries about credit ratings, financial health, risk assessment
-- news_signals: Queries about recent news, announcements, events
-- ambiguous: Query is too vague or doesn't fit the above categories
-
-Respond with ONLY the intent category name (e.g., "funding_investment"), nothing else."""
-
-        try:
-            # Reuse the intent agent created during initialization
-            response = await self.intent_agent.invoke_async(intent_prompt)
-            intent_str = str(response).strip().lower()
-
-            # Parse the intent
-            for intent in QueryIntent:
-                if intent.value in intent_str or intent.name.lower() in intent_str:
-                    logger.info(f"Query intent classified as: {intent.value}")
-                    return intent
-
-            # If no match found, default to ambiguous
-            logger.warning(f"Could not parse intent from response: {intent_str}")
-            return QueryIntent.AMBIGUOUS
-
-        except (BotocoreClientError, ValueError) as e:
-            logger.error(f"Error classifying intent: {e}")
-            # Fallback to ambiguous on error
-            return QueryIntent.AMBIGUOUS
 
     async def revise_plan(
         self,
