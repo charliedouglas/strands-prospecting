@@ -8,76 +8,20 @@ original prospecting query and determines next steps.
 import json
 import logging
 from typing import Optional
-from enum import Enum
 
 from strands import Agent
 from strands.models import BedrockModel
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import ValidationError
 from botocore.exceptions import ClientError as BotocoreClientError
 
 from src.models import (
     AggregatedResults,
-    ClarificationRequest,
+    SufficiencyResult,
+    SufficiencyStatus,
 )
 from src.config import Settings
 
 logger = logging.getLogger(__name__)
-
-
-class SufficiencyStatus(str, Enum):
-    """
-    Status of sufficiency evaluation.
-
-    Determines what action should be taken after evaluating results.
-    """
-    SUFFICIENT = "sufficient"  # Data answers the query, proceed to report
-    CLARIFICATION_NEEDED = "clarification_needed"  # Need user input
-    RETRY_NEEDED = "retry_needed"  # Re-run specific steps with modified params
-
-
-class SufficiencyResult(BaseModel):
-    """
-    Result from sufficiency evaluation.
-
-    Contains the evaluation status, reasoning, identified gaps,
-    and potential next steps.
-    """
-    status: SufficiencyStatus = Field(
-        ...,
-        description="Evaluation status determining next action"
-    )
-    reasoning: str = Field(
-        ...,
-        description="Detailed explanation of the evaluation decision"
-    )
-    gaps: list[str] = Field(
-        default_factory=list,
-        description="List of identified data gaps or missing information"
-    )
-    clarification: Optional[ClarificationRequest] = Field(
-        None,
-        description="Clarification request if user input is needed"
-    )
-    retry_steps: list[int] = Field(
-        default_factory=list,
-        description="Step IDs that should be retried with modified parameters"
-    )
-    filtered_results: Optional[AggregatedResults] = Field(
-        None,
-        description="Results with exclusions applied (e.g., existing clients filtered)"
-    )
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "status": "sufficient",
-                "reasoning": "All requested data sources returned results. Found 5 companies with Series B funding, detailed information on founders, and verified none are existing clients.",
-                "gaps": [],
-                "clarification": None,
-                "retry_steps": [],
-                "filtered_results": None
-            }
-        }
 
 
 # Sufficiency checker system prompt from CLAUDE.md
@@ -104,11 +48,16 @@ You must respond with valid JSON matching the SufficiencyResult schema:
   "clarification": {
     "question": "What needs clarification?",
     "options": ["option1", "option2"],
-    "context": "Why clarification is needed"
+    "context": "Why clarification is needed",
+    "allow_custom_input": true,
+    "custom_input_label": "Other (please specify)"
   } or null,
   "retry_steps": [step_ids to retry],
   "filtered_results": null
 }
+
+Note: When providing clarification options, you can set "allow_custom_input": true to include
+a final option for free-form user input. Customize "custom_input_label" for context-specific wording.
 
 When evaluating results:
 
@@ -298,8 +247,10 @@ Respond with a JSON object matching the SufficiencyResult schema:
   "gaps": ["identified", "gaps"],
   "clarification": {{
     "question": "What needs clarification?",
-    "options": ["option1", "option2"],
-    "context": "Why clarification is needed"
+    "options": ["option1", "option2", "option3"],
+    "context": "Why clarification is needed",
+    "allow_custom_input": true,
+    "custom_input_label": "Other (please specify your preference)"
   }} or null,
   "retry_steps": [step_ids],
   "filtered_results": null
@@ -315,6 +266,9 @@ Evaluate:
 Remember:
 - SUFFICIENT: Query is fully answered, proceed to report
 - CLARIFICATION_NEEDED: Need user input (e.g., all results are clients, query is ambiguous)
+  * When requesting clarification, provide specific options for common scenarios
+  * Set "allow_custom_input": true to include a final "Other" option for custom user text
+  * Customize "custom_input_label" to match the context (e.g., "Other industry", "Different criteria")
 - RETRY_NEEDED: Can improve results by retrying specific steps
 
 Respond ONLY with the JSON object, no additional text."""

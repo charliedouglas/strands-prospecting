@@ -73,14 +73,22 @@ async def main() -> None:
             print(f"{'=' * 70}")
             print(f"\n✅ Status: {result['status'].title()}")
 
-            if result['status'] == 'executed':
+            if result['status'] == 'sufficient':
+                # Successful completion with sufficient data
                 summary = result['summary']
+                sufficiency = result['sufficiency']
+
+                print(f"\n✅ SUFFICIENCY CHECK: PASSED")
+                print(f"   {sufficiency['reasoning'][:150]}...")
+
                 print(f"\n📊 EXECUTION SUMMARY:")
                 print(f"   Steps Executed: {summary['steps_executed']}")
                 print(f"   ✓ Succeeded: {summary['steps_succeeded']}")
                 if summary['steps_failed'] > 0:
                     print(f"   ✗ Failed: {summary['steps_failed']}")
                 print(f"   📝 Total Records: {summary['total_records']}")
+                print(f"   🏢 Companies Found: {summary['companies_found']}")
+                print(f"   👤 Individuals Found: {summary['individuals_found']}")
                 print(f"   ⏱️  Execution Time: {summary['execution_time_ms']}ms")
                 print(f"   🔍 Sources: {', '.join(summary['sources_queried'])}")
 
@@ -95,14 +103,36 @@ async def main() -> None:
                     if step_result.get('error'):
                         print(f"      Error: {step_result['error']}")
 
+                print(f"\n💡 Results are ready for report generation (when implemented)")
+
+            elif result['status'] == 'insufficient':
+                # Data collection incomplete after retries
+                print(f"\n⚠️  SUFFICIENCY CHECK: INSUFFICIENT DATA")
+                print(f"\n   Reasoning: {result['reasoning']}")
+                print(f"\n   Identified Gaps:")
+                for gap in result['gaps']:
+                    print(f"   • {gap}")
+                print(f"\n   💡 {result['message']}")
+
             elif result['status'] == 'approved':
                 print(f"📋 Plan: {len(result['plan']['steps'])} steps ready for execution")
                 print(f"🔄 Revisions: {len(result['workflow_state']['revisions'])}")
                 print(f"\n💡 {result['message']}")
+
             elif result['status'] == 'clarification_needed':
-                print(f"❓ Clarification needed: {result['clarification']['question']}")
+                print(f"\n❓ Clarification needed: {result['clarification']['question']}")
+                print(f"   Context: {result['clarification']['context']}")
                 if result['clarification'].get('options'):
-                    print(f"   Options: {', '.join(result['clarification']['options'])}")
+                    print(f"\n   Options:")
+                    for i, option in enumerate(result['clarification']['options'], 1):
+                        print(f"   {i}. {option}")
+                    if result['clarification'].get('allow_custom_input'):
+                        custom_label = result['clarification'].get('custom_input_label', 'Other')
+                        print(f"   {len(result['clarification']['options']) + 1}. {custom_label}")
+                if result.get('gaps'):
+                    print(f"\n   Identified Gaps:")
+                    for gap in result['gaps']:
+                        print(f"   • {gap}")
 
         except WorkflowRejectedError:
             print("\n❌ Workflow cancelled by user.")

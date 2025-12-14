@@ -15,10 +15,12 @@ from src.models import (
     ApprovalWorkflowState,
     PlanRevision,
     WorkflowRejectedError,
+    SufficiencyStatus,
 )
 from src.agents.planner import PlannerAgent
 from src.agents.summarizer import SummarizerAgent
 from src.agents.executor import ExecutorAgent
+from src.agents.sufficiency import SufficiencyChecker
 from src.approval_handler import ApprovalHandler
 from src.config import Settings
 
@@ -32,8 +34,8 @@ class ProspectingOrchestrator:
     This orchestrator coordinates the entire prospecting process:
     1. Query planning (with optional clarification)
     2. Plan approval loop (with revision support)
-    3. Plan execution (when executor is implemented)
-    4. Result validation (when sufficiency checker is implemented)
+    3. Plan execution
+    4. Result validation (sufficiency checking with retry support)
     5. Report generation (when reporter is implemented)
     """
 
@@ -56,7 +58,8 @@ class ProspectingOrchestrator:
         self.planner = PlannerAgent(settings)
         self.summarizer = SummarizerAgent(settings)
         self.executor = ExecutorAgent(settings)
-        # TODO: Add sufficiency checker, reporter when implemented
+        self.sufficiency_checker = SufficiencyChecker(settings)
+        # TODO: Add reporter when implemented
 
         logger.info("Prospecting orchestrator initialized")
 
@@ -117,22 +120,90 @@ class ProspectingOrchestrator:
                 f"{execution_results.execution_time_ms}ms"
             )
 
-            # Return complete workflow result
-            return {
-                "status": "executed",
-                "query": query,
-                "plan": approved_plan.model_dump(),
-                "workflow_state": workflow_state.model_dump(),
-                "execution_results": execution_results.model_dump(),
-                "summary": {
-                    "steps_executed": len(execution_results.results),
-                    "steps_succeeded": sum(1 for r in execution_results.results if r.success),
-                    "steps_failed": sum(1 for r in execution_results.results if not r.success),
-                    "total_records": execution_results.total_records,
-                    "execution_time_ms": execution_results.execution_time_ms,
-                    "sources_queried": [s.value for s in execution_results.sources_queried]
-                }
-            }
+            # Step 5: Check sufficiency and handle retries
+            max_retries = 1  # Allow one retry attempt
+            for retry_attempt in range(max_retries + 1):
+                logger.info(f"Evaluating sufficiency (attempt {retry_attempt + 1}/{max_retries + 1})")
+
+                sufficiency = await self.sufficiency_checker.evaluate(execution_results)
+
+                logger.info(
+                    f"Sufficiency check: {sufficiency.status.value} "
+                    f"({len(sufficiency.gaps)} gaps identified)"
+                )
+
+                if sufficiency.status == SufficiencyStatus.SUFFICIENT:
+                    # Filter existing clients and return successful result
+                    logger.info("Results are sufficient - filtering clients and preparing output")
+                    filtered_results = self.sufficiency_checker.filter_existing_clients(execution_results)
+
+                    # TODO: Generate report
+
+                    return {
+                        "status": "sufficient",
+                        "query": query,
+                        "plan": approved_plan.model_dump(),
+                        "workflow_state": workflow_state.model_dump(),
+                        "execution_results": filtered_results.model_dump(),
+                        "sufficiency": {
+                            "status": sufficiency.status.value,
+                            "reasoning": sufficiency.reasoning,
+                            "gaps": sufficiency.gaps
+                        },
+                        "summary": {
+                            "steps_executed": len(filtered_results.results),
+                            "steps_succeeded": sum(1 for r in filtered_results.results if r.success),
+                            "steps_failed": sum(1 for r in filtered_results.results if not r.success),
+                            "total_records": filtered_results.total_records,
+                            "companies_found": len(filtered_results.companies),
+                            "individuals_found": len(filtered_results.individuals),
+                            "execution_time_ms": filtered_results.execution_time_ms,
+                            "sources_queried": [s.value for s in filtered_results.sources_queried]
+                        }
+                    }
+
+                elif sufficiency.status == SufficiencyStatus.CLARIFICATION_NEEDED:
+                    # Need user input to proceed
+                    logger.info(f"Clarification needed: {sufficiency.clarification.question}")
+                    return {
+                        "status": "clarification_needed",
+                        "query": query,
+                        "clarification": sufficiency.clarification.model_dump(),
+                        "reasoning": sufficiency.reasoning,
+                        "gaps": sufficiency.gaps,
+                        "execution_summary": {
+                            "steps_executed": len(execution_results.results),
+                            "total_records": execution_results.total_records
+                        }
+                    }
+
+                elif sufficiency.status == SufficiencyStatus.RETRY_NEEDED:
+                    # Retry specific steps if we haven't exhausted attempts
+                    if retry_attempt < max_retries:
+                        logger.info(
+                            f"Retrying {len(sufficiency.retry_steps)} steps: {sufficiency.retry_steps}"
+                        )
+                        execution_results = await self._retry_steps(
+                            plan=approved_plan,
+                            previous_results=execution_results,
+                            retry_step_ids=sufficiency.retry_steps,
+                            query=query
+                        )
+                        # Loop continues to re-evaluate
+                    else:
+                        # Exhausted retries
+                        logger.warning(
+                            f"Retry limit reached - returning insufficient results with {len(sufficiency.gaps)} gaps"
+                        )
+                        return {
+                            "status": "insufficient",
+                            "query": query,
+                            "reasoning": sufficiency.reasoning,
+                            "gaps": sufficiency.gaps,
+                            "retry_steps_attempted": sufficiency.retry_steps,
+                            "execution_results": execution_results.model_dump(),
+                            "message": "Unable to gather sufficient data after retries. Please refine your query or check data source availability."
+                        }
 
         except WorkflowRejectedError as e:
             logger.info(f"Workflow rejected by user: {e}")
@@ -282,3 +353,43 @@ class ProspectingOrchestrator:
 
         # Should never reach here, but return the current plan if we do
         return current_plan
+
+    async def _retry_steps(
+        self,
+        plan: ExecutionPlan,
+        previous_results,
+        retry_step_ids: list[int],
+        query: str
+    ):
+        """
+        Retry execution after failed or incomplete steps.
+
+        Currently re-executes the entire plan. Future enhancement could
+        preserve successful results and only re-run failed steps.
+
+        Args:
+            plan: The original execution plan
+            previous_results: Results from the previous execution attempt
+            retry_step_ids: List of step IDs that need retry (informational)
+            query: Original query
+
+        Returns:
+            New AggregatedResults from retry execution
+        """
+        logger.info(
+            f"Retrying execution (originally failed steps: {retry_step_ids})"
+        )
+
+        # Re-execute the entire plan
+        # TODO: Optimize to only re-execute failed steps while preserving successful ones
+        retry_results = await self.executor.execute_plan(
+            plan=plan,
+            original_query=query
+        )
+
+        logger.info(
+            f"Retry complete: {len(retry_results.results)} steps, "
+            f"{retry_results.total_records} records"
+        )
+
+        return retry_results

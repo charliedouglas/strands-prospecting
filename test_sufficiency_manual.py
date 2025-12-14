@@ -8,7 +8,7 @@ import asyncio
 import logging
 from datetime import datetime
 
-from src.agents import SufficiencyChecker, SufficiencyStatus
+from src.agents.sufficiency import SufficiencyChecker
 from src.models import (
     AggregatedResults,
     ExecutionPlan,
@@ -17,6 +17,7 @@ from src.models import (
     DataSource,
     Company,
     Individual,
+    SufficiencyStatus,
 )
 from src.config import Settings
 

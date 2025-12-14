@@ -2,12 +2,14 @@
 Planning models for the prospecting agent.
 
 This module defines the data structures used in the planning phase,
-including data sources, plan steps, clarification requests, and execution plans.
+including data sources, plan steps, and execution plans.
 """
 
 from pydantic import BaseModel, Field
 from typing import Optional
 from enum import Enum
+
+from .shared import ClarificationRequest
 
 
 class DataSource(str, Enum):
@@ -63,27 +65,6 @@ class PlanStep(BaseModel):
                 },
                 "reason": "Find UK companies with Series B funding",
                 "depends_on": []
-            }
-        }
-
-
-class ClarificationRequest(BaseModel):
-    """
-    Request for user clarification when the query is ambiguous.
-
-    Used by the planner when it needs additional information to create
-    an effective execution plan.
-    """
-    question: str = Field(..., description="The clarification question to ask the user")
-    options: Optional[list[str]] = Field(None, description="Optional multiple choice options for the user")
-    context: str = Field(..., description="Explanation of why this clarification is needed")
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "question": "Which region would you like to focus on?",
-                "options": ["London", "Manchester", "Edinburgh", "All UK"],
-                "context": "The query mentions 'UK tech companies' but filtering by region will provide more targeted results"
             }
         }
 

@@ -5,11 +5,15 @@ This module exports all Pydantic models used throughout the application,
 including planning models, result models, and prospect entity models.
 """
 
+# Shared models (used across multiple agents)
+from .shared import (
+    ClarificationRequest,
+)
+
 # Planning models
 from .plan import (
     DataSource,
     PlanStep,
-    ClarificationRequest,
     ExecutionPlan,
 )
 
@@ -36,14 +40,27 @@ from .approval import (
     WorkflowRejectedError,
 )
 
+# Sufficiency checking models
+from .sufficiency import (
+    SufficiencyStatus,
+    SufficiencyResult,
+)
+
 # Rebuild models to resolve forward references
+# Pass the current namespace so Pydantic can resolve forward reference strings
+_namespace = {
+    'AggregatedResults': AggregatedResults,
+    'ClarificationRequest': ClarificationRequest,
+}
 AggregatedResults.model_rebuild()
+SufficiencyResult.model_rebuild(_types_namespace=_namespace)
 
 __all__ = [
+    # Shared
+    "ClarificationRequest",
     # Planning
     "DataSource",
     "PlanStep",
-    "ClarificationRequest",
     "ExecutionPlan",
     # Results
     "SearchResult",
@@ -59,4 +76,7 @@ __all__ = [
     "PlanRevision",
     "ApprovalWorkflowState",
     "WorkflowRejectedError",
+    # Sufficiency
+    "SufficiencyStatus",
+    "SufficiencyResult",
 ]
