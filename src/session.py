@@ -221,13 +221,21 @@ class ProspectingSession:
 
     def _update_stats(self, result: Dict[str, Any]) -> None:
         """Update session statistics based on workflow result."""
-        # Execution stats
+        # Execution stats - can come from either execution_results or execution_summary
         if result.get("execution_results"):
-            summary = result["execution_results"].get("summary", {})
-            self.stats.total_execution_time_ms += summary.get("execution_time_ms", 0)
-            self.stats.total_records_found += summary.get("total_records", 0)
-            self.stats.unique_companies += summary.get("companies_found", 0)
-            self.stats.unique_individuals += summary.get("individuals_found", 0)
+            # Successful/insufficient results have full model_dump
+            execution_data = result["execution_results"]
+            self.stats.total_execution_time_ms += execution_data.get("execution_time_ms", 0)
+            self.stats.total_records_found += execution_data.get("total_records", 0)
+            self.stats.unique_companies += len(execution_data.get("companies", []))
+            self.stats.unique_individuals += len(execution_data.get("individuals", []))
+        elif result.get("execution_summary"):
+            # Clarification_needed/insufficient results have execution_summary with data
+            execution_data = result["execution_summary"]
+            self.stats.total_execution_time_ms += execution_data.get("execution_time_ms", 0)
+            self.stats.total_records_found += execution_data.get("total_records", 0)
+            self.stats.unique_companies += execution_data.get("companies_found", 0)
+            self.stats.unique_individuals += execution_data.get("individuals_found", 0)
 
         # Clarification stats
         if result.get("status") == "clarification_needed":

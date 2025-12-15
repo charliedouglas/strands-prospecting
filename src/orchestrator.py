@@ -190,7 +190,9 @@ class ProspectingOrchestrator:
                         "gaps": sufficiency.gaps,
                         "execution_summary": {
                             "steps_executed": len(execution_results.results),
-                            "total_records": execution_results.total_records
+                            "total_records": execution_results.total_records,
+                            "companies_found": len(execution_results.companies),
+                            "individuals_found": len(execution_results.individuals)
                         }
                     }
 
