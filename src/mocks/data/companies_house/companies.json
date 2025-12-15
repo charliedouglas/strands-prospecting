@@ -1,6 +1,6 @@
 {
   "items_per_page": 20,
-  "total_results": 3,
+  "total_results": 17,
   "items": [
     {
       "company_number": "12345678",
@@ -43,6 +43,202 @@
         "country": "United Kingdom"
       },
       "sic_codes": ["35110"]
+    },
+    {
+      "company_number": "44332211",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "MEDTECH SOLUTIONS EUROPE LTD",
+      "date_of_creation": "2017-09-12",
+      "address": {
+        "address_line_1": "Cambridge Science Park",
+        "locality": "Cambridge",
+        "postal_code": "CB4 0WS",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["32500"]
+    },
+    {
+      "company_number": "33221100",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "EDTECH GLOBAL LTD",
+      "date_of_creation": "2019-02-14",
+      "address": {
+        "address_line_1": "85 Education House",
+        "locality": "London",
+        "postal_code": "WC1N 3AX",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["85590"]
+    },
+    {
+      "company_number": "00998877",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "CYBERSECURITY INNOVATIONS LTD",
+      "date_of_creation": "2018-11-05",
+      "address": {
+        "address_line_1": "50 Cyber Centre",
+        "locality": "London",
+        "postal_code": "EC3M 4AB",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["62090"]
+    },
+    {
+      "company_number": "88776655",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "HEALTHTECH PROVIDER SYSTEMS LTD",
+      "date_of_creation": "2016-05-18",
+      "address": {
+        "address_line_1": "32 Medical Innovation Way",
+        "locality": "Edinburgh",
+        "postal_code": "EH8 9YL",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["62020", "86900"]
+    },
+    {
+      "company_number": "66554433",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "ROBOTICS MANUFACTURING UK LTD",
+      "date_of_creation": "2017-03-22",
+      "address": {
+        "address_line_1": "Unit 15 Industrial Estate",
+        "locality": "Bristol",
+        "postal_code": "BS1 6QA",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["28990"]
+    },
+    {
+      "company_number": "44332210",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "QUANTUM COMPUTING VENTURES LTD",
+      "date_of_creation": "2019-08-30",
+      "address": {
+        "address_line_1": "Oxford Science Park",
+        "locality": "Oxford",
+        "postal_code": "OX4 4GA",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["72190"]
+    },
+    {
+      "company_number": "33221101",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "AGRITECH INNOVATIONS LTD",
+      "date_of_creation": "2018-04-17",
+      "address": {
+        "address_line_1": "Agriculture Innovation Centre",
+        "locality": "Cambridge",
+        "postal_code": "CB3 0FA",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["01610"]
+    },
+    {
+      "company_number": "55443322",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "SUSTAINABLE PACKAGING INNOVATIONS LTD",
+      "date_of_creation": "2020-07-08",
+      "address": {
+        "address_line_1": "67 Green Business Park",
+        "locality": "Leeds",
+        "postal_code": "LS12 2QE",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["17290"]
+    },
+    {
+      "company_number": "77665544",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "CLIMATE AI SOLUTIONS LTD",
+      "date_of_creation": "2020-10-12",
+      "address": {
+        "address_line_1": "Climate Tech Hub",
+        "locality": "London",
+        "postal_code": "N1 9FX",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["62020", "71129"]
+    },
+    {
+      "company_number": "55443321",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "SUPPLY CHAIN OPTIMIZATION LTD",
+      "date_of_creation": "2019-11-25",
+      "address": {
+        "address_line_1": "Logistics Centre 4",
+        "locality": "Birmingham",
+        "postal_code": "B37 7YE",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["52291"]
+    },
+    {
+      "company_number": "22110099",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "FOODTECH PLATFORMS LTD",
+      "date_of_creation": "2020-03-05",
+      "address": {
+        "address_line_1": "42 Food Innovation Street",
+        "locality": "London",
+        "postal_code": "E14 5AB",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["56210", "63120"]
+    },
+    {
+      "company_number": "22110098",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "FINTECH OPERATIONS LTD",
+      "date_of_creation": "2018-09-19",
+      "address": {
+        "address_line_1": "Tower Bridge House",
+        "locality": "London",
+        "postal_code": "EC3N 4AB",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["62020", "64190"]
+    },
+    {
+      "company_number": "11009988",
+      "company_status": "active",
+      "company_type": "ltd",
+      "title": "CLEANTECH MATERIALS LTD",
+      "date_of_creation": "2019-05-14",
+      "address": {
+        "address_line_1": "Advanced Materials Centre",
+        "locality": "Sheffield",
+        "postal_code": "S1 4ET",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["20160"]
+    },
+    {
+      "company_number": "99887766",
+      "company_status": "active",
+      "company_type": "plc",
+      "title": "NEXTGEN BIOTECH PLC",
+      "date_of_creation": "2015-12-01",
+      "address": {
+        "address_line_1": "Cambridge Science Park",
+        "locality": "Cambridge",
+        "postal_code": "CB4 0WF",
+        "country": "United Kingdom"
+      },
+      "sic_codes": ["72190"]
     }
   ]
 }

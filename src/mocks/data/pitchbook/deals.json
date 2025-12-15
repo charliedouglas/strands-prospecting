@@ -1,8 +1,8 @@
 {
-  "total_count": 2,
+  "total_count": 17,
   "deals": [
     {
-      "deal_id": "PB-DEAL-123456",
+      "deal_id": "PB-DEAL-001",
       "deal_date": "2024-06-15",
       "deal_type": "VC",
       "deal_status": "Completed",
@@ -12,7 +12,7 @@
       "pre_money_valuation": 75000000,
       "post_money_valuation": 100000000,
       "company": {
-        "company_id": "PB-CO-789012",
+        "company_id": "PB-CO-001",
         "name": "ACME Technologies",
         "primary_industry": "Application Software",
         "hq_location": "London, United Kingdom",
@@ -21,32 +21,393 @@
         "employee_count": 85
       },
       "investors": [
-        {"investor_id": "PB-INV-111", "name": "Sequoia Capital", "investor_type": "Venture Capital", "is_lead": true},
-        {"investor_id": "PB-INV-222", "name": "Index Ventures", "investor_type": "Venture Capital", "is_lead": false}
+        {"investor_id": "PB-INV-001", "name": "Sequoia Capital", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-002", "name": "Index Ventures", "investor_type": "Venture Capital", "is_lead": false}
       ]
     },
     {
-      "deal_id": "PB-DEAL-789012",
-      "deal_date": "2024-03-10",
+      "deal_id": "PB-DEAL-002",
+      "deal_date": "2024-08-22",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series C",
+      "deal_size": 45000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 150000000,
+      "post_money_valuation": 195000000,
+      "company": {
+        "company_id": "PB-CO-002",
+        "name": "MedTech Solutions Europe",
+        "primary_industry": "Medical Devices",
+        "hq_location": "Oxford, United Kingdom",
+        "website": "https://medtechsolutions.co.uk",
+        "founded_year": 2017,
+        "employee_count": 156
+      },
+      "investors": [
+        {"investor_id": "PB-INV-003", "name": "Khosla Ventures", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-004", "name": "Temasek", "investor_type": "Sovereign Wealth Fund", "is_lead": false},
+        {"investor_id": "PB-INV-005", "name": "Sapphire Ventures", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-003",
+      "deal_date": "2024-07-14",
       "deal_type": "VC",
       "deal_status": "Completed",
       "series": "Series B",
-      "deal_size": 18000000,
+      "deal_size": 38000000,
       "deal_size_currency": "GBP",
-      "pre_money_valuation": 52000000,
-      "post_money_valuation": 70000000,
+      "pre_money_valuation": 82000000,
+      "post_money_valuation": 120000000,
       "company": {
-        "company_id": "PB-CO-112233",
-        "name": "Green Energy Solutions",
-        "primary_industry": "Clean Energy",
-        "hq_location": "Manchester, United Kingdom",
-        "website": "https://greenenergysolutions.com",
-        "founded_year": 2020,
-        "employee_count": 67
+        "company_id": "PB-CO-003",
+        "name": "Robotics Manufacturing UK",
+        "primary_industry": "Robotics & Drones",
+        "hq_location": "Coventry, United Kingdom",
+        "website": "https://roboticsuk.com",
+        "founded_year": 2017,
+        "employee_count": 187
       },
       "investors": [
-        {"investor_id": "PB-INV-333", "name": "Breakthrough Energy Ventures", "investor_type": "Venture Capital", "is_lead": true},
-        {"investor_id": "PB-INV-444", "name": "Octopus Ventures", "investor_type": "Venture Capital", "is_lead": false}
+        {"investor_id": "PB-INV-006", "name": "SoftBank Vision Fund 2", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-007", "name": "BGF", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-004",
+      "deal_date": "2024-05-30",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series B",
+      "deal_size": 28000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 62000000,
+      "post_money_valuation": 90000000,
+      "company": {
+        "company_id": "PB-CO-004",
+        "name": "Cybersecurity Innovations",
+        "primary_industry": "Security Software",
+        "hq_location": "London, United Kingdom",
+        "website": "https://cybersecinnov.io",
+        "founded_year": 2016,
+        "employee_count": 92
+      },
+      "investors": [
+        {"investor_id": "PB-INV-008", "name": "Benchmark", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-009", "name": "Plural", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-005",
+      "deal_date": "2024-09-12",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series B",
+      "deal_size": 19000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 38000000,
+      "post_money_valuation": 57000000,
+      "company": {
+        "company_id": "PB-CO-005",
+        "name": "HealthTech Provider Systems",
+        "primary_industry": "Health IT",
+        "hq_location": "Edinburgh, United Kingdom",
+        "website": "https://healthtechprovider.co.uk",
+        "founded_year": 2018,
+        "employee_count": 78
+      },
+      "investors": [
+        {"investor_id": "PB-INV-010", "name": "Sofina", "investor_type": "Growth Capital", "is_lead": true},
+        {"investor_id": "PB-INV-005", "name": "Sapphire Ventures", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-006",
+      "deal_date": "2024-04-08",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series B",
+      "deal_size": 10500000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 24500000,
+      "post_money_valuation": 35000000,
+      "company": {
+        "company_id": "PB-CO-006",
+        "name": "AgriTech Innovations",
+        "primary_industry": "Agriculture Technology",
+        "hq_location": "Norwich, United Kingdom",
+        "website": "https://agritechinnovations.io",
+        "founded_year": 2018,
+        "employee_count": 45
+      },
+      "investors": [
+        {"investor_id": "PB-INV-011", "name": "Breakthrough Energy Ventures", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-012", "name": "EQT Ventures", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-007",
+      "deal_date": "2024-02-14",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series B",
+      "deal_size": 16000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 34000000,
+      "post_money_valuation": 50000000,
+      "company": {
+        "company_id": "PB-CO-007",
+        "name": "FinTech Operations",
+        "primary_industry": "Financial Services",
+        "hq_location": "London, United Kingdom",
+        "website": "https://fintechops.io",
+        "founded_year": 2020,
+        "employee_count": 34
+      },
+      "investors": [
+        {"investor_id": "PB-INV-013", "name": "Stratos", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-009", "name": "Plural", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-008",
+      "deal_date": "2023-07-18",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 12000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 18000000,
+      "post_money_valuation": 30000000,
+      "company": {
+        "company_id": "PB-CO-004",
+        "name": "Cybersecurity Innovations",
+        "primary_industry": "Security Software",
+        "hq_location": "London, United Kingdom",
+        "website": "https://cybersecinnov.io",
+        "founded_year": 2016,
+        "employee_count": 45
+      },
+      "investors": [
+        {"investor_id": "PB-INV-014", "name": "Plural", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-002", "name": "Accel", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-009",
+      "deal_date": "2023-11-30",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 4800000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 2000000,
+      "post_money_valuation": 6800000,
+      "company": {
+        "company_id": "PB-CO-008",
+        "name": "Climate AI Solutions",
+        "primary_industry": "Climate Tech",
+        "hq_location": "Reading, United Kingdom",
+        "website": "https://climateai.solutions",
+        "founded_year": 2021,
+        "employee_count": 32
+      },
+      "investors": [
+        {"investor_id": "PB-INV-015", "name": "Lowercarbon Capital", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-007", "name": "BGF", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-010",
+      "deal_date": "2023-03-25",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 15000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 20000000,
+      "post_money_valuation": 35000000,
+      "company": {
+        "company_id": "PB-CO-003",
+        "name": "Robotics Manufacturing UK",
+        "primary_industry": "Robotics & Drones",
+        "hq_location": "Coventry, United Kingdom",
+        "website": "https://roboticsuk.com",
+        "founded_year": 2017,
+        "employee_count": 98
+      },
+      "investors": [
+        {"investor_id": "PB-INV-016", "name": "Draper Esprit", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-017", "name": "Amadeus Capital", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-011",
+      "deal_date": "2023-08-22",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 3600000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 1200000,
+      "post_money_valuation": 4800000,
+      "company": {
+        "company_id": "PB-CO-009",
+        "name": "Sustainable Packaging Innovations",
+        "primary_industry": "Packaging",
+        "hq_location": "Bristol, United Kingdom",
+        "website": "https://sustainablepackaging.io",
+        "founded_year": 2019,
+        "employee_count": 28
+      },
+      "investors": [
+        {"investor_id": "PB-INV-018", "name": "Extantia", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-019", "name": "TechFarm Capital", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-012",
+      "deal_date": "2023-06-12",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 5900000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 4100000,
+      "post_money_valuation": 10000000,
+      "company": {
+        "company_id": "PB-CO-010",
+        "name": "Supply Chain Optimization",
+        "primary_industry": "Supply Chain",
+        "hq_location": "Birmingham, United Kingdom",
+        "website": "https://supplychainopt.io",
+        "founded_year": 2019,
+        "employee_count": 59
+      },
+      "investors": [
+        {"investor_id": "PB-INV-020", "name": "Forward Partners", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-007", "name": "BGF", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-013",
+      "deal_date": "2022-11-08",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 7500000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 9000000,
+      "post_money_valuation": 16500000,
+      "company": {
+        "company_id": "PB-CO-005",
+        "name": "HealthTech Provider Systems",
+        "primary_industry": "Health IT",
+        "hq_location": "Edinburgh, United Kingdom",
+        "website": "https://healthtechprovider.co.uk",
+        "founded_year": 2018,
+        "employee_count": 48
+      },
+      "investors": [
+        {"investor_id": "PB-INV-021", "name": "Healthtech Capital", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-022", "name": "Ada Ventures", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-014",
+      "deal_date": "2023-04-09",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 7100000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 5400000,
+      "post_money_valuation": 12500000,
+      "company": {
+        "company_id": "PB-CO-011",
+        "name": "CleanTech Materials",
+        "primary_industry": "Materials Science",
+        "hq_location": "Sheffield, United Kingdom",
+        "website": "https://cleantechmaterials.io",
+        "founded_year": 2019,
+        "employee_count": 68
+      },
+      "investors": [
+        {"investor_id": "PB-INV-011", "name": "Breakthrough Energy Ventures", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-023", "name": "KoBold Metals", "investor_type": "Venture Capital", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-015",
+      "deal_type": "PE",
+      "deal_status": "Completed",
+      "deal_date": "2024-01-20",
+      "series": "Buyout",
+      "deal_size": 78000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 65000000,
+      "post_money_valuation": 78000000,
+      "company": {
+        "company_id": "PB-CO-012",
+        "name": "NextGen Biotech PLC",
+        "primary_industry": "Biotechnology",
+        "hq_location": "Cambridge, United Kingdom",
+        "website": "https://nextgenbiotech.io",
+        "founded_year": 2015,
+        "employee_count": 234
+      },
+      "investors": [
+        {"investor_id": "PB-INV-024", "name": "Apax Partners", "investor_type": "Private Equity", "is_lead": true},
+        {"investor_id": "PB-INV-025", "name": "TowerBrook Capital", "investor_type": "Private Equity", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-016",
+      "deal_type": "PE",
+      "deal_status": "Completed",
+      "deal_date": "2023-09-15",
+      "series": "Growth Equity",
+      "deal_size": 52000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 68000000,
+      "post_money_valuation": 120000000,
+      "company": {
+        "company_id": "PB-CO-002",
+        "name": "MedTech Solutions Europe",
+        "primary_industry": "Medical Devices",
+        "hq_location": "Oxford, United Kingdom",
+        "website": "https://medtechsolutions.co.uk",
+        "founded_year": 2017,
+        "employee_count": 145
+      },
+      "investors": [
+        {"investor_id": "PB-INV-026", "name": "Carlyle Group", "investor_type": "Private Equity", "is_lead": true},
+        {"investor_id": "PB-INV-027", "name": "EQT Partners", "investor_type": "Private Equity", "is_lead": false}
+      ]
+    },
+    {
+      "deal_id": "PB-DEAL-017",
+      "deal_date": "2023-09-20",
+      "deal_type": "VC",
+      "deal_status": "Completed",
+      "series": "Series A",
+      "deal_size": 8000000,
+      "deal_size_currency": "GBP",
+      "pre_money_valuation": 20000000,
+      "post_money_valuation": 28000000,
+      "company": {
+        "company_id": "PB-CO-667799",
+        "name": "FinTech Innovations",
+        "primary_industry": "Financial Services",
+        "hq_location": "London, United Kingdom",
+        "website": "https://fintechinnovations.co.uk",
+        "founded_year": 2019,
+        "employee_count": 38
+      },
+      "investors": [
+        {"investor_id": "PB-INV-028", "name": "Balderton Capital", "investor_type": "Venture Capital", "is_lead": true},
+        {"investor_id": "PB-INV-002", "name": "Accel", "investor_type": "Venture Capital", "is_lead": false}
       ]
     }
   ]

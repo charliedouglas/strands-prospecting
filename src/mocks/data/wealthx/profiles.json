@@ -1,12 +1,10 @@
 {
-  "total_count": 2,
+  "total_count": 20,
   "profiles": [
     {
-      "wealthx_id": "WX-123456",
+      "wealthx_id": "WX-001",
       "name": "John David Smith",
-      "title": "Mr",
       "first_name": "John",
-      "middle_name": "David",
       "last_name": "Smith",
       "gender": "Male",
       "age": 49,
@@ -16,8 +14,7 @@
       "net_worth": {
         "value": 85000000,
         "currency": "USD",
-        "confidence": "High",
-        "last_updated": "2024-03-15"
+        "confidence": "High"
       },
       "wealth_source": "Self-made",
       "primary_industry": "Technology",
@@ -25,59 +22,801 @@
         "value": 25000000,
         "currency": "USD"
       },
-      "assets": {
-        "public_holdings": 5000000,
-        "private_holdings": 60000000,
-        "real_estate": 15000000,
-        "luxury_assets": 3000000,
-        "cash": 2000000
-      },
       "current_positions": [
-        {"company": "ACME Technologies Ltd", "title": "Founder & CEO", "start_year": 2018}
+        {
+          "company": "ACME Technologies",
+          "title": "Founder & CEO",
+          "start_year": 2018
+        }
       ],
-      "interests": ["Technology", "Sustainable investing", "Classical music"],
+      "interests": [
+        "Technology",
+        "Sustainable investing"
+      ],
       "philanthropy": {
-        "causes": ["Education", "Climate change"],
+        "causes": [
+          "Education",
+          "Environment"
+        ],
         "estimated_annual_giving": 500000
       }
     },
     {
-      "wealthx_id": "WX-789012",
-      "name": "Sarah Johnson",
-      "title": "Ms",
+      "wealthx_id": "WX-002",
+      "name": "Sarah Elizabeth Johnson",
       "first_name": "Sarah",
       "last_name": "Johnson",
       "gender": "Female",
-      "age": 46,
+      "age": 44,
       "nationality": "British",
       "country_of_residence": "United Kingdom",
       "city": "London",
       "net_worth": {
-        "value": 62000000,
+        "value": 65000000,
         "currency": "USD",
-        "confidence": "High",
-        "last_updated": "2024-02-20"
+        "confidence": "High"
       },
       "wealth_source": "Self-made",
-      "primary_industry": "Financial Services",
+      "primary_industry": "Finance",
       "liquidity": {
         "value": 18000000,
         "currency": "USD"
       },
-      "assets": {
-        "public_holdings": 2000000,
-        "private_holdings": 48000000,
-        "real_estate": 10000000,
-        "luxury_assets": 1500000,
-        "cash": 500000
+      "current_positions": [
+        {
+          "company": "ACME Technologies",
+          "title": "CFO",
+          "start_year": 2018
+        }
+      ],
+      "interests": [
+        "Women in finance",
+        "Art collecting"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Women's education",
+          "Healthcare"
+        ],
+        "estimated_annual_giving": 300000
+      }
+    },
+    {
+      "wealthx_id": "WX-003",
+      "name": "Rajesh Kumar Patel",
+      "first_name": "Rajesh",
+      "last_name": "Patel",
+      "gender": "Male",
+      "age": 39,
+      "nationality": "Indian",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 72000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Financial Services",
+      "liquidity": {
+        "value": 22000000,
+        "currency": "USD"
       },
       "current_positions": [
-        {"company": "FinTech Innovations Limited", "title": "CEO & Founder", "start_year": 2019}
+        {
+          "company": "FinTech Innovations",
+          "title": "Founder & CEO",
+          "start_year": 2019
+        }
       ],
-      "interests": ["FinTech", "Women in business", "Art collecting"],
+      "interests": [
+        "Fintech",
+        "Blockchain"
+      ],
       "philanthropy": {
-        "causes": ["Women's empowerment", "Financial literacy"],
+        "causes": [
+          "Education in India",
+          "Healthcare"
+        ],
+        "estimated_annual_giving": 250000
+      }
+    },
+    {
+      "wealthx_id": "WX-004",
+      "name": "David Robert Anderson",
+      "first_name": "David",
+      "last_name": "Anderson",
+      "gender": "Male",
+      "age": 54,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Cambridge",
+      "net_worth": {
+        "value": 125000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Biotechnology",
+      "liquidity": {
+        "value": 35000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "NextGen Biotech PLC",
+          "title": "Chairman",
+          "start_year": 2015
+        }
+      ],
+      "interests": [
+        "Biotech",
+        "Scientific research"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Medical research",
+          "Universities"
+        ],
+        "estimated_annual_giving": 750000
+      }
+    },
+    {
+      "wealthx_id": "WX-005",
+      "name": "Emma Louise Williams",
+      "first_name": "Emma",
+      "last_name": "Williams",
+      "gender": "Female",
+      "age": 42,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 55000000,
+        "currency": "USD",
+        "confidence": "Medium"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Financial Technology",
+      "liquidity": {
+        "value": 15000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "FinTech Innovations",
+          "title": "COO",
+          "start_year": 2020
+        }
+      ],
+      "interests": [
+        "Fintech",
+        "Entrepreneurship"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Tech education",
+          "Startup ecosystems"
+        ],
+        "estimated_annual_giving": 200000
+      }
+    },
+    {
+      "wealthx_id": "WX-006",
+      "name": "Christopher James Miller",
+      "first_name": "Christopher",
+      "last_name": "Miller",
+      "gender": "Male",
+      "age": 37,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Bristol",
+      "net_worth": {
+        "value": 42000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Sustainability",
+      "liquidity": {
+        "value": 12000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Sustainable Packaging Innovations",
+          "title": "CEO",
+          "start_year": 2019
+        }
+      ],
+      "interests": [
+        "Sustainability",
+        "Climate change"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Environmental protection",
+          "Climate action"
+        ],
+        "estimated_annual_giving": 150000
+      }
+    },
+    {
+      "wealthx_id": "WX-007",
+      "name": "Michael Wei Chen",
+      "first_name": "Michael",
+      "last_name": "Chen",
+      "gender": "Male",
+      "age": 36,
+      "nationality": "Chinese",
+      "country_of_residence": "United Kingdom",
+      "city": "Manchester",
+      "net_worth": {
+        "value": 38000000,
+        "currency": "USD",
+        "confidence": "Medium"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Energy",
+      "liquidity": {
+        "value": 10000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Green Energy Solutions",
+          "title": "Operations Director",
+          "start_year": 2020
+        }
+      ],
+      "interests": [
+        "Renewable energy",
+        "Sustainability"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Climate change",
+          "Energy transition"
+        ],
+        "estimated_annual_giving": 100000
+      }
+    },
+    {
+      "wealthx_id": "WX-008",
+      "name": "Thomas Edward Lee",
+      "first_name": "Thomas",
+      "last_name": "Lee",
+      "gender": "Male",
+      "age": 46,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Oxford",
+      "net_worth": {
+        "value": 95000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Medical Technology",
+      "liquidity": {
+        "value": 28000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "MedTech Solutions Europe",
+          "title": "CEO",
+          "start_year": 2017
+        }
+      ],
+      "interests": [
+        "Healthcare innovation",
+        "Medical devices"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Healthcare",
+          "Medical research"
+        ],
+        "estimated_annual_giving": 400000
+      }
+    },
+    {
+      "wealthx_id": "WX-009",
+      "name": "Nicholas James Robinson",
+      "first_name": "Nicholas",
+      "last_name": "Robinson",
+      "gender": "Male",
+      "age": 45,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 78000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Cybersecurity",
+      "liquidity": {
+        "value": 23000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Cybersecurity Innovations",
+          "title": "CEO",
+          "start_year": 2016
+        }
+      ],
+      "interests": [
+        "Cybersecurity",
+        "Digital security"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Cyber safety",
+          "Education"
+        ],
+        "estimated_annual_giving": 200000
+      }
+    },
+    {
+      "wealthx_id": "WX-010",
+      "name": "Jonathan Paul White",
+      "first_name": "Jonathan",
+      "last_name": "White",
+      "gender": "Male",
+      "age": 32,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 28000000,
+        "currency": "USD",
+        "confidence": "Medium"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Educational Technology",
+      "liquidity": {
+        "value": 8000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "EdTech Global",
+          "title": "Co-Founder & CEO",
+          "start_year": 2020
+        }
+      ],
+      "interests": [
+        "Education",
+        "Technology"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Education access",
+          "STEM"
+        ],
+        "estimated_annual_giving": 75000
+      }
+    },
+    {
+      "wealthx_id": "WX-011",
+      "name": "Isabella Maria Garcia",
+      "first_name": "Isabella",
+      "last_name": "Garcia",
+      "gender": "Female",
+      "age": 40,
+      "nationality": "Spanish",
+      "country_of_residence": "United Kingdom",
+      "city": "Bristol",
+      "net_worth": {
+        "value": 32000000,
+        "currency": "USD",
+        "confidence": "Medium"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Sustainability",
+      "liquidity": {
+        "value": 9000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Sustainable Packaging Innovations",
+          "title": "Director",
+          "start_year": 2019
+        }
+      ],
+      "interests": [
+        "Sustainable materials",
+        "Circular economy"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Environmental protection"
+        ],
+        "estimated_annual_giving": 100000
+      }
+    },
+    {
+      "wealthx_id": "WX-012",
+      "name": "Amy Victoria Jones",
+      "first_name": "Amy",
+      "last_name": "Jones",
+      "gender": "Female",
+      "age": 33,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 25000000,
+        "currency": "USD",
+        "confidence": "Medium"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Educational Technology",
+      "liquidity": {
+        "value": 7000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "EdTech Global",
+          "title": "Co-Founder & CTO",
+          "start_year": 2020
+        }
+      ],
+      "interests": [
+        "Education",
+        "EdTech"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Education equity",
+          "Youth development"
+        ],
+        "estimated_annual_giving": 60000
+      }
+    },
+    {
+      "wealthx_id": "WX-013",
+      "name": "Daniel Joseph Cooper",
+      "first_name": "Daniel",
+      "last_name": "Cooper",
+      "gender": "Male",
+      "age": 41,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Birmingham",
+      "net_worth": {
+        "value": 60500000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Logistics & Supply Chain",
+      "liquidity": {
+        "value": 18000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Supply Chain Optimization",
+          "title": "Founder & CEO",
+          "start_year": 2018
+        }
+      ],
+      "interests": [
+        "Supply chain technology",
+        "Logistics innovation"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Business education",
+          "Small business support"
+        ],
+        "estimated_annual_giving": 180000
+      }
+    },
+    {
+      "wealthx_id": "WX-014",
+      "name": "Oliver Robert Hughes",
+      "first_name": "Oliver",
+      "last_name": "Hughes",
+      "gender": "Male",
+      "age": 38,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 44000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Food Technology",
+      "liquidity": {
+        "value": 13000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "FoodTech Platforms",
+          "title": "Founder & CEO",
+          "start_year": 2017
+        }
+      ],
+      "interests": [
+        "Food tech",
+        "Sustainable agriculture",
+        "Restaurant innovation"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Food waste reduction",
+          "Sustainable farming"
+        ],
+        "estimated_annual_giving": 140000
+      }
+    },
+    {
+      "wealthx_id": "WX-015",
+      "name": "Charlotte Margaret Evans",
+      "first_name": "Charlotte",
+      "last_name": "Evans",
+      "gender": "Female",
+      "age": 35,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 65500000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Financial Services",
+      "liquidity": {
+        "value": 19500000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "FinTech Operations",
+          "title": "Founder & CEO",
+          "start_year": 2019
+        }
+      ],
+      "interests": [
+        "Fintech innovation",
+        "Banking technology",
+        "Women in finance"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Women entrepreneurs",
+          "Financial inclusion"
+        ],
+        "estimated_annual_giving": 220000
+      }
+    },
+    {
+      "wealthx_id": "WX-016",
+      "name": "Prof. Alexander Wright",
+      "first_name": "Alexander",
+      "last_name": "Wright",
+      "gender": "Male",
+      "age": 52,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Oxford",
+      "net_worth": {
+        "value": 73000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Quantum Computing",
+      "liquidity": {
+        "value": 22000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Quantum Computing Ventures",
+          "title": "Founder & CEO",
+          "start_year": 2019
+        },
+        {
+          "company": "University of Oxford",
+          "title": "Professor of Physics",
+          "start_year": 2005
+        }
+      ],
+      "interests": [
+        "Quantum computing",
+        "Physics research",
+        "Scientific innovation"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Scientific research",
+          "University funding",
+          "STEM education"
+        ],
         "estimated_annual_giving": 300000
+      }
+    },
+    {
+      "wealthx_id": "WX-017",
+      "name": "Robert William Davies",
+      "first_name": "Robert",
+      "last_name": "Davies",
+      "gender": "Male",
+      "age": 43,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Bristol",
+      "net_worth": {
+        "value": 90500000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Manufacturing & Robotics",
+      "liquidity": {
+        "value": 27000000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Robotics Manufacturing UK",
+          "title": "Founder & CEO",
+          "start_year": 2016
+        }
+      ],
+      "interests": [
+        "Industrial robotics",
+        "Manufacturing automation",
+        "Advanced manufacturing"
+      ],
+      "philanthropy": {
+        "causes": [
+          "STEM education",
+          "Manufacturing skills",
+          "Technical apprenticeships"
+        ],
+        "estimated_annual_giving": 350000
+      }
+    },
+    {
+      "wealthx_id": "WX-018",
+      "name": "Dr. Marcus Edward Johnson",
+      "first_name": "Marcus",
+      "last_name": "Johnson",
+      "gender": "Male",
+      "age": 40,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "London",
+      "net_worth": {
+        "value": 51500000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Climate Tech",
+      "liquidity": {
+        "value": 15500000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "Climate AI Solutions",
+          "title": "Founder & CEO",
+          "start_year": 2020
+        }
+      ],
+      "interests": [
+        "Climate change",
+        "AI for climate",
+        "Environmental sustainability",
+        "ESG investing"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Climate action",
+          "Environmental research",
+          "Green technology"
+        ],
+        "estimated_annual_giving": 200000
+      }
+    },
+    {
+      "wealthx_id": "WX-019",
+      "name": "Henry Michael Walker",
+      "first_name": "Henry",
+      "last_name": "Walker",
+      "gender": "Male",
+      "age": 44,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Cambridge",
+      "net_worth": {
+        "value": 55500000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Agriculture Technology",
+      "liquidity": {
+        "value": 16500000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "AgriTech Innovations",
+          "title": "Founder & CEO",
+          "start_year": 2017
+        }
+      ],
+      "interests": [
+        "Agricultural technology",
+        "Precision farming",
+        "Food security"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Sustainable agriculture",
+          "Farmer support programs",
+          "Rural development"
+        ],
+        "estimated_annual_giving": 180000
+      }
+    },
+    {
+      "wealthx_id": "WX-020",
+      "name": "Dr. Jonathan James Wright",
+      "first_name": "Jonathan",
+      "last_name": "Wright",
+      "gender": "Male",
+      "age": 42,
+      "nationality": "British",
+      "country_of_residence": "United Kingdom",
+      "city": "Sheffield",
+      "net_worth": {
+        "value": 49000000,
+        "currency": "USD",
+        "confidence": "High"
+      },
+      "wealth_source": "Self-made",
+      "primary_industry": "Materials Science",
+      "liquidity": {
+        "value": 14500000,
+        "currency": "USD"
+      },
+      "current_positions": [
+        {
+          "company": "CleanTech Materials",
+          "title": "Founder & CEO",
+          "start_year": 2016
+        }
+      ],
+      "interests": [
+        "Materials science",
+        "Sustainable materials",
+        "Circular economy",
+        "Waste reduction"
+      ],
+      "philanthropy": {
+        "causes": [
+          "Environmental protection",
+          "Scientific research",
+          "Green manufacturing"
+        ],
+        "estimated_annual_giving": 160000
       }
     }
   ]

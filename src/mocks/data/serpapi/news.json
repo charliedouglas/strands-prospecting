@@ -1,26 +1,455 @@
 {
-  "ACME Technologies": {
-    "news_results": [
-      {
-        "position": 1,
-        "title": "ACME Technologies raises £25M Series B to expand AI platform",
-        "link": "https://techcrunch.com/2024/06/15/acme-technologies-series-b/",
-        "source": {"name": "TechCrunch"},
-        "date": "2 days ago",
-        "snippet": "London-based ACME Technologies has raised £25 million in Series B funding led by Sequoia Capital to expand its enterprise AI platform..."
-      }
-    ]
-  },
-  "Green Energy Solutions": {
-    "news_results": [
-      {
-        "position": 1,
-        "title": "Green Energy Solutions secures major renewable energy contract",
-        "link": "https://energynews.co.uk/2024/03/green-energy-contract/",
-        "source": {"name": "Energy News"},
-        "date": "1 week ago",
-        "snippet": "Manchester-based Green Energy Solutions has secured a £50 million contract to develop smart grid infrastructure across Northern England..."
-      }
-    ]
-  }
+  "count": 45,
+  "news_results": [
+    {
+      "position": 1,
+      "title": "ACME Technologies raises £25M Series B to expand AI platform",
+      "link": "https://techcrunch.com/2024/06/15/acme-technologies-series-b/",
+      "source": {
+        "name": "TechCrunch"
+      },
+      "date": "2024-06-15",
+      "snippet": "London-based ACME Technologies has raised £25 million in Series B funding led by Sequoia Capital to expand its enterprise AI platform across financial services. The round also saw participation from Index Ventures, bringing the company's total funding to £42 million."
+    },
+    {
+      "position": 2,
+      "title": "UK fintech sector sees record investment in H1 2024",
+      "link": "https://ft.com/content/abc123",
+      "source": {
+        "name": "Financial Times"
+      },
+      "date": "2024-06-10",
+      "snippet": "British fintech companies attracted £4.2bn in venture capital during the first half of 2024, with notable rounds including FinTech Operations' £16M Series B and ACME Technologies' £25M Series B. London remains the dominant hub for fintech investment in Europe."
+    },
+    {
+      "position": 3,
+      "title": "MedTech Solutions closes £45M Series C funding round",
+      "link": "https://medtech-news.com/funding-2024",
+      "source": {
+        "name": "MedTech News"
+      },
+      "date": "2024-08-22",
+      "snippet": "Oxford-based MedTech Solutions Europe has secured £45 million in Series C funding led by Khosla Ventures to accelerate development of its innovative medical devices for critical care. The company has now raised over £112 million to date and plans to expand into US and Asian markets."
+    },
+    {
+      "position": 4,
+      "title": "Green Energy Solutions secures £18M Series B funding round",
+      "link": "https://environmentalfinance.com/deals",
+      "source": {
+        "name": "Environmental Finance"
+      },
+      "date": "2024-03-10",
+      "snippet": "Manchester-based Green Energy Solutions has raised £18 million led by Breakthrough Energy Ventures to scale its renewable energy and smart grid solutions. The company is targeting commercial and industrial customers across the UK and Europe."
+    },
+    {
+      "position": 5,
+      "title": "Robotics Manufacturing UK closes £38M Series B",
+      "link": "https://roboticsindustry.com/news",
+      "source": {
+        "name": "Robotics Industry"
+      },
+      "date": "2024-07-14",
+      "snippet": "Coventry-based Robotics Manufacturing has secured £38 million in Series B funding from SoftBank Vision Fund 2 and BGF. The company develops industrial automation and collaborative robotics solutions for manufacturers seeking to modernize production lines."
+    },
+    {
+      "position": 6,
+      "title": "Cybersecurity startup secures £28M in Series B",
+      "link": "https://cybersecurity-magazine.com/funding",
+      "source": {
+        "name": "Cybersecurity Magazine"
+      },
+      "date": "2024-05-30",
+      "snippet": "London-based Cybersecurity Innovations has raised £28 million in Series B funding led by Benchmark Capital. The company's next-generation threat detection platform uses AI to identify and respond to enterprise security threats in real-time."
+    },
+    {
+      "position": 7,
+      "title": "NextGen Biotech acquired in £78M private equity deal",
+      "link": "https://pharma-news.com/deals",
+      "source": {
+        "name": "Pharma News"
+      },
+      "date": "2024-01-20",
+      "snippet": "Cambridge-based NextGen Biotech has been acquired by Apax Partners and TowerBrook Capital in a £78 million buyout. The gene therapy company has made significant progress in precision medicine for rare diseases and will use the capital to advance its clinical pipeline."
+    },
+    {
+      "position": 8,
+      "title": "HealthTech Provider raises £19M Series B for NHS rollout",
+      "link": "https://health-tech.co.uk/news",
+      "source": {
+        "name": "Health Tech UK"
+      },
+      "date": "2024-09-12",
+      "snippet": "Edinburgh-based HealthTech Provider Systems has secured £19 million in Series B funding led by Sofina to expand its digital health records platform across NHS trusts in Scotland and England. The company currently serves 15 NHS trusts."
+    },
+    {
+      "position": 9,
+      "title": "British climate tech startup attracts £4.8M in Series A",
+      "link": "https://climateprogress.org/news",
+      "source": {
+        "name": "Climate Progress"
+      },
+      "date": "2023-11-30",
+      "snippet": "Climate AI Solutions has raised £4.8 million in Series A funding led by Lowercarbon Capital to scale its climate risk modeling and adaptation planning platform. The London-based startup helps businesses assess and mitigate climate-related risks."
+    },
+    {
+      "position": 10,
+      "title": "AgriTech Innovations secures £10.5M Series B round",
+      "link": "https://agribusiness.com/news",
+      "source": {
+        "name": "Agribusiness Magazine"
+      },
+      "date": "2024-04-08",
+      "snippet": "Cambridge-based AgriTech Innovations has raised £10.5 million in Series B funding led by Breakthrough Energy Ventures for its AI-powered precision agriculture solutions. The platform helps farmers optimize crop yields while reducing environmental impact."
+    },
+    {
+      "position": 11,
+      "title": "FinTech Operations closes £16M Series B funding",
+      "link": "https://fintech-news.io/funding",
+      "source": {
+        "name": "FinTech News"
+      },
+      "date": "2024-02-14",
+      "snippet": "London-based FinTech Operations has secured £16 million in Series B funding led by Stratos Capital. The Banking-as-a-Service platform enables businesses to embed financial services directly into their applications without banking licenses."
+    },
+    {
+      "position": 12,
+      "title": "EdTech Global raises £6.5M in Series A",
+      "link": "https://edtech-insider.com/funding",
+      "source": {
+        "name": "EdTech Insider"
+      },
+      "date": "2023-02-10",
+      "snippet": "London-based EdTech Global has raised £6.5 million in Series A funding to expand its AI-powered online learning platform. The platform serves both K-12 schools and adult education providers with personalized learning pathways."
+    },
+    {
+      "position": 13,
+      "title": "UK startup ecosystem reaches record £18bn funding milestone",
+      "link": "https://uk-innovation.org/report",
+      "source": {
+        "name": "UK Innovation"
+      },
+      "date": "2024-06-01",
+      "snippet": "UK startups reached a record £18 billion in funding in 2023, with London leading investment activity. Key sectors driving growth include fintech, AI, climate tech, and healthcare technology."
+    },
+    {
+      "position": 14,
+      "title": "Sustainable Packaging raises £3.6M Series A",
+      "link": "https://packagingeurope.com/news",
+      "source": {
+        "name": "Packaging Europe"
+      },
+      "date": "2023-08-22",
+      "snippet": "Leeds-based Sustainable Packaging Innovations secured £3.6 million in Series A funding from Extantia Capital. The company produces biodegradable packaging materials from agricultural waste, offering sustainable alternatives to traditional plastics."
+    },
+    {
+      "position": 15,
+      "title": "Supply Chain Optimization closes £5.9M Series A",
+      "link": "https://supplychain-digital.com/news",
+      "source": {
+        "name": "Supply Chain Digital"
+      },
+      "date": "2023-06-12",
+      "snippet": "Birmingham-based Supply Chain Optimization has raised £5.9 million in Series A funding led by Forward Partners. The platform provides real-time supply chain visibility and optimization for manufacturers and distributors."
+    },
+    {
+      "position": 16,
+      "title": "CleanTech Materials secures £7.1M Series A",
+      "link": "https://greenbiz.com/funding",
+      "source": {
+        "name": "GreenBiz"
+      },
+      "date": "2023-04-09",
+      "snippet": "Sheffield-based CleanTech Materials has secured £7.1 million in Series A funding led by Breakthrough Energy Ventures for its sustainable building materials made from recycled industrial waste. The company aims to reduce carbon emissions in construction."
+    },
+    {
+      "position": 17,
+      "title": "FoodTech Platforms raises £3.8M Series A",
+      "link": "https://food-tech-hub.com/funding",
+      "source": {
+        "name": "Food Tech Hub"
+      },
+      "date": "2022-08-18",
+      "snippet": "London-based FoodTech Platforms has raised £3.8 million in Series A funding led by Speedinvest. The B2B marketplace connects restaurants with local food suppliers, streamlining procurement and reducing waste."
+    },
+    {
+      "position": 18,
+      "title": "British VCs invest record amount in climate tech",
+      "link": "https://venturebeat.com/climate",
+      "source": {
+        "name": "VentureBeat"
+      },
+      "date": "2024-05-20",
+      "snippet": "British venture capital firms have invested record amounts in climate tech startups in 2024, with notable deals including Green Energy Solutions' £18M Series B and Climate AI Solutions' earlier Series A round."
+    },
+    {
+      "position": 19,
+      "title": "Tech investment in UK hits 5-year high",
+      "link": "https://techcrunch.com/uk-investment",
+      "source": {
+        "name": "TechCrunch"
+      },
+      "date": "2024-04-15",
+      "snippet": "Technology investment in the UK has reached a 5-year high driven by AI, climate tech, and fintech funding. Major rounds include ACME Technologies, Cybersecurity Innovations, and Robotics Manufacturing UK."
+    },
+    {
+      "position": 20,
+      "title": "Quantum Computing Ventures raises £5.5M Series A",
+      "link": "https://quantum-tech.org/news",
+      "source": {
+        "name": "Quantum Tech"
+      },
+      "date": "2023-01-16",
+      "snippet": "Oxford-based Quantum Computing Ventures has secured £5.5 million in Series A funding to develop quantum computing hardware and software for enterprise applications. The company is led by Professor Alexander Wright, a renowned quantum physicist."
+    },
+    {
+      "position": 21,
+      "title": "London fintech hubs see investor surge",
+      "link": "https://cityam.com/fintech",
+      "source": {
+        "name": "City A.M."
+      },
+      "date": "2024-03-20",
+      "snippet": "London's fintech sector continues to attract record venture capital investment, with companies like FinTech Operations and ACME Technologies securing major funding rounds in recent months."
+    },
+    {
+      "position": 22,
+      "title": "European tech investment reaches €85bn in 2023",
+      "link": "https://eu-startup.eu/investment",
+      "source": {
+        "name": "EU StartUp"
+      },
+      "date": "2024-01-30",
+      "snippet": "European technology investment hit €85 billion in 2023, with UK startups capturing significant share. The UK maintained its position as Europe's leading tech ecosystem."
+    },
+    {
+      "position": 23,
+      "title": "MedTech Solutions announces FDA breakthrough designation",
+      "link": "https://medtech-news.com/fda-2024",
+      "source": {
+        "name": "MedTech News"
+      },
+      "date": "2024-10-05",
+      "snippet": "Following its £45M Series C round, Oxford's MedTech Solutions Europe has received FDA breakthrough device designation for its critical care diagnostic system, accelerating its path to US market entry."
+    },
+    {
+      "position": 24,
+      "title": "ACME Technologies partners with major UK banks for AI rollout",
+      "link": "https://finextra.com/newsarticle",
+      "source": {
+        "name": "Finextra"
+      },
+      "date": "2024-08-30",
+      "snippet": "ACME Technologies has signed partnerships with three major UK banks to deploy its enterprise AI platform. The deals follow the company's £25M Series B and represent a significant milestone in its market expansion."
+    },
+    {
+      "position": 25,
+      "title": "Robotics Manufacturing UK wins £15M government contract",
+      "link": "https://manufacturing-digital.com/news",
+      "source": {
+        "name": "Manufacturing Digital"
+      },
+      "date": "2024-09-18",
+      "snippet": "Coventry-based Robotics Manufacturing UK has secured a £15 million government contract to supply automation systems for defense manufacturing. The win validates the company's technology following its £38M Series B."
+    },
+    {
+      "position": 26,
+      "title": "Cybersecurity Innovations expands to EMEA with new offices",
+      "link": "https://siliconcanals.com/news",
+      "source": {
+        "name": "Silicon Canals"
+      },
+      "date": "2024-07-22",
+      "snippet": "Following its £28M Series B, Cybersecurity Innovations has opened offices in Paris and Frankfurt as part of its European expansion strategy. The company has grown from 45 to 92 employees in two years."
+    },
+    {
+      "position": 27,
+      "title": "HealthTech Provider Systems signs deal with 5 new NHS trusts",
+      "link": "https://digitalhealth.net/news",
+      "source": {
+        "name": "Digital Health"
+      },
+      "date": "2024-10-30",
+      "snippet": "Edinburgh's HealthTech Provider Systems has signed contracts with five additional NHS trusts for its digital health records platform. The deals bring its total NHS customer base to 20 trusts across Scotland and England."
+    },
+    {
+      "position": 28,
+      "title": "Green Energy Solutions announces major solar project in Yorkshire",
+      "link": "https://renews.biz/news",
+      "source": {
+        "name": "Renews"
+      },
+      "date": "2024-05-15",
+      "snippet": "Manchester-based Green Energy Solutions will develop a 50MW solar farm in Yorkshire, its largest project to date. The initiative is funded partly by the company's recent £18M Series B round."
+    },
+    {
+      "position": 29,
+      "title": "AgriTech Innovations partners with major UK farming cooperative",
+      "link": "https://farminguk.com/news",
+      "source": {
+        "name": "Farming UK"
+      },
+      "date": "2024-06-28",
+      "snippet": "AgriTech Innovations has partnered with the National Farmers Union to deploy its AI-powered precision agriculture platform across 500 farms. The deal follows the company's £10.5M Series B funding."
+    },
+    {
+      "position": 30,
+      "title": "EdTech Global reaches 1 million users milestone",
+      "link": "https://educationtechnologyinsights.com/news",
+      "source": {
+        "name": "Education Technology Insights"
+      },
+      "date": "2023-09-14",
+      "snippet": "London-based EdTech Global has surpassed 1 million users on its AI-powered learning platform, just 18 months after its £6.5M Series A funding round. The company is now profitable and planning international expansion."
+    },
+    {
+      "position": 31,
+      "title": "Climate AI Solutions wins UN Climate Tech Innovation Award",
+      "link": "https://un-climatechange.org/news",
+      "source": {
+        "name": "UN Climate Change"
+      },
+      "date": "2024-03-22",
+      "snippet": "Climate AI Solutions has been recognized with the UN Climate Tech Innovation Award for its AI-driven climate risk modeling platform. The London startup raised £4.8M in Series A funding last year."
+    },
+    {
+      "position": 32,
+      "title": "FinTech Operations achieves FCA authorization",
+      "link": "https://altfi.com/news",
+      "source": {
+        "name": "AltFi"
+      },
+      "date": "2024-04-25",
+      "snippet": "FinTech Operations has received full FCA authorization for its Banking-as-a-Service platform, a critical milestone following its £16M Series B. The authorization enables expanded services for UK clients."
+    },
+    {
+      "position": 33,
+      "title": "Quantum Computing Ventures announces breakthrough in error correction",
+      "link": "https://nature.com/articles",
+      "source": {
+        "name": "Nature"
+      },
+      "date": "2023-08-10",
+      "snippet": "Oxford-based Quantum Computing Ventures has published research on a novel quantum error correction technique. The breakthrough could accelerate commercial quantum computing applications."
+    },
+    {
+      "position": 34,
+      "title": "Sustainable Packaging wins Innovate UK grant",
+      "link": "https://packaging-gateway.com/news",
+      "source": {
+        "name": "Packaging Gateway"
+      },
+      "date": "2024-02-18",
+      "snippet": "Sustainable Packaging Innovations has been awarded a £1.2 million Innovate UK grant to scale production of its biodegradable packaging materials. The Leeds company raised £3.6M in Series A last year."
+    },
+    {
+      "position": 35,
+      "title": "Supply Chain Optimization onboards Fortune 500 client",
+      "link": "https://logisticsmanager.com/news",
+      "source": {
+        "name": "Logistics Manager"
+      },
+      "date": "2024-01-10",
+      "snippet": "Birmingham's Supply Chain Optimization has signed its first Fortune 500 client for its real-time supply chain visibility platform, marking a major milestone following its £5.9M Series A."
+    },
+    {
+      "position": 36,
+      "title": "CleanTech Materials partners with major UK construction firm",
+      "link": "https://construction-today.com/news",
+      "source": {
+        "name": "Construction Today"
+      },
+      "date": "2023-11-15",
+      "snippet": "CleanTech Materials has partnered with Balfour Beatty to supply sustainable building materials for major infrastructure projects. The Sheffield company raised £7.1M in Series A earlier this year."
+    },
+    {
+      "position": 37,
+      "title": "FoodTech Platforms expands to 1000 restaurant partners",
+      "link": "https://restaurant-business.com/news",
+      "source": {
+        "name": "Restaurant Business"
+      },
+      "date": "2023-05-20",
+      "snippet": "FoodTech Platforms has grown its restaurant partner network to 1,000 venues across London and the South East. The B2B marketplace raised £3.8M in Series A last year."
+    },
+    {
+      "position": 38,
+      "title": "NextGen Biotech advances gene therapy into Phase 2 trials",
+      "link": "https://biospace.com/article",
+      "source": {
+        "name": "BioSpace"
+      },
+      "date": "2024-06-05",
+      "snippet": "Following its £78M private equity buyout, NextGen Biotech has advanced its lead gene therapy candidate into Phase 2 clinical trials for a rare genetic disorder, with results expected in 2025."
+    },
+    {
+      "position": 39,
+      "title": "UK healthtech sector attracts £2.1bn in 2024",
+      "link": "https://ukauthority.com/news",
+      "source": {
+        "name": "UK Authority"
+      },
+      "date": "2024-11-10",
+      "snippet": "The UK healthtech sector has attracted £2.1 billion in investment in 2024, with major deals including MedTech Solutions' £45M Series C and HealthTech Provider Systems' £19M Series B."
+    },
+    {
+      "position": 40,
+      "title": "Cambridge emerges as UK biotech and medtech hub",
+      "link": "https://cambridgenetwork.co.uk/news",
+      "source": {
+        "name": "Cambridge Network"
+      },
+      "date": "2024-07-08",
+      "snippet": "Cambridge has consolidated its position as the UK's leading biotech and medtech hub, home to companies like MedTech Solutions Europe, NextGen Biotech, and AgriTech Innovations."
+    },
+    {
+      "position": 41,
+      "title": "UK robotics sector sees renaissance amid manufacturing boom",
+      "link": "https://theengineer.co.uk/news",
+      "source": {
+        "name": "The Engineer"
+      },
+      "date": "2024-08-12",
+      "snippet": "The UK robotics sector is experiencing a renaissance with companies like Robotics Manufacturing UK attracting major investment. The sector has benefited from government support for advanced manufacturing."
+    },
+    {
+      "position": 42,
+      "title": "Oxford Science Park companies raise £150M in 2024",
+      "link": "https://oxfordsciencepark.com/news",
+      "source": {
+        "name": "Oxford Science Park"
+      },
+      "date": "2024-09-25",
+      "snippet": "Companies based at Oxford Science Park have raised a combined £150 million in 2024, including MedTech Solutions' £45M Series C and Quantum Computing Ventures' ongoing funding efforts."
+    },
+    {
+      "position": 43,
+      "title": "Edinburgh tech scene grows with healthtech investments",
+      "link": "https://techscot.com/news",
+      "source": {
+        "name": "TechScot"
+      },
+      "date": "2024-10-15",
+      "snippet": "Edinburgh's technology sector is booming, with healthtech company HealthTech Provider Systems leading the charge after raising £19M in Series B funding to expand its NHS platform."
+    },
+    {
+      "position": 44,
+      "title": "Northern England sees surge in climate tech startups",
+      "link": "https://businesscloud.co.uk/news",
+      "source": {
+        "name": "BusinessCloud"
+      },
+      "date": "2024-05-05",
+      "snippet": "Northern England is experiencing a surge in climate tech startups, with companies like Green Energy Solutions in Manchester and CleanTech Materials in Sheffield attracting significant VC investment."
+    },
+    {
+      "position": 45,
+      "title": "London maintains lead as Europe's fintech capital",
+      "link": "https://bloomberg.com/news",
+      "source": {
+        "name": "Bloomberg"
+      },
+      "date": "2024-11-20",
+      "snippet": "London has maintained its position as Europe's fintech capital, with companies like ACME Technologies, FinTech Operations, and FoodTech Platforms driving innovation across financial services and beyond."
+    }
+  ]
 }

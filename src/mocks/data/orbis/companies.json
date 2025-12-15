@@ -1,5 +1,5 @@
 {
-  "total_count": 3,
+  "total_count": 18,
   "results": [
     {
       "bvd_id": "GB12345678",
@@ -71,6 +71,342 @@
       },
       "national_ids": [
         {"type": "Companies House", "value": "11223344"}
+      ]
+    },
+    {
+      "bvd_id": "GB99887766",
+      "name": "NEXTGEN BIOTECH PLC",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2015-09-02",
+      "company_type": "Public limited company",
+      "registered_address": {
+        "line1": "Cambridge Science Park",
+        "city": "Cambridge",
+        "postcode": "CB4 0WF",
+        "country": "GB"
+      },
+      "operating_revenue": 45000000,
+      "operating_revenue_currency": "GBP",
+      "employees": 234,
+      "industry": {
+        "primary_code": "72190",
+        "primary_description": "Other professional and technical activities"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "99887766"}
+      ]
+    },
+    {
+      "bvd_id": "GB55443322",
+      "name": "SUSTAINABLE PACKAGING INNOVATIONS",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2019-04-15",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Mill Street Industrial",
+        "city": "Bristol",
+        "postcode": "BS1 5QX",
+        "country": "GB"
+      },
+      "operating_revenue": 5200000,
+      "operating_revenue_currency": "GBP",
+      "employees": 28,
+      "industry": {
+        "primary_code": "22290",
+        "primary_description": "Manufacture of other plastic products"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "55443322"}
+      ]
+    },
+    {
+      "bvd_id": "GB44332211",
+      "name": "MEDTECH SOLUTIONS EUROPE",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2017-01-20",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Oxford Science Park",
+        "city": "Oxford",
+        "postcode": "OX4 4GA",
+        "country": "GB"
+      },
+      "operating_revenue": 22500000,
+      "operating_revenue_currency": "GBP",
+      "employees": 156,
+      "industry": {
+        "primary_code": "26600",
+        "primary_description": "Manufacture of irradiation apparatus and electromechanical medical devices"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "44332211"}
+      ]
+    },
+    {
+      "bvd_id": "GB33221100",
+      "name": "EDTECH GLOBAL LIMITED",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2020-07-08",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "110 Shoreditch High Street",
+        "city": "London",
+        "postcode": "E1 6JQ",
+        "country": "GB"
+      },
+      "operating_revenue": 3400000,
+      "operating_revenue_currency": "GBP",
+      "employees": 19,
+      "industry": {
+        "primary_code": "62090",
+        "primary_description": "Other information technology service activities"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "33221100"}
+      ]
+    },
+    {
+      "bvd_id": "GB22110099",
+      "name": "FOODTECH PLATFORMS LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2018-11-30",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Borough Food Market",
+        "city": "London",
+        "postcode": "SE1 9AH",
+        "country": "GB"
+      },
+      "operating_revenue": 7800000,
+      "operating_revenue_currency": "GBP",
+      "employees": 51,
+      "industry": {
+        "primary_code": "47110",
+        "primary_description": "Retail sale of food in non-specialised stores"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "22110099"}
+      ]
+    },
+    {
+      "bvd_id": "GB11009988",
+      "name": "CLEANTECH MATERIALS CORP",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2019-03-22",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Advanced Materials Park",
+        "city": "Sheffield",
+        "postcode": "S4 7QQ",
+        "country": "GB"
+      },
+      "operating_revenue": 9600000,
+      "operating_revenue_currency": "GBP",
+      "employees": 68,
+      "industry": {
+        "primary_code": "25401",
+        "primary_description": "Manufacture of metal structures and parts"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "11009988"}
+      ]
+    },
+    {
+      "bvd_id": "GB00998877",
+      "name": "CYBERSECURITY INNOVATIONS LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2016-05-14",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "20 Old Bailey",
+        "city": "London",
+        "postcode": "EC4M 7BA",
+        "country": "GB"
+      },
+      "operating_revenue": 18500000,
+      "operating_revenue_currency": "GBP",
+      "employees": 92,
+      "industry": {
+        "primary_code": "62020",
+        "primary_description": "Information technology consultancy"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "00998877"}
+      ]
+    },
+    {
+      "bvd_id": "GB88776655",
+      "name": "HEALTHTECH PROVIDER SYSTEMS",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2018-08-07",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Medical Innovation Centre",
+        "city": "Edinburgh",
+        "postcode": "EH8 8DL",
+        "country": "GB"
+      },
+      "operating_revenue": 14200000,
+      "operating_revenue_currency": "GBP",
+      "employees": 78,
+      "industry": {
+        "primary_code": "86900",
+        "primary_description": "Other professional, scientific and technical activities"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "88776655"}
+      ]
+    },
+    {
+      "bvd_id": "GB77665544",
+      "name": "CLIMATE AI SOLUTIONS LIMITED",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2021-02-10",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Data Centre, 1 Silicon Road",
+        "city": "Reading",
+        "postcode": "RG2 0QT",
+        "country": "GB"
+      },
+      "operating_revenue": 4500000,
+      "operating_revenue_currency": "GBP",
+      "employees": 32,
+      "industry": {
+        "primary_code": "62020",
+        "primary_description": "Information technology consultancy"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "77665544"}
+      ]
+    },
+    {
+      "bvd_id": "GB66554433",
+      "name": "ROBOTICS MANUFACTURING UK LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2017-06-19",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Industrial Estate, Coventry",
+        "city": "Coventry",
+        "postcode": "CV6 5PE",
+        "country": "GB"
+      },
+      "operating_revenue": 28300000,
+      "operating_revenue_currency": "GBP",
+      "employees": 187,
+      "industry": {
+        "primary_code": "29300",
+        "primary_description": "Manufacture of other transport equipment"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "66554433"}
+      ]
+    },
+    {
+      "bvd_id": "GB55443321",
+      "name": "SUPPLY CHAIN OPTIMIZATION LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2019-09-05",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Logistics Hub, Birmingham",
+        "city": "Birmingham",
+        "postcode": "B42 1TH",
+        "country": "GB"
+      },
+      "operating_revenue": 11400000,
+      "operating_revenue_currency": "GBP",
+      "employees": 59,
+      "industry": {
+        "primary_code": "38320",
+        "primary_description": "Treatment and disposal of other waste"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "55443321"}
+      ]
+    },
+    {
+      "bvd_id": "GB44332210",
+      "name": "QUANTUM COMPUTING VENTURES",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2020-01-15",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Technology Quarter",
+        "city": "Leeds",
+        "postcode": "LS2 7EQ",
+        "country": "GB"
+      },
+      "operating_revenue": 2800000,
+      "operating_revenue_currency": "GBP",
+      "employees": 24,
+      "industry": {
+        "primary_code": "62020",
+        "primary_description": "Information technology consultancy"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "44332210"}
+      ]
+    },
+    {
+      "bvd_id": "GB33221101",
+      "name": "AGRITECH INNOVATIONS CORP",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2018-04-12",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Agricultural Research Park",
+        "city": "Norwich",
+        "postcode": "NR4 7GU",
+        "country": "GB"
+      },
+      "operating_revenue": 6700000,
+      "operating_revenue_currency": "GBP",
+      "employees": 45,
+      "industry": {
+        "primary_code": "01600",
+        "primary_description": "Support activities to agriculture"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "33221101"}
+      ]
+    },
+    {
+      "bvd_id": "GB22110098",
+      "name": "FINTECH OPERATIONS LTD",
+      "country": "GB",
+      "status": "Active",
+      "incorporation_date": "2020-02-28",
+      "company_type": "Private limited with share capital",
+      "registered_address": {
+        "line1": "Canary Wharf Finance Centre",
+        "city": "London",
+        "postcode": "E14 5LB",
+        "country": "GB"
+      },
+      "operating_revenue": 6100000,
+      "operating_revenue_currency": "GBP",
+      "employees": 34,
+      "industry": {
+        "primary_code": "64190",
+        "primary_description": "Other monetary intermediation"
+      },
+      "national_ids": [
+        {"type": "Companies House", "value": "22110098"}
       ]
     }
   ]

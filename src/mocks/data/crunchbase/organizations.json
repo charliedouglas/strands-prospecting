@@ -82,5 +82,397 @@
         "value_usd": 35280000
       }
     }
+  },
+  "medtech-solutions": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-44332",
+        "value": "MedTech Solutions Europe",
+        "permalink": "medtech-solutions"
+      },
+      "short_description": "Advanced medical device software and diagnostics",
+      "founded_on": "2017-05-12",
+      "num_employees_enum": "c_00051_00100",
+      "website": {"value": "https://medtechsolutions.eu"},
+      "linkedin": {"value": "https://linkedin.com/company/medtech-solutions-europe"},
+      "location_identifiers": [
+        {"value": "Cambridge", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Medical Devices"},
+        {"value": "Healthcare IT"},
+        {"value": "Diagnostics"}
+      ],
+      "funding_total": {
+        "value": 58000000,
+        "currency": "GBP",
+        "value_usd": 73080000
+      }
+    }
+  },
+  "edtech-global": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-33221",
+        "value": "EdTech Global",
+        "permalink": "edtech-global"
+      },
+      "short_description": "Global online education platform with AI-powered learning",
+      "founded_on": "2019-01-10",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://edtechglobal.io"},
+      "linkedin": {"value": "https://linkedin.com/company/edtech-global"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "EdTech"},
+        {"value": "Artificial Intelligence"},
+        {"value": "Online Learning"}
+      ],
+      "funding_total": {
+        "value": 15800000,
+        "currency": "GBP",
+        "value_usd": 19908000
+      }
+    }
+  },
+  "cybersecurity-innovations": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-00998",
+        "value": "Cybersecurity Innovations",
+        "permalink": "cybersecurity-innovations"
+      },
+      "short_description": "Enterprise cybersecurity platform with threat detection",
+      "founded_on": "2018-08-05",
+      "num_employees_enum": "c_00051_00100",
+      "website": {"value": "https://cybersecurityinnovations.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/cybersecurity-innovations"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Cybersecurity"},
+        {"value": "Enterprise Software"},
+        {"value": "Threat Detection"}
+      ],
+      "funding_total": {
+        "value": 42000000,
+        "currency": "GBP",
+        "value_usd": 52920000
+      }
+    }
+  },
+  "healthtech-provider": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-88776",
+        "value": "HealthTech Provider Systems",
+        "permalink": "healthtech-provider"
+      },
+      "short_description": "Digital health platform for patient management and telemedicine",
+      "founded_on": "2019-03-20",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://healthtechprovider.com"},
+      "linkedin": {"value": "https://linkedin.com/company/healthtech-provider"},
+      "location_identifiers": [
+        {"value": "Edinburgh", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "HealthTech"},
+        {"value": "Telemedicine"},
+        {"value": "Patient Management"}
+      ],
+      "funding_total": {
+        "value": 28500000,
+        "currency": "GBP",
+        "value_usd": 35910000
+      }
+    }
+  },
+  "robotics-manufacturing": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-66554",
+        "value": "Robotics Manufacturing UK",
+        "permalink": "robotics-manufacturing"
+      },
+      "short_description": "Advanced robotics and automation for industrial manufacturing",
+      "founded_on": "2016-11-15",
+      "num_employees_enum": "c_00051_00100",
+      "website": {"value": "https://roboticsmanufacturinguk.com"},
+      "linkedin": {"value": "https://linkedin.com/company/robotics-manufacturing-uk"},
+      "location_identifiers": [
+        {"value": "Bristol", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Robotics"},
+        {"value": "Industrial Automation"},
+        {"value": "Manufacturing"}
+      ],
+      "funding_total": {
+        "value": 57000000,
+        "currency": "GBP",
+        "value_usd": 71820000
+      }
+    }
+  },
+  "quantum-computing": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-99887",
+        "value": "Quantum Computing Ventures",
+        "permalink": "quantum-computing"
+      },
+      "short_description": "Quantum computing hardware and algorithms for enterprise",
+      "founded_on": "2019-09-01",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://quantumcomputingventures.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/quantum-computing-ventures"},
+      "location_identifiers": [
+        {"value": "Oxford", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Quantum Computing"},
+        {"value": "Hardware"},
+        {"value": "Enterprise Software"}
+      ],
+      "funding_total": {
+        "value": 9300000,
+        "currency": "GBP",
+        "value_usd": 11718000
+      }
+    }
+  },
+  "agritech-innovations": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-77443",
+        "value": "AgriTech Innovations",
+        "permalink": "agritech-innovations"
+      },
+      "short_description": "Precision agriculture technology and data analytics",
+      "founded_on": "2017-04-18",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://agritechinnovations.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/agritech-innovations"},
+      "location_identifiers": [
+        {"value": "Cambridge", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "AgriTech"},
+        {"value": "Data Analytics"},
+        {"value": "Agriculture"}
+      ],
+      "funding_total": {
+        "value": 16800000,
+        "currency": "GBP",
+        "value_usd": 21168000
+      }
+    }
+  },
+  "sustainable-packaging": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-55443",
+        "value": "Sustainable Packaging Innovations",
+        "permalink": "sustainable-packaging"
+      },
+      "short_description": "Biodegradable and sustainable packaging solutions",
+      "founded_on": "2018-07-22",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://sustainablepackaginginnovations.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/sustainable-packaging-innovations"},
+      "location_identifiers": [
+        {"value": "Leeds", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Sustainability"},
+        {"value": "Packaging"},
+        {"value": "Materials"}
+      ],
+      "funding_total": {
+        "value": 5500000,
+        "currency": "GBP",
+        "value_usd": 6930000
+      }
+    }
+  },
+  "climate-ai": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-77665",
+        "value": "Climate AI Solutions",
+        "permalink": "climate-ai"
+      },
+      "short_description": "AI-powered climate risk assessment and mitigation",
+      "founded_on": "2020-02-14",
+      "num_employees_enum": "c_00001_00010",
+      "website": {"value": "https://climateaisolutions.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/climate-ai-solutions"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Climate Tech"},
+        {"value": "Artificial Intelligence"},
+        {"value": "Risk Assessment"}
+      ],
+      "funding_total": {
+        "value": 6600000,
+        "currency": "GBP",
+        "value_usd": 8316000
+      }
+    }
+  },
+  "supply-chain-optimization": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-88332",
+        "value": "Supply Chain Optimization",
+        "permalink": "supply-chain-optimization"
+      },
+      "short_description": "AI-powered supply chain visibility and optimization",
+      "founded_on": "2018-10-05",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://supplychainoptimization.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/supply-chain-optimization"},
+      "location_identifiers": [
+        {"value": "Birmingham", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Supply Chain"},
+        {"value": "Logistics"},
+        {"value": "AI"}
+      ],
+      "funding_total": {
+        "value": 7100000,
+        "currency": "GBP",
+        "value_usd": 8946000
+      }
+    }
+  },
+  "foodtech-platforms": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-22110",
+        "value": "FoodTech Platforms",
+        "permalink": "foodtech-platforms"
+      },
+      "short_description": "Cloud platform for restaurant operations and delivery management",
+      "founded_on": "2017-02-08",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://foodtechplatforms.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/foodtech-platforms"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "FoodTech"},
+        {"value": "SaaS"},
+        {"value": "Restaurant Management"}
+      ],
+      "funding_total": {
+        "value": 10600000,
+        "currency": "GBP",
+        "value_usd": 13356000
+      }
+    }
+  },
+  "fintech-operations": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-11222",
+        "value": "FinTech Operations",
+        "permalink": "fintech-operations"
+      },
+      "short_description": "Operational infrastructure for fintech companies",
+      "founded_on": "2019-07-15",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://fintechoperations.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/fintech-operations"},
+      "location_identifiers": [
+        {"value": "London", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "FinTech"},
+        {"value": "Infrastructure"},
+        {"value": "Operations"}
+      ],
+      "funding_total": {
+        "value": 19000000,
+        "currency": "GBP",
+        "value_usd": 23940000
+      }
+    }
+  },
+  "cleantech-materials": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-11009",
+        "value": "CleanTech Materials",
+        "permalink": "cleantech-materials"
+      },
+      "short_description": "Advanced materials for clean energy and battery storage",
+      "founded_on": "2016-09-12",
+      "num_employees_enum": "c_00011_00050",
+      "website": {"value": "https://cleantechmaterials.co.uk"},
+      "linkedin": {"value": "https://linkedin.com/company/cleantech-materials"},
+      "location_identifiers": [
+        {"value": "Sheffield", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "CleanTech"},
+        {"value": "Materials Science"},
+        {"value": "Energy Storage"}
+      ],
+      "funding_total": {
+        "value": 10700000,
+        "currency": "GBP",
+        "value_usd": 13482000
+      }
+    }
+  },
+  "nextgen-biotech": {
+    "properties": {
+      "identifier": {
+        "uuid": "org-uuid-99001",
+        "value": "NextGen Biotech PLC",
+        "permalink": "nextgen-biotech"
+      },
+      "short_description": "Gene therapy and precision medicine for rare diseases",
+      "founded_on": "2015-12-01",
+      "num_employees_enum": "c_00101_00250",
+      "website": {"value": "https://nextgenbiotech.io"},
+      "linkedin": {"value": "https://linkedin.com/company/nextgen-biotech"},
+      "location_identifiers": [
+        {"value": "Cambridge", "location_type": "city"},
+        {"value": "United Kingdom", "location_type": "country"}
+      ],
+      "categories": [
+        {"value": "Biotechnology"},
+        {"value": "Gene Therapy"},
+        {"value": "Healthcare"}
+      ],
+      "funding_total": {
+        "value": 145000000,
+        "currency": "GBP",
+        "value_usd": 182700000
+      }
+    }
   }
 }

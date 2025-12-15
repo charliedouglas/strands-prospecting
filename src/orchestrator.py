@@ -21,6 +21,7 @@ from src.agents.planner import PlannerAgent
 from src.agents.summarizer import SummarizerAgent
 from src.agents.executor import ExecutorAgent
 from src.agents.sufficiency import SufficiencyChecker
+from src.agents.reporter import ReportGenerator
 from src.approval_handler import ApprovalHandler
 from src.config import Settings
 
@@ -59,7 +60,7 @@ class ProspectingOrchestrator:
         self.summarizer = SummarizerAgent(settings)
         self.executor = ExecutorAgent(settings)
         self.sufficiency_checker = SufficiencyChecker(settings)
-        # TODO: Add reporter when implemented
+        self.reporter = ReportGenerator(settings)
 
         logger.info("Prospecting orchestrator initialized")
 
@@ -137,7 +138,22 @@ class ProspectingOrchestrator:
                     logger.info("Results are sufficient - filtering clients and preparing output")
                     filtered_results = self.sufficiency_checker.filter_existing_clients(execution_results)
 
-                    # TODO: Generate report
+                    # Generate report
+                    logger.info("Generating prospecting report")
+                    try:
+                        report = await self.reporter.generate_report(filtered_results, query)
+                        report_data = {
+                            "query_summary": report.query_summary,
+                            "generated_at": report.generated_at.isoformat(),
+                            "sources_used": report.sources_used,
+                            "markdown_content": report.markdown_content,
+                            "companies_count": report.companies_count,
+                            "individuals_count": report.individuals_count,
+                        }
+                        logger.info(f"Report generated: {len(report.markdown_content)} chars")
+                    except Exception as e:
+                        logger.warning(f"Report generation failed: {e}")
+                        report_data = None
 
                     return {
                         "status": "sufficient",
@@ -150,6 +166,7 @@ class ProspectingOrchestrator:
                             "reasoning": sufficiency.reasoning,
                             "gaps": sufficiency.gaps
                         },
+                        "report": report_data,
                         "summary": {
                             "steps_executed": len(filtered_results.results),
                             "steps_succeeded": sum(1 for r in filtered_results.results if r.success),

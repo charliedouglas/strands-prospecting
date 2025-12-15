@@ -1,33 +1,311 @@
 {
-  "123456789": {
-    "organization": {
+  "total_count": 17,
+  "companies": [
+    {
       "duns": "123456789",
-      "primaryName": "ACME TECHNOLOGIES LTD",
-      "dunsControlStatus": {
-        "operatingStatus": {"description": "Active"}
+      "name": "ACME TECHNOLOGIES LTD",
+      "status": "Active",
+      "revenue": 15000000,
+      "revenue_currency": "GBP",
+      "employees": 85,
+      "founding_year": 2018,
+      "industry": "Software Development",
+      "failure_score": {
+        "value": 15,
+        "risk_level": "Low"
       },
-      "startDate": "2018-03-15",
-      "legalForm": {"description": "Private Limited Company"},
-      "registrationNumbers": [
-        {"registrationNumber": "12345678", "typeDnBCode": 1354, "typeDescription": "UK Company Registration Number"}
-      ],
-      "primaryAddress": {
-        "streetAddress": {"line1": "123 Tech Park"},
-        "addressLocality": {"name": "London"},
-        "postalCode": "EC1A 1BB",
-        "addressCountry": {"isoAlpha2Code": "GB"}
+      "delinquency_score": {
+        "value": 10,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "987654321",
+      "name": "FINTECH INNOVATIONS LTD",
+      "status": "Active",
+      "revenue": 8500000,
+      "revenue_currency": "GBP",
+      "employees": 42,
+      "founding_year": 2019,
+      "industry": "Financial Services",
+      "failure_score": {
+        "value": 18,
+        "risk_level": "Low"
       },
-      "numberOfEmployees": [
-        {"value": 85, "informationScopeDescription": "Individual", "reliabilityDescription": "Actual"}
-      ],
-      "financials": [
-        {
-          "yearlyRevenue": [
-            {"value": 15000000, "currency": "GBP", "reliabilityDescription": "Actual"}
-          ],
-          "financialStatementToDate": "2024-03-31"
-        }
-      ]
+      "delinquency_score": {
+        "value": 12,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "246813579",
+      "name": "GREEN ENERGY SOLUTIONS LTD",
+      "status": "Active",
+      "revenue": 12000000,
+      "revenue_currency": "GBP",
+      "employees": 67,
+      "founding_year": 2020,
+      "industry": "Renewable Energy",
+      "failure_score": {
+        "value": 22,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 15,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "159357486",
+      "name": "NEXTGEN BIOTECH PLC",
+      "status": "Active",
+      "revenue": 45000000,
+      "revenue_currency": "GBP",
+      "employees": 234,
+      "founding_year": 2015,
+      "industry": "Biotechnology",
+      "failure_score": {
+        "value": 8,
+        "risk_level": "Very Low"
+      },
+      "delinquency_score": {
+        "value": 5,
+        "risk_level": "Very Low"
+      }
+    },
+    {
+      "duns": "369258147",
+      "name": "SUSTAINABLE PACKAGING INNOVATIONS",
+      "status": "Active",
+      "revenue": 5200000,
+      "revenue_currency": "GBP",
+      "employees": 28,
+      "founding_year": 2019,
+      "industry": "Packaging",
+      "failure_score": {
+        "value": 25,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 18,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "147258369",
+      "name": "MEDTECH SOLUTIONS EUROPE",
+      "status": "Active",
+      "revenue": 22500000,
+      "revenue_currency": "GBP",
+      "employees": 156,
+      "founding_year": 2017,
+      "industry": "Medical Devices",
+      "failure_score": {
+        "value": 12,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 8,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "258147369",
+      "name": "CYBERSECURITY INNOVATIONS LTD",
+      "status": "Active",
+      "revenue": 18500000,
+      "revenue_currency": "GBP",
+      "employees": 92,
+      "founding_year": 2016,
+      "industry": "Software/Cybersecurity",
+      "failure_score": {
+        "value": 16,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 11,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "357146852",
+      "name": "ROBOTICS MANUFACTURING UK LTD",
+      "status": "Active",
+      "revenue": 28300000,
+      "revenue_currency": "GBP",
+      "employees": 187,
+      "founding_year": 2017,
+      "industry": "Manufacturing/Robotics",
+      "failure_score": {
+        "value": 19,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 14,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "456789123",
+      "name": "HEALTHTECH PROVIDER SYSTEMS",
+      "status": "Active",
+      "revenue": 14200000,
+      "revenue_currency": "GBP",
+      "employees": 78,
+      "founding_year": 2018,
+      "industry": "Healthcare IT",
+      "failure_score": {
+        "value": 14,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 9,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "564789231",
+      "name": "CLIMATE AI SOLUTIONS LIMITED",
+      "status": "Active",
+      "revenue": 4500000,
+      "revenue_currency": "GBP",
+      "employees": 32,
+      "founding_year": 2021,
+      "industry": "Climate Tech",
+      "failure_score": {
+        "value": 28,
+        "risk_level": "Moderate"
+      },
+      "delinquency_score": {
+        "value": 20,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "672345891",
+      "name": "AGRITECH INNOVATIONS CORP",
+      "status": "Active",
+      "revenue": 6700000,
+      "revenue_currency": "GBP",
+      "employees": 45,
+      "founding_year": 2018,
+      "industry": "Agriculture Technology",
+      "failure_score": {
+        "value": 23,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 16,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "789123456",
+      "name": "CLEANTECH MATERIALS CORP",
+      "status": "Active",
+      "revenue": 9600000,
+      "revenue_currency": "GBP",
+      "employees": 68,
+      "founding_year": 2019,
+      "industry": "Materials Science",
+      "failure_score": {
+        "value": 20,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 13,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "555444333",
+      "name": "EDTECH GLOBAL LIMITED",
+      "status": "Active",
+      "revenue": 3400000,
+      "revenue_currency": "GBP",
+      "employees": 48,
+      "founding_year": 2019,
+      "industry": "Education Technology",
+      "failure_score": {
+        "value": 26,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 19,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "666333222",
+      "name": "SUPPLY CHAIN OPTIMIZATION",
+      "status": "Active",
+      "revenue": 5900000,
+      "revenue_currency": "GBP",
+      "employees": 59,
+      "founding_year": 2018,
+      "industry": "Logistics & Supply Chain",
+      "failure_score": {
+        "value": 24,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 17,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "777666555",
+      "name": "FOODTECH PLATFORMS LIMITED",
+      "status": "Active",
+      "revenue": 7800000,
+      "revenue_currency": "GBP",
+      "employees": 37,
+      "founding_year": 2017,
+      "industry": "Food Technology",
+      "failure_score": {
+        "value": 27,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 20,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "888777666",
+      "name": "FINTECH OPERATIONS LIMITED",
+      "status": "Active",
+      "revenue": 6100000,
+      "revenue_currency": "GBP",
+      "employees": 34,
+      "founding_year": 2019,
+      "industry": "Financial Services",
+      "failure_score": {
+        "value": 21,
+        "risk_level": "Low"
+      },
+      "delinquency_score": {
+        "value": 15,
+        "risk_level": "Low"
+      }
+    },
+    {
+      "duns": "999888777",
+      "name": "QUANTUM COMPUTING VENTURES",
+      "status": "Active",
+      "revenue": 2800000,
+      "revenue_currency": "GBP",
+      "employees": 42,
+      "founding_year": 2019,
+      "industry": "Quantum Computing",
+      "failure_score": {
+        "value": 29,
+        "risk_level": "Moderate"
+      },
+      "delinquency_score": {
+        "value": 21,
+        "risk_level": "Low"
+      }
     }
-  }
+  ]
 }

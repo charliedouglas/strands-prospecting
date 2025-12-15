@@ -103,7 +103,14 @@ async def main() -> None:
                     if step_result.get('error'):
                         print(f"      Error: {step_result['error']}")
 
-                print(f"\n💡 Results are ready for report generation (when implemented)")
+                # Display report if generated
+                if result.get('report'):
+                    print(f"\n{'=' * 70}")
+                    print("PROSPECTING REPORT")
+                    print(f"{'=' * 70}\n")
+                    print(result['report']['markdown_content'])
+                else:
+                    print(f"\n⚠️  Report generation was not completed")
 
             elif result['status'] == 'insufficient':
                 # Data collection incomplete after retries

@@ -1,11 +1,10 @@
 {
-  "total_count": 1,
+  "total_count": 20,
   "individuals": [
     {
-      "wm_id": "WM-UK-123456",
+      "wm_id": "WM-UK-001",
       "name": "John David Smith",
       "estimated_net_worth": 85000000,
-      "estimated_net_worth_gbp": 68000000,
       "confidence": "High",
       "region": "London",
       "property_portfolio": {
@@ -14,10 +13,13 @@
           {
             "address": "Flat 10, Kensington Gardens",
             "city": "London",
-            "postcode": "W8 4PX",
             "estimated_value": 8500000,
-            "ownership_type": "Freehold",
             "acquired_date": "2019-05-15"
+          },
+          {
+            "address": "The Manor House",
+            "city": "Oxfordshire",
+            "estimated_value": 3500000
           }
         ]
       },
@@ -26,7 +28,6 @@
         "holdings": [
           {
             "company_name": "ACME Technologies Ltd",
-            "company_number": "12345678",
             "shares_held": 6000000,
             "percentage": 60.0,
             "estimated_value": 42000000
@@ -36,9 +37,806 @@
       "directorships": [
         {
           "company_name": "ACME Technologies Ltd",
-          "company_number": "12345678",
           "role": "Director",
           "appointed": "2018-03-15",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-002",
+      "name": "Sarah Elizabeth Johnson",
+      "estimated_net_worth": 65000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 9000000,
+        "properties": [
+          {
+            "address": "Chelsea Apartment",
+            "city": "London",
+            "estimated_value": 6500000,
+            "acquired_date": "2018-09-20"
+          },
+          {
+            "address": "Cotswolds Property",
+            "city": "Gloucestershire",
+            "estimated_value": 2500000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 32000000,
+        "holdings": [
+          {
+            "company_name": "ACME Technologies Ltd",
+            "shares_held": 2000000,
+            "percentage": 20.0,
+            "estimated_value": 18600000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "ACME Technologies Ltd",
+          "role": "Director",
+          "appointed": "2018-03-15",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-003",
+      "name": "Rajesh Kumar Patel",
+      "estimated_net_worth": 72000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 10500000,
+        "properties": [
+          {
+            "address": "Mayfair Residence",
+            "city": "London",
+            "estimated_value": 7000000,
+            "acquired_date": "2020-03-10"
+          },
+          {
+            "address": "Surrey Home",
+            "city": "Surrey",
+            "estimated_value": 3500000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 38000000,
+        "holdings": [
+          {
+            "company_name": "FinTech Innovations Ltd",
+            "shares_held": 3000000,
+            "percentage": 50.0,
+            "estimated_value": 28500000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "FinTech Innovations Ltd",
+          "role": "Director",
+          "appointed": "2019-06-10",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-004",
+      "name": "David Robert Anderson",
+      "estimated_net_worth": 125000000,
+      "confidence": "High",
+      "region": "Cambridge",
+      "property_portfolio": {
+        "total_value": 18000000,
+        "properties": [
+          {
+            "address": "Cambridge Estate",
+            "city": "Cambridge",
+            "estimated_value": 12000000,
+            "acquired_date": "2015-06-01"
+          },
+          {
+            "address": "London Townhouse",
+            "city": "London",
+            "estimated_value": 6000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 65000000,
+        "holdings": [
+          {
+            "company_name": "NextGen Biotech PLC",
+            "shares_held": 4500000,
+            "percentage": 75.0,
+            "estimated_value": 58500000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "NextGen Biotech PLC",
+          "role": "Chairman",
+          "appointed": "2015-09-02",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-005",
+      "name": "Emma Louise Williams",
+      "estimated_net_worth": 55000000,
+      "confidence": "Medium",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 8000000,
+        "properties": [
+          {
+            "address": "Shoreditch Loft",
+            "city": "London",
+            "estimated_value": 5000000,
+            "acquired_date": "2020-02-15"
+          },
+          {
+            "address": "Countryside Cottage",
+            "city": "Sussex",
+            "estimated_value": 3000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 28000000,
+        "holdings": [
+          {
+            "company_name": "FinTech Innovations Ltd",
+            "shares_held": 1000000,
+            "percentage": 16.7,
+            "estimated_value": 7500000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "FinTech Innovations Ltd",
+          "role": "Director",
+          "appointed": "2019-06-10",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-006",
+      "name": "Christopher James Miller",
+      "estimated_net_worth": 42000000,
+      "confidence": "High",
+      "region": "Bristol",
+      "property_portfolio": {
+        "total_value": 6000000,
+        "properties": [
+          {
+            "address": "Bristol City Centre",
+            "city": "Bristol",
+            "estimated_value": 4000000,
+            "acquired_date": "2019-08-10"
+          },
+          {
+            "address": "Devon Retreat",
+            "city": "Devon",
+            "estimated_value": 2000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 22000000,
+        "holdings": [
+          {
+            "company_name": "Sustainable Packaging Innovations",
+            "shares_held": 2000000,
+            "percentage": 50.0,
+            "estimated_value": 18000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Sustainable Packaging Innovations",
+          "role": "Director",
+          "appointed": "2019-04-15",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-007",
+      "name": "Michael Wei Chen",
+      "estimated_net_worth": 38000000,
+      "confidence": "Medium",
+      "region": "Manchester",
+      "property_portfolio": {
+        "total_value": 5500000,
+        "properties": [
+          {
+            "address": "Manchester Penthouse",
+            "city": "Manchester",
+            "estimated_value": 3500000,
+            "acquired_date": "2021-01-20"
+          },
+          {
+            "address": "Peak District Home",
+            "city": "Derbyshire",
+            "estimated_value": 2000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 18000000,
+        "holdings": [
+          {
+            "company_name": "Green Energy Solutions Ltd",
+            "shares_held": 1000000,
+            "percentage": 50.0,
+            "estimated_value": 15000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Green Energy Solutions Ltd",
+          "role": "Director",
+          "appointed": "2020-01-20",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-008",
+      "name": "Thomas Edward Lee",
+      "estimated_net_worth": 95000000,
+      "confidence": "High",
+      "region": "Oxford",
+      "property_portfolio": {
+        "total_value": 14000000,
+        "properties": [
+          {
+            "address": "Oxford Manor",
+            "city": "Oxford",
+            "estimated_value": 9000000,
+            "acquired_date": "2017-06-01"
+          },
+          {
+            "address": "Hampstead Home",
+            "city": "London",
+            "estimated_value": 5000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 48000000,
+        "holdings": [
+          {
+            "company_name": "MedTech Solutions Europe",
+            "shares_held": 3200000,
+            "percentage": 75.0,
+            "estimated_value": 44800000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "MedTech Solutions Europe",
+          "role": "Director",
+          "appointed": "2017-01-20",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-009",
+      "name": "Nicholas James Robinson",
+      "estimated_net_worth": 78000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 11500000,
+        "properties": [
+          {
+            "address": "Belgravia Residence",
+            "city": "London",
+            "estimated_value": 8000000,
+            "acquired_date": "2016-09-15"
+          },
+          {
+            "address": "Berkshire Estate",
+            "city": "Berkshire",
+            "estimated_value": 3500000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 36000000,
+        "holdings": [
+          {
+            "company_name": "Cybersecurity Innovations Ltd",
+            "shares_held": 2500000,
+            "percentage": 60.0,
+            "estimated_value": 32500000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Cybersecurity Innovations Ltd",
+          "role": "Director",
+          "appointed": "2016-05-14",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-010",
+      "name": "Jonathan Paul White",
+      "estimated_net_worth": 28000000,
+      "confidence": "Medium",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 4200000,
+        "properties": [
+          {
+            "address": "East London Flat",
+            "city": "London",
+            "estimated_value": 2800000,
+            "acquired_date": "2021-04-20"
+          },
+          {
+            "address": "Weekend Cottage",
+            "city": "Kent",
+            "estimated_value": 1400000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 14000000,
+        "holdings": [
+          {
+            "company_name": "EdTech Global Ltd",
+            "shares_held": 800000,
+            "percentage": 50.0,
+            "estimated_value": 12000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "EdTech Global Ltd",
+          "role": "Director",
+          "appointed": "2020-07-08",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-011",
+      "name": "Isabella Maria Garcia",
+      "estimated_net_worth": 32000000,
+      "confidence": "Medium",
+      "region": "Bristol",
+      "property_portfolio": {
+        "total_value": 5000000,
+        "properties": [
+          {
+            "address": "Bristol House",
+            "city": "Bristol",
+            "estimated_value": 3200000,
+            "acquired_date": "2019-11-05"
+          },
+          {
+            "address": "Somerset Property",
+            "city": "Somerset",
+            "estimated_value": 1800000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 15000000,
+        "holdings": [
+          {
+            "company_name": "Sustainable Packaging Innovations",
+            "shares_held": 600000,
+            "percentage": 15.0,
+            "estimated_value": 5400000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Sustainable Packaging Innovations",
+          "role": "Director",
+          "appointed": "2019-04-15",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-012",
+      "name": "Amy Victoria Jones",
+      "estimated_net_worth": 25000000,
+      "confidence": "Medium",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 3800000,
+        "properties": [
+          {
+            "address": "North London Apartment",
+            "city": "London",
+            "estimated_value": 2500000,
+            "acquired_date": "2021-09-10"
+          },
+          {
+            "address": "Hertfordshire Home",
+            "city": "Hertfordshire",
+            "estimated_value": 1300000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 12000000,
+        "holdings": [
+          {
+            "company_name": "EdTech Global Ltd",
+            "shares_held": 800000,
+            "percentage": 50.0,
+            "estimated_value": 12000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "EdTech Global Ltd",
+          "role": "Director",
+          "appointed": "2020-07-08",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-013",
+      "name": "Daniel Joseph Cooper",
+      "estimated_net_worth": 48000000,
+      "confidence": "High",
+      "region": "Birmingham",
+      "property_portfolio": {
+        "total_value": 7200000,
+        "properties": [
+          {
+            "address": "Birmingham City Centre",
+            "city": "Birmingham",
+            "estimated_value": 4800000,
+            "acquired_date": "2018-10-01"
+          },
+          {
+            "address": "Worcestershire Estate",
+            "city": "Worcestershire",
+            "estimated_value": 2400000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 24000000,
+        "holdings": [
+          {
+            "company_name": "Supply Chain Optimization",
+            "shares_held": 1500000,
+            "percentage": 55.0,
+            "estimated_value": 22000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Supply Chain Optimization",
+          "role": "Chief Executive Officer",
+          "appointed": "2018-10-05",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-014",
+      "name": "Oliver Robert Hughes",
+      "estimated_net_worth": 35000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 5300000,
+        "properties": [
+          {
+            "address": "Canary Wharf Apartment",
+            "city": "London",
+            "estimated_value": 3500000,
+            "acquired_date": "2017-11-01"
+          },
+          {
+            "address": "Suffolk Home",
+            "city": "Suffolk",
+            "estimated_value": 1800000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 18000000,
+        "holdings": [
+          {
+            "company_name": "FoodTech Platforms",
+            "shares_held": 1200000,
+            "percentage": 60.0,
+            "estimated_value": 17000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "FoodTech Platforms",
+          "role": "Chief Executive Officer",
+          "appointed": "2017-02-08",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-015",
+      "name": "Charlotte Margaret Evans",
+      "estimated_net_worth": 52000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 8000000,
+        "properties": [
+          {
+            "address": "Knightsbridge Townhouse",
+            "city": "London",
+            "estimated_value": 5500000,
+            "acquired_date": "2019-08-01"
+          },
+          {
+            "address": "Surrey Estate",
+            "city": "Surrey",
+            "estimated_value": 2500000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 26000000,
+        "holdings": [
+          {
+            "company_name": "FinTech Operations",
+            "shares_held": 1600000,
+            "percentage": 70.0,
+            "estimated_value": 25000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "FinTech Operations",
+          "role": "Chief Executive Officer",
+          "appointed": "2019-07-15",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-016",
+      "name": "Prof. Alexander Wright",
+      "estimated_net_worth": 58000000,
+      "confidence": "High",
+      "region": "Oxford",
+      "property_portfolio": {
+        "total_value": 9000000,
+        "properties": [
+          {
+            "address": "Oxford University Area",
+            "city": "Oxford",
+            "estimated_value": 6500000,
+            "acquired_date": "2015-06-01"
+          },
+          {
+            "address": "Cotswolds Manor",
+            "city": "Oxfordshire",
+            "estimated_value": 2500000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 30000000,
+        "holdings": [
+          {
+            "company_name": "Quantum Computing Ventures",
+            "shares_held": 2000000,
+            "percentage": 65.0,
+            "estimated_value": 29000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Quantum Computing Ventures",
+          "role": "Chief Executive Officer",
+          "appointed": "2019-09-01",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-017",
+      "name": "Robert William Davies",
+      "estimated_net_worth": 72000000,
+      "confidence": "High",
+      "region": "Bristol",
+      "property_portfolio": {
+        "total_value": 11000000,
+        "properties": [
+          {
+            "address": "Bristol Waterfront",
+            "city": "Bristol",
+            "estimated_value": 7500000,
+            "acquired_date": "2016-08-01"
+          },
+          {
+            "address": "Gloucestershire Manor",
+            "city": "Gloucestershire",
+            "estimated_value": 3500000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 38000000,
+        "holdings": [
+          {
+            "company_name": "Robotics Manufacturing UK",
+            "shares_held": 2500000,
+            "percentage": 60.0,
+            "estimated_value": 37000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Robotics Manufacturing UK",
+          "role": "Chief Executive Officer",
+          "appointed": "2016-11-15",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-018",
+      "name": "Dr. Marcus Edward Johnson",
+      "estimated_net_worth": 41000000,
+      "confidence": "High",
+      "region": "London",
+      "property_portfolio": {
+        "total_value": 6200000,
+        "properties": [
+          {
+            "address": "Islington Home",
+            "city": "London",
+            "estimated_value": 4200000,
+            "acquired_date": "2020-07-15"
+          },
+          {
+            "address": "Essex Property",
+            "city": "Essex",
+            "estimated_value": 2000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 20000000,
+        "holdings": [
+          {
+            "company_name": "Climate AI Solutions",
+            "shares_held": 1200000,
+            "percentage": 80.0,
+            "estimated_value": 19500000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "Climate AI Solutions",
+          "role": "Chief Executive Officer",
+          "appointed": "2020-02-14",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-019",
+      "name": "Henry Michael Walker",
+      "estimated_net_worth": 44000000,
+      "confidence": "High",
+      "region": "Cambridge",
+      "property_portfolio": {
+        "total_value": 6800000,
+        "properties": [
+          {
+            "address": "Cambridge Town House",
+            "city": "Cambridge",
+            "estimated_value": 4800000,
+            "acquired_date": "2017-09-01"
+          },
+          {
+            "address": "Norfolk Farm",
+            "city": "Norfolk",
+            "estimated_value": 2000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 22000000,
+        "holdings": [
+          {
+            "company_name": "AgriTech Innovations",
+            "shares_held": 1400000,
+            "percentage": 70.0,
+            "estimated_value": 21000000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "AgriTech Innovations",
+          "role": "Chief Executive Officer",
+          "appointed": "2017-04-18",
+          "status": "Active"
+        }
+      ]
+    },
+    {
+      "wm_id": "WM-UK-020",
+      "name": "Dr. Jonathan James Wright",
+      "estimated_net_worth": 39000000,
+      "confidence": "High",
+      "region": "Sheffield",
+      "property_portfolio": {
+        "total_value": 5900000,
+        "properties": [
+          {
+            "address": "Sheffield City Centre",
+            "city": "Sheffield",
+            "estimated_value": 3900000,
+            "acquired_date": "2016-10-01"
+          },
+          {
+            "address": "Peak District Home",
+            "city": "Derbyshire",
+            "estimated_value": 2000000
+          }
+        ]
+      },
+      "shareholdings": {
+        "total_value": 19000000,
+        "holdings": [
+          {
+            "company_name": "CleanTech Materials",
+            "shares_held": 1200000,
+            "percentage": 75.0,
+            "estimated_value": 18500000
+          }
+        ]
+      },
+      "directorships": [
+        {
+          "company_name": "CleanTech Materials",
+          "role": "Chief Executive Officer",
+          "appointed": "2016-09-12",
           "status": "Active"
         }
       ]

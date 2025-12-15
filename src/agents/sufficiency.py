@@ -27,6 +27,12 @@ logger = logging.getLogger(__name__)
 # Sufficiency checker system prompt from CLAUDE.md
 SUFFICIENCY_CHECKER_SYSTEM_PROMPT = """You are a quality assurance agent for prospecting research. Your job is to evaluate whether the gathered data adequately answers the original query.
 
+CRITICAL INSTRUCTION: You MUST only reference information that is EXPLICITLY provided in the data.
+- Do NOT invent, guess, or estimate any numbers, company names, or match counts
+- Do NOT say things like "10 companies were found" unless you can list all 10 by name
+- When asking for clarification, use the ACTUAL company/individual names from the data
+- If data shows 1 company named "ACME Technologies", say "1 company" not "multiple companies"
+
 Evaluate:
 1. Does the data answer the original question?
 2. Are there critical gaps? (e.g., asked for founders but only got company data)
@@ -74,6 +80,12 @@ CLARIFICATION_NEEDED criteria:
 - Query intent is unclear after seeing initial results
 - Multiple interpretation paths exist and user must choose
 - Results suggest the query needs refinement
+
+When requesting CLARIFICATION_NEEDED:
+- Present the ACTUAL data to help the user decide (show real company/individual names)
+- Do NOT invent match counts - use exact numbers from VERIFIED COUNTS
+- If there's only 1 company, don't claim there are "10 companies" or "multiple matches"
+- List actual options based on real data, not hypothetical scenarios
 
 RETRY_NEEDED criteria:
 - Some steps failed due to transient errors (retryable)
@@ -226,6 +238,8 @@ class SufficiencyChecker:
 
         return f"""Evaluate whether these results adequately answer the original prospecting query.
 
+CRITICAL: You MUST only reference data that is EXPLICITLY shown below. Do NOT invent, estimate, or hallucinate any counts, company names, or details not present in the data below.
+
 Original Query: "{results.original_query}"
 
 Execution Plan Summary:
@@ -233,12 +247,12 @@ Execution Plan Summary:
 - Sources queried: {[s.value for s in results.sources_queried]}
 - Plan reasoning: {results.plan.reasoning}
 
-Results Summary:
 {results_summary}
 
-Companies Found: {len(results.companies)}
-Individuals Found: {len(results.individuals)}
-Total Records: {results.total_records}
+VERIFIED COUNTS (use these exact numbers):
+- Companies extracted: {len(results.companies)}
+- Individuals extracted: {len(results.individuals)}
+- Total raw records: {results.total_records}
 
 Respond with a JSON object matching the SufficiencyResult schema:
 {{
@@ -350,6 +364,8 @@ Respond ONLY with valid JSON matching the SufficiencyResult schema."""
         """
         Create a human-readable summary of results for the prompt.
 
+        Includes actual entity names and data snippets to prevent hallucination.
+
         Args:
             results: Aggregated results to summarize
 
@@ -358,6 +374,8 @@ Respond ONLY with valid JSON matching the SufficiencyResult schema."""
         """
         summary_lines = []
 
+        # Step-by-step execution summary
+        summary_lines.append("=== Step Execution Summary ===")
         for result in results.results:
             status = "SUCCESS" if result.success else "FAILED"
             summary_lines.append(
@@ -366,6 +384,56 @@ Respond ONLY with valid JSON matching the SufficiencyResult schema."""
             )
             if result.error:
                 summary_lines.append(f"  Error: {result.error}")
+
+        # Actual companies found (with names)
+        summary_lines.append("")
+        summary_lines.append("=== Companies Found (ACTUAL DATA) ===")
+        if results.companies:
+            for i, company in enumerate(results.companies, 1):
+                summary_lines.append(
+                    f"  {i}. {company.name} ({company.country or 'Unknown location'})"
+                )
+                if company.industry:
+                    summary_lines.append(f"     Industry: {company.industry}")
+                if company.revenue:
+                    summary_lines.append(f"     Revenue: {company.revenue_currency} {company.revenue:,.0f}")
+                if company.total_funding:
+                    summary_lines.append(f"     Funding: {company.funding_currency} {company.total_funding:,.0f}")
+        else:
+            summary_lines.append("  No companies extracted from results")
+
+        # Actual individuals found (with names)
+        summary_lines.append("")
+        summary_lines.append("=== Individuals Found (ACTUAL DATA) ===")
+        if results.individuals:
+            for i, individual in enumerate(results.individuals, 1):
+                summary_lines.append(
+                    f"  {i}. {individual.name} ({individual.country_of_residence or 'Unknown location'})"
+                )
+                if individual.current_roles:
+                    roles_str = ", ".join(
+                        f"{r.title} at {r.company_name}" for r in individual.current_roles[:2]
+                    )
+                    summary_lines.append(f"     Roles: {roles_str}")
+                if individual.net_worth:
+                    summary_lines.append(
+                        f"     Net Worth: {individual.net_worth_currency} {individual.net_worth:,.0f}"
+                    )
+        else:
+            summary_lines.append("  No individuals extracted from results")
+
+        # Raw data snippet for each source (to ground the evaluation)
+        summary_lines.append("")
+        summary_lines.append("=== Raw Data Snippets (for verification) ===")
+        for result in results.results:
+            if result.success and result.data:
+                summary_lines.append(f"\n{result.source.value} raw data:")
+                # Include a truncated version of the raw data
+                data_str = json.dumps(result.data, indent=2, default=str)
+                # Limit to first 500 chars per source to avoid prompt explosion
+                if len(data_str) > 500:
+                    data_str = data_str[:500] + "... [truncated]"
+                summary_lines.append(data_str)
 
         return "\n".join(summary_lines)
 

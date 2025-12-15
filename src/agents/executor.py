@@ -19,6 +19,7 @@ from src.models import (
     DataSource,
 )
 from src.config import Settings
+from src.agents.entity_extractor import EntityExtractor
 from src.tools import (
     orbis_search_companies,
     orbis_get_directors,
@@ -62,6 +63,7 @@ class ExecutorAgent:
         """
         self.settings = settings or Settings()
         self.tool_map = self._build_tool_map()
+        self.entity_extractor = EntityExtractor()
         logger.info(f"Initialized ExecutorAgent with {len(self.tool_map)} tools")
 
     def _build_tool_map(self) -> dict[tuple[str, str], Callable]:
@@ -165,13 +167,18 @@ class ExecutorAgent:
         # Calculate total time
         total_time_ms = int((time.time() - start_time) * 1000)
 
+        # Extract and deduplicate entities from all results
+        logger.info("Extracting entities from results")
+        companies, individuals = self.entity_extractor.extract_entities(all_results)
+        logger.info(f"Extracted {len(companies)} companies, {len(individuals)} individuals")
+
         # Build aggregated results
         aggregated = AggregatedResults(
             original_query=original_query,
             plan=plan,
             results=all_results,
-            companies=[],  # TODO: Implement deduplication
-            individuals=[],  # TODO: Implement deduplication
+            companies=companies,
+            individuals=individuals,
             total_records=sum(r.record_count for r in all_results),
             sources_queried=list(set(r.source for r in all_results)),
             execution_time_ms=total_time_ms

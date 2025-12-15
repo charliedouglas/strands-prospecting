@@ -18,7 +18,8 @@
     "last_financing_type": "Series B",
     "post_money_valuation": 100000000,
     "executives": [
-      {"person_id": "PB-PER-001", "name": "John Smith", "title": "Chief Executive Officer", "start_date": "2018-03-15"}
+      {"person_id": "PB-PER-001", "name": "John Smith", "title": "Chief Executive Officer", "start_date": "2018-03-15"},
+      {"person_id": "PB-PER-002", "name": "Jane Doe", "title": "Chief Technology Officer", "start_date": "2019-01-10"}
     ]
   },
   "PB-CO-112233": {
@@ -40,7 +41,357 @@
     "last_financing_type": "Series B",
     "post_money_valuation": 70000000,
     "executives": [
-      {"person_id": "PB-PER-003", "name": "Michael Green", "title": "Chief Executive Officer", "start_date": "2020-01-20"}
+      {"person_id": "PB-PER-003", "name": "Michael Green", "title": "Chief Executive Officer", "start_date": "2020-01-20"},
+      {"person_id": "PB-PER-004", "name": "Sarah Williams", "title": "Chief Operating Officer", "start_date": "2020-06-15"}
+    ]
+  },
+  "PB-CO-445566": {
+    "company_id": "PB-CO-445566",
+    "name": "MedTech Solutions Europe",
+    "description": "Advanced medical devices and diagnostic systems for critical care",
+    "primary_industry": "Medical Devices",
+    "primary_sector": "Healthcare",
+    "hq_location": {"city": "Oxford", "country": "United Kingdom"},
+    "website": "https://medtechsolutions.co.uk",
+    "founded_year": 2017,
+    "employee_count": 156,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 112000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-08-22",
+    "last_financing_size": 45000000,
+    "last_financing_type": "Series C",
+    "post_money_valuation": 195000000,
+    "executives": [
+      {"person_id": "PB-PER-010", "name": "Dr. Emma Roberts", "title": "Chief Executive Officer", "start_date": "2017-05-01"},
+      {"person_id": "PB-PER-011", "name": "David Chen", "title": "Chief Medical Officer", "start_date": "2017-09-12"},
+      {"person_id": "PB-PER-012", "name": "Lisa Thompson", "title": "Chief Financial Officer", "start_date": "2019-02-20"}
+    ]
+  },
+  "PB-CO-778899": {
+    "company_id": "PB-CO-778899",
+    "name": "EdTech Global",
+    "description": "AI-powered online learning platform for K-12 and adult education",
+    "primary_industry": "Education Technology",
+    "primary_sector": "Consumer Services",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://edtechglobal.io",
+    "founded_year": 2019,
+    "employee_count": 48,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 6500000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-02-10",
+    "last_financing_size": 6500000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 22000000,
+    "executives": [
+      {"person_id": "PB-PER-020", "name": "Rachel Foster", "title": "Chief Executive Officer", "start_date": "2019-04-15"},
+      {"person_id": "PB-PER-021", "name": "James Mitchell", "title": "Chief Product Officer", "start_date": "2019-07-01"}
+    ]
+  },
+  "PB-CO-334455": {
+    "company_id": "PB-CO-334455",
+    "name": "Cybersecurity Innovations",
+    "description": "Next-generation threat detection and response platform for enterprises",
+    "primary_industry": "Security Software",
+    "primary_sector": "Information Technology",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://cybersecinnov.io",
+    "founded_year": 2018,
+    "employee_count": 92,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 40000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-05-30",
+    "last_financing_size": 28000000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 90000000,
+    "executives": [
+      {"person_id": "PB-PER-030", "name": "Andrew Clark", "title": "Chief Executive Officer", "start_date": "2018-06-01"},
+      {"person_id": "PB-PER-031", "name": "Dr. Priya Sharma", "title": "Chief Technology Officer", "start_date": "2018-08-15"},
+      {"person_id": "PB-PER-032", "name": "Tom Harrison", "title": "Chief Revenue Officer", "start_date": "2020-11-10"}
+    ]
+  },
+  "PB-CO-667788": {
+    "company_id": "PB-CO-667788",
+    "name": "HealthTech Provider Systems",
+    "description": "Digital health records and patient management systems for NHS trusts",
+    "primary_industry": "Health IT",
+    "primary_sector": "Healthcare",
+    "hq_location": {"city": "Edinburgh", "country": "United Kingdom"},
+    "website": "https://healthtechprovider.co.uk",
+    "founded_year": 2019,
+    "employee_count": 78,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 26500000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-09-12",
+    "last_financing_size": 19000000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 57000000,
+    "executives": [
+      {"person_id": "PB-PER-040", "name": "Dr. Fiona MacLeod", "title": "Chief Executive Officer", "start_date": "2019-03-01"},
+      {"person_id": "PB-PER-041", "name": "Graham Stewart", "title": "Chief Technology Officer", "start_date": "2019-05-20"}
+    ]
+  },
+  "PB-CO-223344": {
+    "company_id": "PB-CO-223344",
+    "name": "Robotics Manufacturing UK",
+    "description": "Industrial automation and collaborative robotics for smart manufacturing",
+    "primary_industry": "Robotics & Drones",
+    "primary_sector": "Industrial Technology",
+    "hq_location": {"city": "Coventry", "country": "United Kingdom"},
+    "website": "https://roboticsuk.com",
+    "founded_year": 2016,
+    "employee_count": 187,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 53000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-07-14",
+    "last_financing_size": 38000000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 120000000,
+    "executives": [
+      {"person_id": "PB-PER-050", "name": "Robert Davies", "title": "Chief Executive Officer", "start_date": "2016-08-01"},
+      {"person_id": "PB-PER-051", "name": "Dr. Sophie Zhang", "title": "Chief Technology Officer", "start_date": "2017-01-15"},
+      {"person_id": "PB-PER-052", "name": "Mark Reynolds", "title": "Chief Operating Officer", "start_date": "2018-06-01"}
+    ]
+  },
+  "PB-CO-556677": {
+    "company_id": "PB-CO-556677",
+    "name": "Quantum Computing Ventures",
+    "description": "Quantum computing hardware and software for enterprise applications",
+    "primary_industry": "Quantum Computing",
+    "primary_sector": "Information Technology",
+    "hq_location": {"city": "Oxford", "country": "United Kingdom"},
+    "website": "https://quantumventures.io",
+    "founded_year": 2019,
+    "employee_count": 42,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 5500000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-01-16",
+    "last_financing_size": 5500000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 18000000,
+    "executives": [
+      {"person_id": "PB-PER-060", "name": "Prof. Alexander Wright", "title": "Chief Executive Officer", "start_date": "2019-06-01"},
+      {"person_id": "PB-PER-061", "name": "Dr. Nina Patel", "title": "Chief Scientific Officer", "start_date": "2019-06-01"}
+    ]
+  },
+  "PB-CO-889900": {
+    "company_id": "PB-CO-889900",
+    "name": "AgriTech Innovations",
+    "description": "AI-powered precision agriculture and farm management software",
+    "primary_industry": "Agriculture Technology",
+    "primary_sector": "Agriculture",
+    "hq_location": {"city": "Cambridge", "country": "United Kingdom"},
+    "website": "https://agritechinnovations.io",
+    "founded_year": 2017,
+    "employee_count": 45,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 10500000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-04-08",
+    "last_financing_size": 10500000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 35000000,
+    "executives": [
+      {"person_id": "PB-PER-070", "name": "Henry Walker", "title": "Chief Executive Officer", "start_date": "2017-09-01"},
+      {"person_id": "PB-PER-071", "name": "Dr. Olivia Bennett", "title": "Chief Agronomist", "start_date": "2018-03-15"}
+    ]
+  },
+  "PB-CO-112244": {
+    "company_id": "PB-CO-112244",
+    "name": "Sustainable Packaging Innovations",
+    "description": "Biodegradable packaging materials from agricultural waste",
+    "primary_industry": "Packaging",
+    "primary_sector": "Materials & Resources",
+    "hq_location": {"city": "Leeds", "country": "United Kingdom"},
+    "website": "https://sustainablepackaging.io",
+    "founded_year": 2018,
+    "employee_count": 28,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 3600000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-08-22",
+    "last_financing_size": 3600000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 4800000,
+    "executives": [
+      {"person_id": "PB-PER-080", "name": "Laura Martinez", "title": "Chief Executive Officer", "start_date": "2018-11-01"},
+      {"person_id": "PB-PER-081", "name": "Dr. Simon Foster", "title": "Chief Science Officer", "start_date": "2019-02-01"}
+    ]
+  },
+  "PB-CO-334466": {
+    "company_id": "PB-CO-334466",
+    "name": "Climate AI Solutions",
+    "description": "AI-driven climate risk modeling and adaptation planning for businesses",
+    "primary_industry": "Climate Tech",
+    "primary_sector": "Environmental Services",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://climateai.solutions",
+    "founded_year": 2020,
+    "employee_count": 32,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 4800000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-11-30",
+    "last_financing_size": 4800000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 6800000,
+    "executives": [
+      {"person_id": "PB-PER-090", "name": "Dr. Marcus Johnson", "title": "Chief Executive Officer", "start_date": "2020-07-15"},
+      {"person_id": "PB-PER-091", "name": "Catherine Lee", "title": "Chief Data Officer", "start_date": "2020-09-01"}
+    ]
+  },
+  "PB-CO-556688": {
+    "company_id": "PB-CO-556688",
+    "name": "Supply Chain Optimization",
+    "description": "Real-time supply chain visibility and optimization platform",
+    "primary_industry": "Supply Chain",
+    "primary_sector": "Business Services",
+    "hq_location": {"city": "Birmingham", "country": "United Kingdom"},
+    "website": "https://supplychainopt.io",
+    "founded_year": 2018,
+    "employee_count": 59,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 5900000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-06-12",
+    "last_financing_size": 5900000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 10000000,
+    "executives": [
+      {"person_id": "PB-PER-100", "name": "Daniel Cooper", "title": "Chief Executive Officer", "start_date": "2018-10-01"},
+      {"person_id": "PB-PER-101", "name": "Jessica Wong", "title": "Chief Technology Officer", "start_date": "2019-01-15"}
+    ]
+  },
+  "PB-CO-778800": {
+    "company_id": "PB-CO-778800",
+    "name": "FoodTech Platforms",
+    "description": "B2B food supply marketplace connecting restaurants with local suppliers",
+    "primary_industry": "Food Technology",
+    "primary_sector": "Consumer Services",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://foodtechplatforms.io",
+    "founded_year": 2017,
+    "employee_count": 37,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 3800000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2022-08-18",
+    "last_financing_size": 3800000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 12000000,
+    "executives": [
+      {"person_id": "PB-PER-110", "name": "Oliver Hughes", "title": "Chief Executive Officer", "start_date": "2017-11-01"},
+      {"person_id": "PB-PER-111", "name": "Amelia Parker", "title": "Chief Operating Officer", "start_date": "2018-04-01"}
+    ]
+  },
+  "PB-CO-990011": {
+    "company_id": "PB-CO-990011",
+    "name": "FinTech Operations",
+    "description": "Banking-as-a-Service platform for embedded finance applications",
+    "primary_industry": "Financial Services",
+    "primary_sector": "Financial Technology",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://fintechops.io",
+    "founded_year": 2019,
+    "employee_count": 34,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 16000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-02-14",
+    "last_financing_size": 16000000,
+    "last_financing_type": "Series B",
+    "post_money_valuation": 50000000,
+    "executives": [
+      {"person_id": "PB-PER-120", "name": "Charlotte Evans", "title": "Chief Executive Officer", "start_date": "2019-08-01"},
+      {"person_id": "PB-PER-121", "name": "Benjamin Taylor", "title": "Chief Technology Officer", "start_date": "2019-10-15"}
+    ]
+  },
+  "PB-CO-223355": {
+    "company_id": "PB-CO-223355",
+    "name": "CleanTech Materials",
+    "description": "Sustainable building materials from recycled industrial waste",
+    "primary_industry": "Materials Science",
+    "primary_sector": "Industrial Materials",
+    "hq_location": {"city": "Sheffield", "country": "United Kingdom"},
+    "website": "https://cleantechmaterials.io",
+    "founded_year": 2016,
+    "employee_count": 68,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 7100000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-04-09",
+    "last_financing_size": 7100000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 12500000,
+    "executives": [
+      {"person_id": "PB-PER-130", "name": "Dr. Jonathan Wright", "title": "Chief Executive Officer", "start_date": "2016-10-01"},
+      {"person_id": "PB-PER-131", "name": "Victoria Hall", "title": "Chief Operations Officer", "start_date": "2017-03-15"}
+    ]
+  },
+  "PB-CO-445577": {
+    "company_id": "PB-CO-445577",
+    "name": "NextGen Biotech PLC",
+    "description": "Gene therapy and precision medicine for rare diseases",
+    "primary_industry": "Biotechnology",
+    "primary_sector": "Healthcare",
+    "hq_location": {"city": "Cambridge", "country": "United Kingdom"},
+    "website": "https://nextgenbiotech.io",
+    "founded_year": 2015,
+    "employee_count": 234,
+    "ownership_status": "Privately Held",
+    "financing_status": "Private Equity-Backed",
+    "total_raised": 145000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2024-01-20",
+    "last_financing_size": 78000000,
+    "last_financing_type": "Buyout",
+    "post_money_valuation": 78000000,
+    "executives": [
+      {"person_id": "PB-PER-140", "name": "Prof. Elizabeth Morgan", "title": "Chief Executive Officer", "start_date": "2015-12-01"},
+      {"person_id": "PB-PER-141", "name": "Dr. Richard Brooks", "title": "Chief Scientific Officer", "start_date": "2015-12-01"},
+      {"person_id": "PB-PER-142", "name": "Sarah Patterson", "title": "Chief Financial Officer", "start_date": "2017-08-01"}
+    ]
+  },
+  "PB-CO-667799": {
+    "company_id": "PB-CO-667799",
+    "name": "FinTech Innovations",
+    "description": "Digital banking platform for SMEs with automated lending and cash management",
+    "primary_industry": "Financial Services",
+    "primary_sector": "Financial Technology",
+    "hq_location": {"city": "London", "country": "United Kingdom"},
+    "website": "https://fintechinnovations.co.uk",
+    "founded_year": 2019,
+    "employee_count": 38,
+    "ownership_status": "Privately Held",
+    "financing_status": "Venture Capital-Backed",
+    "total_raised": 8000000,
+    "total_raised_currency": "GBP",
+    "last_financing_date": "2023-09-20",
+    "last_financing_size": 8000000,
+    "last_financing_type": "Series A",
+    "post_money_valuation": 28000000,
+    "executives": [
+      {"person_id": "PB-PER-150", "name": "Emily Richardson", "title": "Chief Executive Officer", "start_date": "2019-06-10"},
+      {"person_id": "PB-PER-151", "name": "David Park", "title": "Chief Technology Officer", "start_date": "2019-08-01"}
     ]
   }
 }
