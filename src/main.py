@@ -170,6 +170,9 @@ async def main() -> None:
     # Load configuration
     settings = Settings()
 
+    # Apply settings to environment (AWS credentials, proxies, etc.)
+    settings.apply_to_environment()
+
     # Print welcome
     print_welcome()
 
