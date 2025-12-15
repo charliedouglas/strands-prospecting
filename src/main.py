@@ -5,7 +5,7 @@ import logging
 from dotenv import load_dotenv
 
 from src.config import Settings
-from src.orchestrator import ProspectingOrchestrator
+from src.session import ProspectingSession, CLIFormatter
 from src.cli import CLIApprovalHandler
 from src.models import WorkflowRejectedError
 
@@ -17,141 +17,211 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def print_welcome() -> None:
+    """Print welcome message and system info."""
+    print(CLIFormatter.header("PROSPECTING AGENT", width=70))
+    print(f"Region: {CLIFormatter.dim('eu-west-2')}")
+    print(f"Extended Thinking: {CLIFormatter.success('Enabled')}")
+    print(f"Mock APIs: {CLIFormatter.success('Enabled')}\n")
+    print("Commands:")
+    print("  • Type your query and press Enter to start prospecting")
+    print("  • Type 'session' to see session summary")
+    print("  • Type 'history' to see query history")
+    print("  • Type 'quit' or 'exit' to leave\n")
+
+
+async def handle_query(session: ProspectingSession, query: str) -> bool:
+    """
+    Handle a single query through the prospecting workflow.
+
+    Args:
+        session: The prospecting session
+        query: The user's query
+
+    Returns:
+        True if user wants to continue, False if they want to exit
+    """
+    try:
+        print(CLIFormatter.progress("Analyzing query", 1, 5) + "\n")
+
+        # Process the query
+        result = await session.process_query(query)
+
+        # Handle different response types
+        if result.get("status") == "sufficient":
+            print(CLIFormatter.format_result(result))
+            return True
+
+        elif result.get("status") == "insufficient":
+            print(CLIFormatter.format_result(result))
+
+            # Offer options
+            print("\nWhat would you like to do?")
+            print("  1. Refine your query and try again")
+            print("  2. View the partial results we gathered")
+            print("  3. Go back to main menu")
+
+            choice = input("\nChoose (1-3): ").strip()
+            if choice == "1":
+                refined_query = input("Enter your refined query:\n> ").strip()
+                if refined_query:
+                    return await handle_query(session, refined_query)
+            elif choice == "2":
+                if result.get("summary"):
+                    summary = result["summary"]
+                    print(CLIFormatter.section("Partial Results"))
+                    print(f"  Records found: {summary.get('total_records', 0)}")
+                    print(f"  Companies: {summary.get('companies_found', 0)}")
+                    print(f"  Individuals: {summary.get('individuals_found', 0)}")
+            return True
+
+        elif result.get("status") == "clarification_needed":
+            print(CLIFormatter.format_result(result))
+
+            # Get clarification response
+            clarification = result.get("clarification", {})
+            if clarification.get("options"):
+                print("\nSelect an option or provide your answer:")
+                for i, option in enumerate(clarification["options"], 1):
+                    print(f"  {i}. {option}")
+                choice = input("\nYour choice: ").strip()
+
+                # Try to map choice to option
+                try:
+                    idx = int(choice) - 1
+                    if 0 <= idx < len(clarification["options"]):
+                        response = clarification["options"][idx]
+                    else:
+                        response = choice
+                except ValueError:
+                    response = choice
+
+                # Retry with clarification
+                refined_result = await session.clarify_and_retry(response)
+                print(CLIFormatter.format_result(refined_result))
+
+            else:
+                response = input(f"\n{clarification.get('question', 'Your answer')}\n> ").strip()
+                if response:
+                    refined_result = await session.clarify_and_retry(response)
+                    print(CLIFormatter.format_result(refined_result))
+
+            return True
+
+        else:
+            print(CLIFormatter.warning(f"Unexpected status: {result.get('status')}"))
+            return True
+
+    except WorkflowRejectedError:
+        print(CLIFormatter.error("Workflow cancelled by user."))
+        return True
+
+    except KeyboardInterrupt:
+        print(f"\n{CLIFormatter.warning('Interrupted.')}")
+        return True
+
+    except Exception as e:
+        logger.error(f"Error processing query: {e}", exc_info=True)
+        print(CLIFormatter.error(f"Error: {str(e)[:100]}"))
+        print("Please try again or type 'quit' to exit.")
+        return True
+
+
+def show_session_summary(session: ProspectingSession) -> None:
+    """Display session summary."""
+    summary = session.get_session_summary()
+    print(CLIFormatter.header("SESSION SUMMARY"))
+    print(f"Session ID: {CLIFormatter.dim(summary['session_id'])}")
+    print(f"Total queries: {summary['total_queries']}")
+    print(f"Successful: {CLIFormatter.success(str(summary['successful_queries']))}")
+    if summary['failed_queries'] > 0:
+        print(f"Failed: {CLIFormatter.error(str(summary['failed_queries']))}")
+    if summary['clarifications_requested'] > 0:
+        print(f"Clarifications: {summary['clarifications_requested']}")
+    print(f"\nData collected:")
+    print(f"  Records: {summary['total_records_found']}")
+    print(f"  Companies: {summary['unique_companies']}")
+    print(f"  Individuals: {summary['unique_individuals']}")
+    print(f"  Total execution time: {summary['total_execution_time_ms']}ms\n")
+
+
+def show_query_history(session: ProspectingSession) -> None:
+    """Display query history."""
+    history = session.get_query_history()
+    if not history:
+        print(CLIFormatter.warning("No queries in history yet."))
+        return
+
+    print(CLIFormatter.header("QUERY HISTORY"))
+    for i, entry in enumerate(history, 1):
+        status_indicator = "✓" if entry["status"] == "sufficient" else "⚠" if entry["status"] == "insufficient" else "○"
+        print(f"{i}. [{status_indicator}] {entry['query'][:60]}")
+        if entry.get("clarifications_count", 0) > 0:
+            clarification_count = entry["clarifications_count"]
+            print(f"   {CLIFormatter.dim(f'({clarification_count} clarifications)')}")
+    print()
+
+
 async def main() -> None:
-    """Run the prospecting agent with user approval workflow."""
+    """Run the prospecting agent with an interactive session."""
     # Load environment variables
     load_dotenv()
 
     # Load configuration
     settings = Settings()
 
-    # Print header
-    print("\n" + "=" * 70)
-    print("PROSPECTING AGENT WITH USER APPROVAL")
-    print("=" * 70)
-    print(f"\n🌍 Region: {settings.aws_region}")
-    print(f"🤖 Planner Model: {settings.planner_model}")
-    print(f"⚡ Extended Thinking: {'Enabled' if settings.enable_extended_thinking else 'Disabled'}")
-    print(f"🔧 Mock APIs: {'Enabled' if settings.mock_apis else 'Disabled'}")
-    print(f"\n{'=' * 70}\n")
+    # Print welcome
+    print_welcome()
 
-    # Create CLI approval handler
+    # Create approval handler
     approval_handler = CLIApprovalHandler()
 
-    # Create orchestrator
-    orchestrator = ProspectingOrchestrator(
-        settings=settings,
-        approval_handler=approval_handler
-    )
-
-    logger.info("Prospecting orchestrator initialized and ready")
+    # Create session
+    session = ProspectingSession(settings, approval_handler)
+    logger.info(f"Prospecting session {session.session_id} started")
 
     # Main interaction loop
     while True:
         try:
-            # Get user query
-            print("\n💬 Enter your prospecting query (or 'quit' to exit):")
-            query = input("> ").strip()
+            print(CLIFormatter.CYAN + "💬 Enter your query (or 'quit', 'session', 'history'):" + CLIFormatter.RESET)
+            user_input = input("> ").strip()
 
-            # Check for exit
-            if query.lower() in ('quit', 'exit', 'q'):
-                print("\n👋 Goodbye!")
+            # Check for special commands
+            if user_input.lower() in ("quit", "exit", "q"):
+                # Show final summary
+                summary = session.get_session_summary()
+                if summary["total_queries"] > 0:
+                    print(f"\n{CLIFormatter.success('Session complete!')}")
+                    print(f"Processed {summary['total_queries']} queries")
+                    if summary["successful_queries"] > 0:
+                        print(f"Successful: {summary['successful_queries']}")
+                print("\n👋 Goodbye!\n")
                 break
 
-            # Skip empty queries
-            if not query:
-                print("⚠️  Please enter a query.")
+            elif user_input.lower() == "session":
+                show_session_summary(session)
                 continue
 
-            # Run workflow
-            print("\n🔄 Processing your query...\n")
-            result = await orchestrator.run(query)
+            elif user_input.lower() == "history":
+                show_query_history(session)
+                continue
 
-            # Display result
-            print(f"\n{'=' * 70}")
-            print("WORKFLOW COMPLETE")
-            print(f"{'=' * 70}")
-            print(f"\n✅ Status: {result['status'].title()}")
+            elif not user_input:
+                print(CLIFormatter.warning("Please enter a query."))
+                continue
 
-            if result['status'] == 'sufficient':
-                # Successful completion with sufficient data
-                summary = result['summary']
-                sufficiency = result['sufficiency']
-
-                print(f"\n✅ SUFFICIENCY CHECK: PASSED")
-                print(f"   {sufficiency['reasoning'][:150]}...")
-
-                print(f"\n📊 EXECUTION SUMMARY:")
-                print(f"   Steps Executed: {summary['steps_executed']}")
-                print(f"   ✓ Succeeded: {summary['steps_succeeded']}")
-                if summary['steps_failed'] > 0:
-                    print(f"   ✗ Failed: {summary['steps_failed']}")
-                print(f"   📝 Total Records: {summary['total_records']}")
-                print(f"   🏢 Companies Found: {summary['companies_found']}")
-                print(f"   👤 Individuals Found: {summary['individuals_found']}")
-                print(f"   ⏱️  Execution Time: {summary['execution_time_ms']}ms")
-                print(f"   🔍 Sources: {', '.join(summary['sources_queried'])}")
-
-                # Show individual step results
-                print(f"\n📋 STEP RESULTS:")
-                for i, step_result in enumerate(result['execution_results']['results'], 1):
-                    status = "✓" if step_result['success'] else "✗"
-                    source = step_result['source']
-                    records = step_result['record_count']
-                    time = step_result['execution_time_ms']
-                    print(f"   {status} Step {i}: {source} ({records} records, {time}ms)")
-                    if step_result.get('error'):
-                        print(f"      Error: {step_result['error']}")
-
-                # Display report if generated
-                if result.get('report'):
-                    print(f"\n{'=' * 70}")
-                    print("PROSPECTING REPORT")
-                    print(f"{'=' * 70}\n")
-                    print(result['report']['markdown_content'])
-                else:
-                    print(f"\n⚠️  Report generation was not completed")
-
-            elif result['status'] == 'insufficient':
-                # Data collection incomplete after retries
-                print(f"\n⚠️  SUFFICIENCY CHECK: INSUFFICIENT DATA")
-                print(f"\n   Reasoning: {result['reasoning']}")
-                print(f"\n   Identified Gaps:")
-                for gap in result['gaps']:
-                    print(f"   • {gap}")
-                print(f"\n   💡 {result['message']}")
-
-            elif result['status'] == 'approved':
-                print(f"📋 Plan: {len(result['plan']['steps'])} steps ready for execution")
-                print(f"🔄 Revisions: {len(result['workflow_state']['revisions'])}")
-                print(f"\n💡 {result['message']}")
-
-            elif result['status'] == 'clarification_needed':
-                print(f"\n❓ Clarification needed: {result['clarification']['question']}")
-                print(f"   Context: {result['clarification']['context']}")
-                if result['clarification'].get('options'):
-                    print(f"\n   Options:")
-                    for i, option in enumerate(result['clarification']['options'], 1):
-                        print(f"   {i}. {option}")
-                    if result['clarification'].get('allow_custom_input'):
-                        custom_label = result['clarification'].get('custom_input_label', 'Other')
-                        print(f"   {len(result['clarification']['options']) + 1}. {custom_label}")
-                if result.get('gaps'):
-                    print(f"\n   Identified Gaps:")
-                    for gap in result['gaps']:
-                        print(f"   • {gap}")
-
-        except WorkflowRejectedError:
-            print("\n❌ Workflow cancelled by user.")
-            continue
+            # Process the query
+            should_continue = await handle_query(session, user_input)
+            if not should_continue:
+                break
 
         except KeyboardInterrupt:
-            print("\n\n⚠️  Interrupted. Type 'quit' to exit or press Enter to continue.")
+            print(f"\n{CLIFormatter.warning('Interrupted.')}")
             continue
 
         except Exception as e:
-            logger.error(f"Error in workflow: {e}", exc_info=True)
-            print(f"\n❌ Error: {e}")
+            logger.error(f"Unexpected error in main loop: {e}", exc_info=True)
+            print(CLIFormatter.error(f"Unexpected error: {str(e)[:100]}"))
             print("Please try again or type 'quit' to exit.")
             continue
 
@@ -160,7 +230,7 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\n\n👋 Goodbye!")
+        print(f"\n\n{CLIFormatter.warning('Interrupted by user.')}")
     except Exception as e:
         logger.error(f"Fatal error: {e}", exc_info=True)
-        print(f"\n❌ Fatal error: {e}")
+        print(f"\n{CLIFormatter.error(f'Fatal error: {str(e)[:100]}')}")

@@ -236,11 +236,17 @@ class SufficiencyChecker:
         # Prepare a summary of results for the prompt
         results_summary = self._summarize_results(results)
 
+        # Analyze query specificity and result relevance
+        query_analysis = self._analyze_query_specificity(results)
+
         return f"""Evaluate whether these results adequately answer the original prospecting query.
 
 CRITICAL: You MUST only reference data that is EXPLICITLY shown below. Do NOT invent, estimate, or hallucinate any counts, company names, or details not present in the data below.
 
 Original Query: "{results.original_query}"
+
+QUERY ANALYSIS:
+{query_analysis}
 
 Execution Plan Summary:
 - Total steps: {len(results.plan.steps)}
@@ -272,14 +278,20 @@ Respond with a JSON object matching the SufficiencyResult schema:
 
 Evaluate:
 1. Does the data answer the original question?
-2. Are there critical gaps in the information?
-3. Is the data internally consistent?
-4. Have existing clients been properly identified and should be filtered?
-5. Are there enough non-client prospects after filtering?
+2. Are the results RELEVANT to the original query? (e.g., if asking for "ACME Technologies", don't accept results about unrelated companies)
+3. Are there critical gaps in the information?
+4. Is the data internally consistent?
+5. Have existing clients been properly identified and should be filtered?
+6. Are there enough non-client prospects after filtering?
+
+IMPORTANT - RELEVANCE CHECK:
+- If the query mentions SPECIFIC company names and results include many unrelated companies, flag this as CLARIFICATION_NEEDED
+- The user must clarify if they want all the companies found, or just the specific ones they mentioned
+- Do NOT return SUFFICIENT if the results are mostly unrelated to what was asked
 
 Remember:
-- SUFFICIENT: Query is fully answered, proceed to report
-- CLARIFICATION_NEEDED: Need user input (e.g., all results are clients, query is ambiguous)
+- SUFFICIENT: Query is fully answered with relevant data, proceed to report
+- CLARIFICATION_NEEDED: Need user input (e.g., results include unrelated companies, all results are clients, query is ambiguous)
   * When requesting clarification, provide specific options for common scenarios
   * Set "allow_custom_input": true to include a final "Other" option for custom user text
   * Customize "custom_input_label" to match the context (e.g., "Other industry", "Different criteria")
@@ -359,6 +371,153 @@ Respond ONLY with valid JSON matching the SufficiencyResult schema."""
             raise ValueError(f"Sufficiency result validation failed: {e}")
 
         return sufficiency
+
+    def _analyze_query_specificity(self, results: AggregatedResults) -> str:
+        """
+        Analyze the query to determine if it mentions specific entities.
+
+        Helps the sufficiency checker understand whether results should be
+        focused on specific companies/individuals or broader market research.
+
+        Args:
+            results: Aggregated results with original query
+
+        Returns:
+            Formatted analysis string
+        """
+        query = results.original_query.lower()
+        query_original = results.original_query  # Keep original capitalization for entity names
+
+        # List of words that indicate broad market research (not specific entity search)
+        broad_indicators = [
+            "find all", "show me all", "search for all",
+            "what companies", "which companies",
+            "market search", "companies that",
+            "funding rounds in", "deals in",
+            "looking for", "find me",
+            "list of", "survey of",
+        ]
+
+        is_broad_query = any(indicator in query for indicator in broad_indicators)
+
+        # Extract specific company names from the query
+        # Look for patterns like "research [company]", "tell me about [company]", etc.
+        specific_entities = self._extract_entities_from_query(query_original)
+
+        # Get found company names
+        found_companies = [c.name for c in results.companies]
+        found_individuals = [i.name for i in results.individuals]
+
+        # Analyze relevance
+        analysis_lines = []
+
+        if is_broad_query:
+            analysis_lines.append("Query Type: BROAD MARKET RESEARCH")
+            analysis_lines.append("- User is searching for market segments or multiple companies")
+            analysis_lines.append("- Results should include diverse companies")
+        else:
+            analysis_lines.append("Query Type: SPECIFIC ENTITY SEARCH")
+            analysis_lines.append("- User appears to be asking about specific companies/people")
+
+            # Check if results are relevant to the query
+            if found_companies:
+                if specific_entities:
+                    analysis_lines.append(f"\nEntities specifically mentioned in query:")
+                    for entity in specific_entities:
+                        analysis_lines.append(f"  - {entity}")
+                else:
+                    analysis_lines.append(f"\nNo specific entities explicitly detected in query")
+
+                analysis_lines.append(f"\nCompanies found in results ({len(found_companies)}):")
+                for company in found_companies[:5]:  # Show first 5
+                    analysis_lines.append(f"  - {company}")
+                if len(found_companies) > 5:
+                    analysis_lines.append(f"  ... and {len(found_companies) - 5} more")
+
+                # Check for relevance if specific entities were mentioned
+                if specific_entities:
+                    matching = []
+                    for company in found_companies:
+                        # Check if any specific entity is in the company name
+                        if any(entity.lower() in company.lower() for entity in specific_entities):
+                            matching.append(company)
+
+                    non_matching = len(found_companies) - len(matching)
+                    analysis_lines.append(f"\nRelevance Analysis:")
+                    analysis_lines.append(f"- Results matching requested entities: {len(matching)}")
+                    analysis_lines.append(f"- Results unrelated to query: {non_matching}")
+
+                    # Flag if most results are unrelated
+                    if non_matching > 0 and len(matching) > 0 and non_matching > len(matching):
+                        analysis_lines.append("\n⚠️  RELEVANCE ISSUE DETECTED:")
+                        analysis_lines.append("- Majority of results are UNRELATED to the specific entities mentioned in the query")
+                        analysis_lines.append("- This suggests the execution plan included broad searches that returned unrelated companies")
+                    elif non_matching > 0 and len(matching) == 0:
+                        analysis_lines.append("\n⚠️  NO MATCHING RESULTS:")
+                        analysis_lines.append("- None of the results match the specific entities requested")
+                        analysis_lines.append("- The search may have failed to find the requested company/person")
+
+        return "\n".join(analysis_lines)
+
+    def _extract_entities_from_query(self, query: str) -> list[str]:
+        """
+        Extract company/person names mentioned in the query.
+
+        Uses patterns to identify entities mentioned in typical prospecting queries.
+
+        Args:
+            query: The original user query
+
+        Returns:
+            List of entity names extracted from the query
+        """
+        entities = []
+        query_lower = query.lower()
+
+        # Pattern 1: "research [company]" or "tell me about [company]"
+        research_patterns = [
+            ("research ", 9),
+            ("about ", 6),
+            ("on ", 3),
+            ("company ", 8),
+            ("profile for ", 12),
+        ]
+
+        for pattern, pattern_len in research_patterns:
+            idx = query_lower.find(pattern)
+            if idx != -1:
+                # Get text after the pattern
+                start = idx + pattern_len
+                # Extract until next space or punctuation
+                end = start
+                while end < len(query) and query[end] not in " ,;.!?":
+                    end += 1
+                if end > start:
+                    potential_entity = query[start:end]
+                    if len(potential_entity) > 2:  # Filter out very short words
+                        entities.append(potential_entity)
+
+        # Pattern 2: Look for capitalized multi-word phrases (likely company names)
+        # This is more conservative and looks for patterns like "ACME Technologies"
+        words = query.split()
+        i = 0
+        while i < len(words):
+            if words[i][0].isupper() and not words[i][0].isdigit():
+                # Potential start of company name
+                company_name = words[i]
+                j = i + 1
+                # Continue adding capitalized words
+                while j < len(words) and len(words[j]) > 1 and words[j][0].isupper():
+                    company_name += " " + words[j]
+                    j += 1
+                if len(company_name) > 2 and company_name.lower() not in ["the", "a", "an"]:
+                    if company_name not in entities:  # Avoid duplicates
+                        entities.append(company_name)
+                i = j
+            else:
+                i += 1
+
+        return entities
 
     def _summarize_results(self, results: AggregatedResults) -> str:
         """
