@@ -42,12 +42,18 @@ class Settings(BaseSettings):
             settings = Settings()
             settings.apply_to_environment()
         """
+        # AWS region (always set)
+        os.environ["AWS_REGION"] = self.aws_region
+
+        # AWS credentials (optional)
         if self.aws_access_key_id:
             os.environ["AWS_ACCESS_KEY_ID"] = self.aws_access_key_id
         if self.aws_secret_access_key:
             os.environ["AWS_SECRET_ACCESS_KEY"] = self.aws_secret_access_key
         if self.aws_session_token:
             os.environ["AWS_SESSION_TOKEN"] = self.aws_session_token
+
+        # Proxy settings (optional)
         if self.http_proxy:
             os.environ["HTTP_PROXY"] = self.http_proxy
         if self.https_proxy:

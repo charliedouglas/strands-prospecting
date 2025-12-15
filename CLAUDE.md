@@ -13,54 +13,136 @@ An agentic prospecting tool built on AWS Strands SDK that:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                         USER QUERY                                   │
-└─────────────────────────────────────────────────────────────────────┘
-                                  │
-                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                    PLANNER AGENT                                     │
-│                    (Sonnet 4.5 + Extended Thinking)                  │
+│                    INTERACTIVE CLI (main.py)                         │
 │                                                                      │
-│  - Parses query intent                                               │
-│  - Identifies required data sources                                  │
-│  - Creates structured execution plan                                 │
-│  - May request clarification if query ambiguous                      │
+│  - Accepts natural language queries                                  │
+│  - Manages session loop (session.py)                                 │
+│  - Formats output with colors & progress                             │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
-                                  ▼ ExecutionPlan
+                                  ▼ User Query
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    EXECUTOR AGENT                                    │
-│                    (Haiku 4.5)                                       │
+│                      ORCHESTRATOR (orchestrator.py)                  │
 │                                                                      │
-│  - Follows plan sequentially                                         │
-│  - Calls data source tools                                           │
-│  - Aggregates results                                                │
-│  - Handles errors/retries                                            │
+│  - Coordinates entire prospecting workflow                           │
+│  - Manages approval, execution, evaluation loops                     │
+│  - Handles clarifications & retries                                  │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
-                                  ▼ AggregatedResults
-┌─────────────────────────────────────────────────────────────────────┐
-│                    SUFFICIENCY CHECKER                               │
-│                    (Sonnet 4.5 + Extended Thinking)                  │
-│                                                                      │
-│  - Evaluates if results answer original query                        │
-│  - Identifies gaps                                                   │
-│  - Returns: SUFFICIENT | CLARIFICATION_NEEDED | RETRY_NEEDED         │
-└─────────────────────────────────────────────────────────────────────┘
-                                  │
-                    ┌─────────────┼─────────────┐
-                    ▼             ▼             ▼
-              [SUFFICIENT]  [CLARIFY]      [RETRY]
-                    │             │             │
-                    ▼             ▼             │
-┌──────────────────────┐  ┌─────────────┐      │
-│   REPORT GENERATOR   │  │  Return to  │      │
-│   (Sonnet 4.5)       │  │    User     │◄─────┘
-└──────────────────────┘  └─────────────┘
+                    ┌─────────────┴──────────────┐
+                    ▼                            ▼
+        ┌──────────────────────┐   ┌──────────────────────┐
+        │  PLANNER AGENT       │   │   (Clarification?)   │
+        │  (Sonnet 4.5 + ET)   │   │   Return question    │
+        │                      │   │   to user            │
+        │  - Parse intent      │   └──────────────────────┘
+        │  - Select sources    │
+        │  - Create plan       │
+        └──────────────────────┘
+                    │ ExecutionPlan
+                    ▼
+        ┌──────────────────────┐
+        │  SUMMARIZER AGENT    │ ◄─── User Feedback
+        │  (Haiku 4.5)         │      (if revision)
+        │                      │
+        │  - Convert to summary│
+        │  - Explain strategy  │
+        └──────────────────────┘
+                    │ PlanSummary
+                    ▼
+        ┌──────────────────────┐
+        │  APPROVAL HANDLER    │
+        │  (CLIApprovalHandler)│
+        │                      │
+        │  - Show plan summary │
+        │  - Prompt user: A/R/ │
+        │    Revise            │
+        └──────────────────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+    [APPROVED]  [REJECTED] [NEEDS_REVISION]
+        │           │           │
+        ▼           ▼           ▼ (back to planner)
+   [Continue]  [Return      [Loop]
+               Error]
+                    │
+                    ▼ ExecutionPlan
+        ┌──────────────────────┐
+        │   EXECUTOR AGENT     │
+        │   (Haiku 4.5)        │
+        │                      │
+        │  - Execute plan      │
+        │  - Call tools        │
+        │  - Resolve params    │
+        │  - Handle errors     │
+        └──────────────────────┘
+                    │
+                    ▼ RawResults from Tools
+        ┌──────────────────────┐
+        │  ENTITY EXTRACTOR    │
+        │                      │
+        │  - Extract companies │
+        │  - Extract individuals
+        │  - Dedup by name     │
+        └──────────────────────┘
+                    │
+                    ▼ AggregatedResults
+        ┌──────────────────────┐
+        │ SUFFICIENCY CHECKER  │
+        │ (Sonnet 4.5 + ET)    │
+        │                      │
+        │ - Evaluate coverage  │
+        │ - Identify gaps      │
+        │ - Check consistency  │
+        └──────────────────────┘
+                    │
+        ┌───────────┼──────────────┐
+        │           │              │
+   [SUFFICIENT] [CLARIFY]    [RETRY (1x)]
+        │           │              │
+        ▼           ▼              ▼ (loop)
+        │       [Request]     [Re-execute]
+        │      [response]         │
+        │           │             │
+        └───────────┴─────────────┘
+                    │
+         ┌──────────▼──────────┐
+         │ FILTER EXISTING     │
+         │ CLIENTS             │
+         │ (internal_crm)      │
+         └─────────────────────┘
+                    │
+                    ▼ FilteredResults
+        ┌──────────────────────┐
+        │ REPORT GENERATOR     │
+        │ (Sonnet 4.5)         │
+        │                      │
+        │ - Executive summary  │
+        │ - Companies section  │
+        │ - Individuals section│
+        │ - Recent news        │
+        │ - Recommendations    │
+        └──────────────────────┘
                     │
                     ▼
-            [Markdown Report]
+    ┌───────────────────────────┐
+    │  FORMATTED RESULT TO USER  │
+    │  - Markdown report        │
+    │  - Summary statistics     │
+    │  - Next steps             │
+    └───────────────────────────┘
 ```
+
+### Key Workflow Features
+
+1. **Approval Loop**: Plan is summarized and user must approve before execution
+2. **Revision Support**: User can request plan revisions (loops back to planner)
+3. **Clarification Handling**: Ambiguous queries return clarification requests; user response triggers re-planning
+4. **Entity Deduplication**: Raw results are normalized and merged across sources
+5. **Client Filtering**: Existing clients are filtered before report generation
+6. **Single Retry**: Sufficiency checker can request one retry of specific steps
+7. **Session Management**: All queries tracked with statistics and history in the CLI session
 
 ## Technology Stack
 

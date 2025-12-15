@@ -43,7 +43,7 @@ flowchart TD
     Tools --> SerpAPI[(SerpAPI)]
     Tools --> CRM[(Internal CRM)]
 
-    Orbis --> Results[Aggregated Results]
+    Orbis --> Results[Raw Results from Tools]
     Crunchbase --> Results
     PitchBook --> Results
     CompaniesHouse --> Results
@@ -53,13 +53,19 @@ flowchart TD
     SerpAPI --> Results
     CRM --> Results
 
-    Results --> Future1[Sufficiency Checker<br/>Sonnet 4.5 + Extended Thinking<br/>FUTURE]
+    Results --> Extractor[Entity Extractor<br/>Deduplication]
 
-    Future1 --> Check{Results<br/>Sufficient?}
+    Extractor --> AggregatedResults[Aggregated Results<br/>with deduplicated entities]
 
-    Check -->|Yes| Reporter[Report Generator<br/>Sonnet 4.5<br/>FUTURE]
+    AggregatedResults --> Sufficiency[Sufficiency Checker<br/>Sonnet 4.5 + Extended Thinking]
+
+    Sufficiency --> Check{Results<br/>Sufficient?}
+
+    Check -->|Yes| Filter[Filter Existing Clients<br/>internal_crm]
     Check -->|No - Need Clarification| ClarifyReturn
     Check -->|No - Retry Needed| Execute
+
+    Filter --> Reporter[Report Generator<br/>Sonnet 4.5]
 
     Reporter --> FinalReport[Final Markdown Report]
     FinalReport --> End3([Return to User])
@@ -68,12 +74,15 @@ flowchart TD
     style Planner fill:#fff4e6,stroke:#333,stroke-width:2px
     style Summarizer fill:#fff4e6,stroke:#333,stroke-width:2px
     style Executor fill:#fff4e6,stroke:#333,stroke-width:2px
-    style Future1 fill:#f0f0f0,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5
-    style Reporter fill:#f0f0f0,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5
+    style Extractor fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style Sufficiency fill:#fff4e6,stroke:#333,stroke-width:2px
+    style Reporter fill:#fff4e6,stroke:#333,stroke-width:2px
+    style Filter fill:#f3e5f5,stroke:#333,stroke-width:2px
     style ApprovalLoop fill:#e8f5e9,stroke:#333,stroke-width:2px
     style UserApproval fill:#fff9c4,stroke:#333,stroke-width:3px
     style Tools fill:#fce4ec,stroke:#333,stroke-width:2px
     style Results fill:#e3f2fd,stroke:#333,stroke-width:2px
+    style AggregatedResults fill:#e3f2fd,stroke:#333,stroke-width:2px
 ```
 
 ## Component Breakdown
@@ -117,19 +126,38 @@ Nine different APIs that can be queried:
 - **SerpAPI**: News and web search
 - **Internal CRM**: Client exclusion check
 
-### 6. Future Components (Not Yet Implemented)
+### 6. Entity Extraction
 
-#### Sufficiency Checker
+- **Purpose**: Deduplicates and normalizes companies and individuals from raw data
+- **Process**: Merges entities across sources using normalized name matching
+- **Output**: Deduplicated lists of Company and Individual entities
+
+### 7. Sufficiency Checker
+
 - **Model**: Claude Sonnet 4.5 with Extended Thinking
 - **Purpose**: Evaluate if results answer the original query
 - **Outputs**:
-  - ✅ **Sufficient** → Generate report
-  - 🔄 **Retry Needed** → Re-execute with different parameters
+  - ✅ **Sufficient** → Filter existing clients, then generate report
+  - 🔄 **Retry Needed** → Re-execute specific steps (max 1 retry)
   - ❓ **Clarification Needed** → Ask user for more details
 
-#### Report Generator
+### 8. Client Filtering
+
+- **Purpose**: Removes existing clients from results before reporting
+- **Tool**: Internal CRM check_clients
+- **Output**: FilteredResults with existing clients excluded
+
+### 9. Report Generator
+
 - **Model**: Claude Sonnet 4.5
 - **Purpose**: Create formatted markdown report
+- **Sections**:
+  - Executive summary
+  - Companies (financials, funding, key people)
+  - Individuals (roles, wealth, interests)
+  - Recent news and signals
+  - Data quality notes
+  - Recommended next steps
 - **Output**: Professional prospect dossier
 
 ## Key Architectural Patterns
@@ -177,16 +205,26 @@ Each agent has a single responsibility:
    → Step 1: Crunchbase API (found 23 companies)
    → Step 2: PitchBook API (cross-referenced, found 18 matches)
    → Step 3: Companies House (got directors for 18 companies)
-   → Step 4: CRM (excluded 2 existing clients)
+   → Step 4: Internal CRM tool (get client status)
    ↓
-5. Sufficiency Checker (Future)
+5. Entity Extractor
+   → Deduplicates companies across sources (18 → 16 unique companies)
+   → Extracts and merges 34 director profiles
+   ↓
+6. Sufficiency Checker
    → Evaluates: 16 unique prospects with funding + director data
    → Decision: SUFFICIENT ✅
    ↓
-6. Report Generator (Future)
-   → Creates markdown report with prospect profiles
+7. Client Filtering
+   → Checks 16 companies against existing clients
+   → Excludes 2 existing clients
+   → 14 prospects remain
    ↓
-7. Return to User
+8. Report Generator
+   → Creates markdown report with prospect profiles, funding details, key executives
+   ↓
+9. Return to User
+   → Markdown report + summary statistics
 ```
 
 ## Current Implementation Status
@@ -197,10 +235,14 @@ Each agent has a single responsibility:
 | Planner Agent | ✅ Implemented | Sonnet 4.5 + Extended Thinking |
 | Summarizer Agent | ✅ Implemented | Haiku 4.5 |
 | Executor Agent | ✅ Implemented | Haiku 4.5 |
+| Entity Extractor | ✅ Implemented | N/A |
 | Data Source Tools | ✅ Implemented (mocked) | N/A |
 | Approval Handler | ✅ Implemented | N/A |
-| Sufficiency Checker | ⏳ TODO | Sonnet 4.5 + Extended Thinking |
-| Report Generator | ⏳ TODO | Sonnet 4.5 |
+| Sufficiency Checker | ✅ Implemented | Sonnet 4.5 + Extended Thinking |
+| Client Filtering | ✅ Implemented | N/A |
+| Report Generator | ✅ Implemented | Sonnet 4.5 |
+| Session Management | ✅ Implemented | N/A |
+| CLI Interface | ✅ Implemented | N/A |
 
 ## Loop Details
 

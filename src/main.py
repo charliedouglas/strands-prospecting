@@ -81,9 +81,6 @@ async def handle_query(session: ProspectingSession, query: str) -> bool:
             # Get clarification response
             clarification = result.get("clarification", {})
             if clarification.get("options"):
-                print("\nSelect an option or provide your answer:")
-                for i, option in enumerate(clarification["options"], 1):
-                    print(f"  {i}. {option}")
                 choice = input("\nYour choice: ").strip()
 
                 # Try to map choice to option
